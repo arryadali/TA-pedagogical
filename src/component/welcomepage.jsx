@@ -13,7 +13,7 @@ const Welcomepage = () => {
             </li>
             <li>
               <Link to={"/loginpage"}>
-                <button className="bg-[#1D809F] w-[10rem] h-[3.8rem] font-bold text-white text-[20px]">
+                <button className="bg-[#1D809F] w-[10rem] h-[3.8rem] font-bold text-white text-[20px] rounded-md">
                   Mulai
                 </button>
               </Link>

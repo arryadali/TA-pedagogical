@@ -44,12 +44,12 @@ const Loginpage = () => {
                     </Link>
                 </form>
 
-            <div class="mt-6 text-center">
-                <p>Daftar sebagai administrator pada aplikasi ini?</p>
-                <Link to={'/registrasi'}>
-                    <p className='hover:underline text-blue-500'>Daftar Disini!</p>
-                </Link>
-            </div>
+                <div class="mt-6 text-center">
+                    <p>Daftar sebagai administrator pada aplikasi ini?</p>
+                    <Link to={'/registrasi'}>
+                        <p className='hover:underline text-blue-500'>Daftar Disini!</p>
+                    </Link>
+                </div>
             </div>
         </div>
 
