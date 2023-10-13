@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <section id='home'>
         <Navbar/>
-        <div>
+        <div className='max-w-7xl m-auto'>
           INI HOME PAGE
         </div>
     </section>

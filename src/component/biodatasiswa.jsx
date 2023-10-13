@@ -8,16 +8,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Navbar from './navbar';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(nama, username, kelas, nisn) {
+    return { nama, username, kelas, nisn};
   }
   
   const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    createData('Arrya Dali Lesmana', "arryadali", "5", "1301204292"),
+    createData('Aryasatya Okta Pradana', "arysat", "5", "1301010101"),
+    createData("Maulana Ihsan", 'maulanaihsan', "5", "1301204222"),
   ];
   
 
@@ -34,26 +32,24 @@ const Biodatasiswa = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                            <TableCell>NAMA</TableCell>
+                            <TableCell align="right">USERNAME</TableCell>
+                            <TableCell align="right">KELAS</TableCell>
+                            <TableCell align="right">NISN</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {rows.map((row) => (
                         <TableRow
-                        key={row.name}
+                        key={row.nama}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                         <TableCell component="th" scope="row">
-                            {row.name}
+                            {row.nama}
                         </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            <TableCell align="right">{row.username}</TableCell>
+                            <TableCell align="right">{row.kelas}</TableCell>
+                            <TableCell align="right">{row.nisn}</TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
