@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './navbar';
+import { Link } from 'react-router-dom';
 
 const Materi = () => {
   return (
@@ -14,15 +15,22 @@ const Materi = () => {
                   MATERI PEMBELAJARAN KELAS 5 SD
                 </div>
 
+                {/* Post-Test */}
+                <Link to={"/posttest"}>
+                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
+                    <div className=''>
+                      <label className='font-[poppins] text-[20px]'>Post-Test</label>
+                    </div>
+                  </div>
+                </Link>
+                
+                {/* Pre-Test */}
                 <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
                   <div className=''>
-                    <label className='font-[poppins] text-[20px]'>Matematika</label>
-                  </div>
-
-                  <div>
-                    <label className='bg-gray-500 rounded-[5px] font-semibold p-[1px] font-sans ml-4'>Bangun Ruang</label>
+                    <label className='font-[poppins] text-[20px]'>Pre-Test</label>
                   </div>
                 </div>
+                
               </div>
           </div>
         </div>

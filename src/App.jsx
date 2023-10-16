@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./component/navbar";
 import Welcomepage from "./component/welcomepage";
 import Loginpage from "./component/loginpage";
 import Registrasi from "./component/registrasi";
@@ -8,6 +7,7 @@ import Home from "./component/home";
 import Biodatasiswa from "./component/biodatasiswa";
 import Materi from "./component/materi";
 import Soal from "./component/soal";
+import Posttest from "./component/posttest";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/biodatasiswa" element={<Biodatasiswa/>}/>
         <Route path="/materi" element={<Materi/>}/>
         <Route path="/soal" element={<Soal/>}/>
+        <Route path="/posttest" element={<Posttest/>}/>
       </Routes>
     </BrowserRouter>
   );
