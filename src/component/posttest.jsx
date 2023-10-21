@@ -8,22 +8,24 @@ const Posttest = () => {
         <Navbar/>
             <div className='h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
                 <div className='mx-auto max-w-7xl'>
-                    <p className='font-[poppins] text-[40px]'>POST-TEST</p>
+                    <p className='font-[serif] text-[40px]'>POST-TEST</p>
 
                     <div className='bg-[#E6E6E6] h-auto py-4'>
-                        <div className='w-[95%] mx-auto font-[poppins] text-[24px]'>
-                        MATERI PEMBELAJARAN KELAS 5 SD
+                        <div className='w-[95%] mx-auto font-[serif] text-[24px]'>
+                            <p>
+                                MATERI PEMBELAJARAN KELAS 5 SD
+                            </p>
                         </div>
 
-                        {/* Bangun Ruang */}
+                        {/* Materi */}
                         <Link to={'/bangunruang'}>
                             <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
                                 <div className=''>
-                                    <label className='font-[poppins] text-[20px]'>Matematika</label>
+                                    <label className='font-[Georgia] text-[20px] cursor-pointer'>Matematika</label>
                                 </div>
 
                                 <div>
-                                    <label className='bg-gray-500 rounded-[5px] font-semibold p-[1px] font-sans ml-4'>Bangun Ruang</label>
+                                    <label className='bg-gray-500 rounded-[5px] text-[16px] p-[2px] ml-4 font-[Georgia] cursor-pointer'>Bangun Ruang</label>
                                 </div>
                             </div>
                         </Link>
