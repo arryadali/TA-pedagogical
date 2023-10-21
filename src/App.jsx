@@ -8,6 +8,8 @@ import Biodatasiswa from "./component/biodatasiswa";
 import Materi from "./component/materi";
 import Soal from "./component/soal";
 import Posttest from "./component/posttest";
+import Pretest from "./component/pretest";
+import Bangunruang from "./component/bangunruang";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Route path="/materi" element={<Materi/>}/>
         <Route path="/soal" element={<Soal/>}/>
         <Route path="/posttest" element={<Posttest/>}/>
+        <Route path="/pretest" element={<Pretest/>}/>
+        <Route path="/bangunruang" element={<Bangunruang/>}/>
+
       </Routes>
     </BrowserRouter>
   );

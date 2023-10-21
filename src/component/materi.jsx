@@ -17,19 +17,21 @@ const Materi = () => {
 
                 {/* Post-Test */}
                 <Link to={"/posttest"}>
-                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
+                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
-                      <label className='font-[poppins] text-[20px]'>Post-Test</label>
+                      <label className='font-[poppins] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Post-Test</label>
                     </div>
                   </div>
                 </Link>
                 
                 {/* Pre-Test */}
-                <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
-                  <div className=''>
-                    <label className='font-[poppins] text-[20px]'>Pre-Test</label>
+                <Link to={'/pretest'}>
+                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
+                    <div className=''>
+                      <label className='font-[poppins] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Pre-Test</label>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 
               </div>
           </div>
