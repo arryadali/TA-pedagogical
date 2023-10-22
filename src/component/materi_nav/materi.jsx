@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './navbar';
+import Navbar from '../navbar';
 import { Link } from 'react-router-dom';
 
 const Materi = () => {
@@ -35,7 +35,7 @@ const Materi = () => {
                 
               </div>
           </div>
-        </div>
+        </div>  
     </section>
   )
 }

@@ -1,14 +1,14 @@
 import React from 'react'
-import Navbar from './navbar';
+import Navbar from '../../navbar'
 
-const Bangunruang = () => {
+const Materi_belajar_pretest = () => {
   return (
-    <section id='bangunruang'>
+    <section id='materi_pretest'>
         <Navbar/>
         <div className='h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
             <div className='mx-auto max-w-7xl bg-white h-auto'>
                 <div>
-                    
+                    INI MATERI PRE TEST
                 </div>
             </div>
         </div>
@@ -16,4 +16,4 @@ const Bangunruang = () => {
   )
 }
 
-export default Bangunruang;
+export default Materi_belajar_pretest

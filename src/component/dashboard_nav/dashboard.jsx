@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from './navbar';
+import Navbar from '../navbar';
 
-const Home = () => {
+const Dashboard = () => {
   return (
-    <section id='home'>
+    <section id='dashboard'>
         <Navbar/>
         <div className='max-w-7xl m-auto'>
           <div className='flex-col'>
@@ -41,4 +41,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Dashboard;
