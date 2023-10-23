@@ -35,7 +35,7 @@ const Loginpage = () => {
                         />
                     </div>
 
-                    <Link to={'/homepage'}>
+                    <Link to={'/dashboard'}>
                         <button 
                         type="submit" 
                         class="bg-[#1D809F]  text-white font-semibold rounded-md py-2 px-4 w-full">

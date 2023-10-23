@@ -16,7 +16,7 @@ const Materi = () => {
                 </div>
 
                 {/* Post-Test */}
-                <Link to={"/posttest"}>
+                <Link to={"/page_materi_posttest"}>
                   <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
                       <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Post-Test</label>
@@ -25,7 +25,7 @@ const Materi = () => {
                 </Link>
                 
                 {/* Pre-Test */}
-                <Link to={'/pretest'}>
+                <Link to={'/page_materi_pretest'}>
                   <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
                       <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Pre-Test</label>

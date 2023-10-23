@@ -8,23 +8,23 @@ const Registrasi = () => {
         <div class="lg:w-2/5 md:w-1/2 w-2/3">
             <form class="bg-white p-10 rounded-lg shadow-lg min-w-full">
 
-              <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Registrasi untuk Guru</h1>
+              <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Registrasi</h1>
                 <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="firstname">Nama Pertama</label>
+                  <label class="text-gray-800 font-semibold block my-3 text-md" for="name">Nama Lengkap</label>
                   <input 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
                   type="text" 
-                  name="firstname" 
-                  id="firstname"/>
+                  name="name" 
+                  id="name"/>
                 </div>
 
                 <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="lastname">Nama Terakhir</label>
+                  <label class="text-gray-800 font-semibold block my-3 text-md" for="kelas">Kelas</label>
                   <input 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
                   type="text" 
-                  name="lastname" 
-                  id="lastname" />
+                  name="kelas" 
+                  id="kelas"/>
                 </div>
 
                 <div>
@@ -45,7 +45,7 @@ const Registrasi = () => {
                   id="password" />
                 </div>
 
-                <button type="submit" class="w-full mt-8 bg-[#38A186] rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
+                <button type="submit" class="w-full mt-8 bg-[#1D809F] rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
                   Register
                 </button>
 
