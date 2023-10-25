@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-banner {
+    background-image: url("../public/asset/sekolah/lapangan.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width : 100%;
+    height : 100%;
+}
