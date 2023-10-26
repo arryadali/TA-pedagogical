@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Welcomepage = () => {
   return (
     <section id='welcomepage'>
-        <div className='bg-banner container'>
+        <div className='container'>
           <ul className="py-[14%] font-sans text-center items-center h-screen">
               <li className='text-[40px] font-medium mb-[45px]'>
                   Aplikasi Pembelajaran <pre className='text-[40px] font-medium font-sans'> Agen Pedagogis </pre>
@@ -19,6 +19,12 @@ const Welcomepage = () => {
                   </button>
                 </Link>
               </li>
+
+              <Link to={'/coba'}>
+                <button>
+                  menuju coba
+                </button>
+              </Link>
           </ul>
         </div>
     </section>

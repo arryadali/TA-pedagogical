@@ -19,7 +19,7 @@ const Materi = () => {
                 <Link to={"/page_materi_posttest"}>
                   <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
-                      <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Post-Test</label>
+                      <label className='font-[Georgia] font-medium text-white text-[20px] bg-gray-800 p-2 rounded-xl cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>Post-Test</label>
                     </div>
                   </div>
                 </Link>
@@ -28,7 +28,7 @@ const Materi = () => {
                 <Link to={'/page_materi_pretest'}>
                   <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
-                      <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Pre-Test</label>
+                      <label className='font-[Georgia] font-medium text-white text-[20px] bg-gray-800 p-2 rounded-xl cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>Pre-Test</label>
                     </div>
                   </div>
                 </Link>

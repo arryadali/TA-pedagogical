@@ -1,21 +1,22 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Welcomepage from "./component/welcomepage";
-import Loginpage from "./component/loginpage";
-import Registrasi from "./component/registrasi";
-import Dashboard from "./component/dashboard_nav/dashboard";
-import Biodatasiswa from "./component/biodata_nav/biodatasiswa";
-import Materi from "./component/materi_nav/materi";
-import Soal from "./component/soal_nav/soal";
-import Page_materi_posttest from "./component/materi_nav/materi_post_test/page_materi_posttest";
-import Materi_belajar_posttest from "./component/materi_nav/materi_post_test/materi_belajar_posttest";
-import Materi_belajar_pretest from "./component/materi_nav/materi_pre_test/materi_belajar_pretest";
-import Page_soal_posttest from "./component/soal_nav/soal_post_test/page_soal_posttest";
-import Soal_belajar_posttest from "./component/soal_nav/soal_post_test/soal_belajar_posttest";
-import Page_materi_pretest from "./component/materi_nav/materi_pre_test/page_materi_pretest";
-import Page_soal_pretest from "./component/soal_nav/soal_pre_test/page_soal_pretest";
-import Soal_belajar_pretest from "./component/soal_nav/soal_pre_test/soal_belajar_pretest";
+import Welcomepage from "./components/welcomepage";
+import Loginpage from "./components/loginpage";
+import Registrasi from "./components/registrasi";
+import Dashboard from "./components/dashboard_nav/dashboard";
+import Biodatasiswa from "./components/biodata_nav/biodatasiswa";
+import Materi from "./components/materi_nav/materi";
+import Soal from "./components/soal_nav/soal";
+import Page_materi_posttest from "./components/materi_nav/materi_post_test/page_materi_posttest";
+import Materi_belajar_posttest from "./components/materi_nav/materi_post_test/materi_belajar_posttest";
+import Materi_belajar_pretest from "./components/materi_nav/materi_pre_test/materi_belajar_pretest";
+import Page_soal_posttest from "./components/soal_nav/soal_post_test/page_soal_posttest";
+import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_belajar_posttest";
+import Page_materi_pretest from "./components/materi_nav/materi_pre_test/page_materi_pretest";
+import Page_soal_pretest from "./components/soal_nav/soal_pre_test/page_soal_pretest";
+import Soal_belajar_pretest from "./components/soal_nav/soal_pre_test/soal_belajar_pretest";
+import Coba from "./components/coba";
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
         <Route path="/page_soal_pretest" element={<Page_soal_pretest/>}/>
         <Route path="/soal_belajar_posttest" element={<Soal_belajar_posttest/>}/>
         <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
+
+        <Route path="/coba" element={<Coba/>}/>
 
 
       </Routes>

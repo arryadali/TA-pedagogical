@@ -14,7 +14,7 @@ const Soal_belajar_posttest = () => {
 
             <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
                 <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
-                <p className='h-full bg-green-400 text-justify'>KATA KATA MOTIVASI DISINI.</p>
+                <p className='h-full bg-green-400 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nihil facere, repudiandae ut animi dolorem culpa consequuntur minus alias molestias voluptas suscipit iure laborum eveniet ad eius itaque quidem maiores?</p>
             </div>
         </div>
         
