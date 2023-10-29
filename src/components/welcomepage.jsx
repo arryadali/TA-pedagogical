@@ -19,12 +19,6 @@ const Welcomepage = () => {
                   </button>
                 </Link>
               </li>
-
-              <Link to={'/coba'}>
-                <button>
-                  menuju coba
-                </button>
-              </Link>
           </ul>
         </div>
     </section>

@@ -16,7 +16,6 @@ import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_bel
 import Page_materi_pretest from "./components/materi_nav/materi_pre_test/page_materi_pretest";
 import Page_soal_pretest from "./components/soal_nav/soal_pre_test/page_soal_pretest";
 import Soal_belajar_pretest from "./components/soal_nav/soal_pre_test/soal_belajar_pretest";
-import Coba from "./components/coba";
 
 function App() {
   return (
@@ -41,9 +40,6 @@ function App() {
         <Route path="/page_soal_pretest" element={<Page_soal_pretest/>}/>
         <Route path="/soal_belajar_posttest" element={<Soal_belajar_posttest/>}/>
         <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
-
-        <Route path="/coba" element={<Coba/>}/>
-
 
       </Routes>
     </BrowserRouter>

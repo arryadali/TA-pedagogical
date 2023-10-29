@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from '../../navbar'
 
 const Soal_belajar_posttest = () => {
+  const [showText, setShowText] = useState(false);
+
+  const handleMulaiClick = () => {
+    setShowText(true)
+
+    // Set timeout untuk menyembunyikan teks setelah 5 detik
+    setTimeout(() => {
+      setShowText(false);
+    }, 5000); // 5000 milidetik = 5 detik
+  }
   return (
     <section id='soal_belajar_posttest'>
         <Navbar/>
@@ -14,7 +24,10 @@ const Soal_belajar_posttest = () => {
 
             <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
                 <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
-                <p className='h-full bg-green-400 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nihil facere, repudiandae ut animi dolorem culpa consequuntur minus alias molestias voluptas suscipit iure laborum eveniet ad eius itaque quidem maiores?</p>
+                <div>
+                  <button onClick={handleMulaiClick}>MULAI</button>
+                  {showText && <div className=''>AYOO SEMANGAT MENGERJAKANNYA</div>}
+                </div>
             </div>
         </div>
         
