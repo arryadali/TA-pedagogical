@@ -16,10 +16,97 @@ code {
     monospace;
 }
 
-.bg-banner {
-    background-image: url("../public/asset/sekolah/lapangan.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width : 100%;
-    height : 100%;
+.btn {
+  color: white;
+  background-color: #333;
+  transition: background-color 0.3s;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
+
+.btn:hover {
+  background-color: #444;
+}
+
+.btn:focus {
+  box-shadow: 0 0 5px #999;
+}
+
+.btn.dark {
+  background-color: #333;
+}
+
+.btn.dark:hover {
+  background-color: #555;
+}
+
+.btn.dark:focus {
+  box-shadow: 0 0 5px #777;
+}
+
+.btn.mt-3 {
+  margin-top: 15px;
+}
+
+:root{
+  --primary-color: #0DFF92;
+  --light-color: #f0f0f0;
+}
+
+ul li label{
+  font-weight: 300;
+  font-size: 1.35em;
+  padding: 25px 25px 25px 80px;
+  margin: 10px auto;
+  height: 30px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+ul li:hover .checked {
+  border: 5px solid #FFFFFF;
+}
+
+ul li .check::before {
+  display: block;
+  position: absolute;
+	content: '';
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  top: 5px;
+	left: 5px;
+  margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+
+
+input[type=radio]:checked ~ .check {
+  border: 5px solid var(--primary-color)
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: var(--primary-color)
+}
+
+input[type=radio]:checked ~ .text-primary{
+  color: var(--primary-color)
+} 
+
+/* To get selected option we are using this checked class */
+.checked {
+  border: 5px solid var(--primary-color) !important;
+}
+
+.checked::before{
+  background: var(--primary-color)
+}
+
+
