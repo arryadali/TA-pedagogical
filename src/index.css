@@ -29,6 +29,14 @@ code {
   margin-bottom: 5px;
 }
 
+.agenped {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  width: 82%;
+  margin: auto;
+}
+
 .btn:hover {
   background-color: #444;
 }

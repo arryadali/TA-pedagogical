@@ -21,7 +21,6 @@ const Soal_belajar_posttest = () => {
 
   // next button even handler
   const onSelanjutnya = () => {
-    console.log('On next click')
     if(trace < queue.length) {
       dispatch(moveNextAction())
 
@@ -42,7 +41,6 @@ const Soal_belajar_posttest = () => {
   }
 
   const onChecked = (check) => {
-    console.log(check)
     setChecked(check)
   }
 

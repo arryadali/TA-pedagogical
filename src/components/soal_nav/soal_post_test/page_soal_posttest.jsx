@@ -18,7 +18,7 @@ const Page_soal_posttest = () => {
                         </div>
 
                         {/* soal */}
-                        <Link to={'/soal_belajar_posttest'}>
+                        <Link to={'/quiz_setup'}>
                             <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4'>
                                 <div className=''>
                                     <label className='font-[Georgia] text-[20px] cursor-pointer'>Matematika</label>

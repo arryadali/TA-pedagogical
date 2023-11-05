@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import TabelHasil from './tabelHasil';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper
 // import action
 import { resetAllAction } from '../redux/question_reducer';
 import { resetResultAction } from '../redux/result_reducer';
+import { usePublishResult } from '../hooks/setResult';
 
 
 const Hasil = () => {
@@ -14,15 +15,19 @@ const Hasil = () => {
     const dispatch = useDispatch()
     const {questions : {queue, answers}, result : {result, userId}} = useSelector(state => state)
 
-    useEffect(() => {
-        console.log(earnPoints)
-    })
-
     const totalPoints = queue.length * 10;
     const attempts = attempts_Number(result)
     const earnPoints = earnPoints_Number(result, answers, 10)
     const flag = flagResult(totalPoints, earnPoints)
-    
+
+    // store user result
+    usePublishResult({
+        result, 
+        username : userId, 
+        attempts, 
+        points : earnPoints, 
+        achived : flag ? "Passed" : "Failed"
+    })
 
     const onRestart = () => {
         dispatch(resetAllAction())
@@ -68,7 +73,7 @@ const Hasil = () => {
             </div>
 
             <div className='text-center'>
-                <Link className='btn font-[georgia]' to={"/page_soal_posttest"} onClick={onRestart}>Restart</Link>
+                <Link className='btn font-[georgia]' to={"/quiz_setup"} onClick={onRestart}>DONE</Link>
             </div>
 
             <div className='container mt-[5%]'>

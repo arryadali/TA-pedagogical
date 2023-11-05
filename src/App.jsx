@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CheckUserExist } from "./helper/helper";
 
 import Welcomepage from "./components/welcomepage";
 import Loginpage from "./components/loginpage";
@@ -22,7 +23,9 @@ import Page_soal_pretest from "./components/soal_nav/soal_pre_test/page_soal_pre
 import Soal_belajar_pretest from "./components/soal_nav/soal_pre_test/soal_belajar_pretest";
 import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_belajar_posttest";
 
+// Tambahan
 import Hasil from "./components/hasil";
+import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 
 function App() {
   return (
@@ -45,10 +48,13 @@ function App() {
         <Route path="/soal" element={<Soal/>}/>
         <Route path="/page_soal_posttest" element={<Page_soal_posttest/>}/>
         <Route path="/page_soal_pretest" element={<Page_soal_pretest/>}/>
-        <Route path="/soal_belajar_posttest" element={<Soal_belajar_posttest/>}/>
         <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
 
-        <Route path="/hasil" element={<Hasil/>}/>
+        {/* Check user Exist */}
+        <Route path="/quiz_setup" element={<Quiz_setup_posttest/>}/>
+        <Route path="/soal_belajar_posttest" element={<CheckUserExist><Soal_belajar_posttest /></CheckUserExist>} />
+        <Route path="/hasil" element={<CheckUserExist><Hasil /></CheckUserExist>} />
+
       </Routes>
     </BrowserRouter>
   );

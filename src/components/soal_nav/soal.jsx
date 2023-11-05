@@ -20,7 +20,7 @@ const Soal = () => {
 
         <p className='font-[serif] text-[40px]'>SOAL</p>
 
-        <div className='grid grid-cols-2 gap-10 w-[82%] m-auto'>
+        <div className='agenped'>
             <div className=''>
 
               {/* KELAS KONTROL */}
@@ -60,35 +60,6 @@ const Soal = () => {
                 </div>
             </div>
         </div>
-
-        {/* <div className='h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
-          <div className='mx-auto max-w-7xl'>
-              <p className='font-[serif] text-[40px]'>SOAL</p>
-
-              <div className='bg-[#E6E6E6] h-auto py-4'>
-                <div className='w-[95%] mx-auto font-[serif] text-[24px]'>
-                  SOAL PEMBELAJARAN KELAS 5 SD
-                </div>
-   
-                <Link to={"/page_soal_posttest"}>
-                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                    <div className=''>
-                      <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Post-Test</label>
-                    </div>
-                  </div>
-                </Link>
-                
-                <Link to={'/page_soal_pretest'}>
-                  <div className='flex w-[95%] mx-auto bg-orange-400 h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                    <div className=''>
-                      <label className='font-[Georgia] text-[20px] bg-red-500 p-2 rounded-xl cursor-pointer'>Pre-Test</label>
-                    </div>
-                  </div>
-                </Link>
-                
-              </div>
-          </div>
-        </div>   */}
     </section>
   )
 }
