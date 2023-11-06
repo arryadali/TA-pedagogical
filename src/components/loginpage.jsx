@@ -1,7 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react'
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const Loginpage = () => {
+    const [username, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(username, password)
+        axios.post('http://localhost:5000/api/signin', {
+        username : username,
+        password : password
+        })
+        .then(res => {
+            console.log(res.data)
+
+            if (res.data.code === 500) {
+                alert('User Not Found')
+            }
+            if (res.data.code === 404) {
+                alert('Password is wrong')
+            }
+            if (res.data.code === 200) {
+                // move to home
+                navigate('/dashboard')
+                localStorage.setItem('TOKEN', res.data.token)
+                localStorage.setItem('NAMA', res.data.nama)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+
+        
+
+    }
   return (
     <section id='loginpage'>
         <div class="bg-gray-100 flex justify-center items-center h-screen">
@@ -17,7 +52,11 @@ const Loginpage = () => {
 
                     <div class="mb-4">
                         <label for="username" class="block text-gray-600">Username</label>
-                        <input 
+                        <input
+                        onChange={(e) => {
+                            setUserName(e.target.value)
+                          }}
+                        value={username} 
                         type="text"
                         id='username'
                         name='username'
@@ -27,21 +66,25 @@ const Loginpage = () => {
 
                     <div class="mb-4">
                         <label for="password" class="block text-gray-600">Password</label>
-                        <input 
-                        type="text"
+                        <input
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                          }}
+                        value={password} 
+                        type="password"
                         id='password'
                         name='password'
                         className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
                         />
                     </div>
 
-                    <Link to={'/dashboard'}>
-                        <button 
-                        type="submit" 
-                        class="bg-[#1D809F]  text-white font-semibold rounded-md py-2 px-4 w-full">
-                            Masuk
-                        </button>
-                    </Link>
+                    <button
+                    onClick={handleSubmit} 
+                    type="submit" 
+                    class="bg-[#1D809F]  text-white font-semibold rounded-md py-2 px-4 w-full">
+                        Masuk
+                    </button>
+
                 </form>
 
                 <div class="mt-6 text-center">

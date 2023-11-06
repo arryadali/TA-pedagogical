@@ -66,7 +66,7 @@ const Biodatasiswa = () => {
                             <TableCell>NAMA</TableCell>
                             <TableCell>USERNAME</TableCell>
                             <TableCell>KELAS</TableCell>
-                            <TableCell>NISN</TableCell>
+                            <TableCell>NO ABSEN</TableCell>
                         </TableRow>
                     </TableHead>
 

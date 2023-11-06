@@ -1,8 +1,15 @@
 import React, {useEffect} from 'react'
 import Navbar from '../navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+
   useEffect(() => {
+    const token = localStorage.getItem('TOKEN')
+    if (!token) {
+      navigate('/loginpage')
+    } 
     // Cek apakah suara sudah diputar sebelumnya
     const hasSoundPlayed = localStorage.getItem('hasSoundPlayed');
 
@@ -19,7 +26,7 @@ const Dashboard = () => {
     window.addEventListener('beforeunload', () => {
       localStorage.removeItem('hasSoundPlayed');
     });
-  }, []);
+  }, [navigate]);
 
   return (
     <section id='dashboard'>

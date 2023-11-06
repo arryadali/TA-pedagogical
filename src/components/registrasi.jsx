@@ -1,6 +1,38 @@
 import React from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 
 const Registrasi = () => {
+
+  const [nama, setNama] = useState('')
+  const [kelas, setKelas] = useState('')
+  const [username, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(nama, kelas, username, password)
+    axios.post('http://localhost:5000/api/signup', {
+      nama : nama,
+      kelas : kelas,
+      username : username,
+      password : password
+    })
+      .then(res => {
+        console.log(res.data)
+        if(res.data.code === 200) {
+          alert('Register Success')
+          window.location.href = '/loginpage'
+        } else {
+          alert("Error")
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+
+      
+  }
+
   return (
     <section id='registrasi'>
       <div className='h-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center items-center'>
@@ -11,7 +43,11 @@ const Registrasi = () => {
               <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Registrasi</h1>
                 <div>
                   <label class="text-gray-800 font-semibold block my-3 text-md" for="name">Nama Lengkap</label>
-                  <input 
+                  <input
+                  onChange={(e) => {
+                    setNama(e.target.value)
+                  }}
+                  value={nama} 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
                   type="text" 
                   name="name" 
@@ -20,7 +56,11 @@ const Registrasi = () => {
 
                 <div>
                   <label class="text-gray-800 font-semibold block my-3 text-md" for="kelas">Kelas</label>
-                  <input 
+                  <input
+                  onChange={(e) => {
+                    setKelas(e.target.value)
+                  }}
+                  value={kelas} 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
                   type="text" 
                   name="kelas" 
@@ -29,7 +69,11 @@ const Registrasi = () => {
 
                 <div>
                   <label class="text-gray-800 font-semibold block my-3 text-md" for="username">Username</label>
-                  <input 
+                  <input
+                  onChange={(e) => {
+                    setUserName(e.target.value)
+                  }}
+                  value={username} 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
                   type="text" 
                   name="username" 
@@ -38,70 +82,26 @@ const Registrasi = () => {
                 
                 <div>
                   <label class="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
-                  <input 
+                  <input
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                  value={password} 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="text" 
+                  type="password" 
                   name="password" 
                   id="password" />
                 </div>
 
-                <button type="submit" class="w-full mt-8 bg-[#1D809F] rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
+                <button
+                onClick={handleSubmit}
+                type="submit" 
+                class="w-full mt-8 bg-[#1D809F] rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
                   Register
                 </button>
 
             </form>
           </div>
-
-        {/* <div className='w-[60%] bg-white m-auto my-14 py-8 '>
-          <p className='text-[32px] font-[poppins] mb-8 font-light text-center'>Sign Up For Teachers</p>
-
-          <div className='m-auto w-[50%] h-auto'>
-
-            <form action="">
-
-              <div className='mb-4'>
-                <label className='font-semibold text-[20px]'>First Name</label>
-                <input type="text"
-                className='block focus:outline-none w-[100%] h-10 px-2 mt-2 rounded-[5px] outline-[5px] border-2 border-gray-300' 
-                name="" 
-                id="" />
-              </div>
-
-              <div className='mb-4'>
-                <label className='font-semibold text-[20px]'>Last Name</label>
-                <input type="text"
-                className='block focus:outline-none w-[100%] h-10 px-2 mt-2 rounded-[5px] outline-[5px] border-2 border-gray-300' 
-                name="" 
-                id="" />
-              </div>
-
-              <div className='mb-4'>
-                <label className='font-semibold text-[20px]'>Username</label>
-                <input type="text"
-                className='block focus:outline-none w-[100%] h-10 px-2 mt-2 rounded-[5px] outline-[5px] border-2 border-gray-300' 
-                name="" 
-                id="" />
-              </div>
-
-              <div className='mb-8'>
-                <label className='font-semibold text-[20px]'>Password</label>
-                <input type="text"
-                className='block focus:outline-none w-[100%] h-10 px-2 mt-2 rounded-[5px] outline-[5px] border-2 border-gray-300' 
-                name="" 
-                id="" />
-              </div>
-
-              <div className='text-center'>
-                <button className='bg-[#38A186] w-[10rem] h-[3.8rem] mx-auto'>
-                  <p className='font-bold text-white text-[20px]'>Submit</p>
-                </button>
-              </div>
-
-            </form>
-
-          </div>
-
-        </div> */}
 
       </div>
     </section>
