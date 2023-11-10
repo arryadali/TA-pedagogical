@@ -46,7 +46,7 @@ const Soal_belajar_posttest = () => {
 
   // Finished exam after the last question
   if(result.length && result.length >= queue.length) {
-    return <Navigate to={'/hasil'} replace={true}></Navigate>
+    return <Navigate to={'/result_posttest'} replace={true}></Navigate>
   }
 
   // ====================KUIS NYA======================== //
@@ -77,10 +77,6 @@ const Soal_belajar_posttest = () => {
 
                 </div>
               </div>
-              {/* <div>
-                  <img src="../asset/materi/pecahan.png" alt="" />
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam exercitationem, dignissimos repudiandae sunt cumque nobis facere ut fuga, ducimus unde asperiores. Tenetur voluptates excepturi doloremque sequi, minima veniam magnam labore.</p>
-              </div> */}
 
               <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
                   <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>

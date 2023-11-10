@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,47 +8,32 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Navbar from '../navbar';
 import TablePagination from '@mui/material/TablePagination';
+import axios from 'axios';
 
-
-function createData(nama, username, kelas, nisn) {
-    return { nama, username, kelas, nisn};
-  }
-  
-  const rows = [
-    createData('Nadhira', "nadhira", "5C", "xxxxxxxxx"),
-    createData('Adristi Ogya Maharani', "aristi", "5C", "xxxxxxxxx"),
-    createData("Muhamad Arfan Mahendra", 'arfan', "5C", "xxxxxxxxx"),
-    createData("Naufal Alkhairi", 'naufal', "5C", "xxxxxxxxx"),
-    createData("Kiani Putri Subhan", 'kiani', "5C", "xxxxxxxxx"),
-    createData("Hisyam Ali Ridwan", 'hisyam', "5C", "xxxxxxxxx"),
-    createData("Nabil Alauna Kamil", 'nabil', "5C", "xxxxxxxxx"),
-    createData("Paiz Paizi", 'paiz', "5C", "xxxxxxxxx"),
-    createData("Sandra Faradilla Alamsyah", 'sandra', "5C", "xxxxxxxxx"),
-    createData("Calista", 'calista', "5C", "xxxxxxxxx"),
-    createData("Nabyla Putri Alya Gunawan", 'nabyla', "5C", "xxxxxxxxx"),
-    createData("Enzo Kaleb Rimaya Panggabean", 'enzo', "5C", "xxxxxxxxx"),
-    createData("Rafka Khoerul Azam", 'rafka', "5C", "xxxxxxxxx"),
-    createData("Setiti Firdausi", 'setiti', "5C", "xxxxxxxxx"),
-    createData("M. Radhitya Priatna", 'radhitya', "5C", "xxxxxxxxx"),
-    createData("Arif Fadhil Maulana", 'arif', "5C", "xxxxxxxxx"),
-    createData("Rakha Muhammad Hermawan", 'rakha', "5C", "xxxxxxxxx"),
-    createData("Kayla Adhisti Putri", 'kayla', "5C", "xxxxxxxxx"),
-    createData("Athaya Mahardika Sadeli", 'athaya', "5C", "xxxxxxxxx"),
-    createData("Latisya Amora Juniard", 'latisya', "5C", "xxxxxxxxx"),
-    createData("Vanya Elmina Kalma", 'vanya', "5C", "xxxxxxxxx"),
-    createData("Muhammad Akhtar Aldirayyan", 'akhtar', "5C", "xxxxxxxxx"),
-  ];
-
-  const rowsPerPage = 10;
+    
   
 
 const Biodatasiswa = () => {
     const [page, setPage] = useState(0);
-    const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+    const [students, setStudents] = useState([]);
 
-  const rowsToDisplay = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/signup')
+            .then(response => {
+                setStudents(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const rowsPerPage = 10;
+
+    const rowsToDisplay = students.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   return (
     <section id='biodatasiswa'>
         <Navbar/>
@@ -84,7 +69,7 @@ const Biodatasiswa = () => {
                             </TableCell>
                                 <TableCell>{row.username}</TableCell>
                                 <TableCell>{row.kelas}</TableCell>
-                                <TableCell>{row.nisn}</TableCell>
+                                <TableCell>{row.absen}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -94,14 +79,13 @@ const Biodatasiswa = () => {
 
             <TablePagination
                 component="div"
-                count={rows.length}
+                count={students.length}
                 page={page}
                 onPageChange={handleChangePage}
                 rowsPerPage={rowsPerPage}
                 rowsPerPageOptions={[]}
             />
         </div>
-
         
     </section>
   )

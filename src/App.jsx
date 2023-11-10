@@ -24,7 +24,8 @@ import Soal_belajar_pretest from "./components/soal_nav/soal_pre_test/soal_belaj
 import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_belajar_posttest";
 
 // Tambahan
-import Hasil from "./components/hasil";
+import Result_posttest from "./components/soal_nav/soal_post_test/result_posttest";
+
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
         {/* Check user Exist */}
         <Route path="/quiz_setup" element={<Quiz_setup_posttest/>}/>
         <Route path="/soal_belajar_posttest" element={<CheckUserExist><Soal_belajar_posttest /></CheckUserExist>} />
-        <Route path="/hasil" element={<CheckUserExist><Hasil /></CheckUserExist>} />
+        <Route path="/result_posttest" element={<CheckUserExist><Result_posttest /></CheckUserExist>} />
 
       </Routes>
     </BrowserRouter>

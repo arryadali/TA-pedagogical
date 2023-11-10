@@ -6,6 +6,7 @@ const Registrasi = () => {
 
   const [nama, setNama] = useState('')
   const [kelas, setKelas] = useState('')
+  const [absen, setAbsen] = useState('')
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
@@ -15,6 +16,7 @@ const Registrasi = () => {
     axios.post('http://localhost:5000/api/signup', {
       nama : nama,
       kelas : kelas,
+      absen : absen,
       username : username,
       password : password
     })
@@ -65,6 +67,19 @@ const Registrasi = () => {
                   type="text" 
                   name="kelas" 
                   id="kelas"/>
+                </div>
+
+                <div>
+                  <label class="text-gray-800 font-semibold block my-3 text-md" for="absen">No Absen</label>
+                  <input
+                  onChange={(e) => {
+                    setAbsen(e.target.value)
+                  }}
+                  value={absen} 
+                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
+                  type="text" 
+                  name="absen" 
+                  id="absen"/>
                 </div>
 
                 <div>

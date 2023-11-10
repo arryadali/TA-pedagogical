@@ -15,8 +15,9 @@ const Dashboard = () => {
 
     if (!hasSoundPlayed) {
       // Jika belum diputar, mainkan suara selamat datang
-      const message = new SpeechSynthesisUtterance('Halo, selamat datang di website saya');
-      window.speechSynthesis.speak(message);
+
+      const audio = new Audio('../asset/audio/test.mp4');
+      audio.play();
 
       // Setel status telah diputar ke localStorage
       localStorage.setItem('hasSoundPlayed', 'true');

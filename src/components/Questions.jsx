@@ -7,7 +7,7 @@ import { useFetchQestion } from '../hooks/fetchQuestion'
 import { updateResult } from '../hooks/setResult'
 
 
-const Questions = (onChecked) => {
+const Questions = ({onChecked}) => {
     const [checked, setChecked] = useState(undefined)
     const {trace} = useSelector(state => state.questions)
     const result = useSelector(state => state.result.result)

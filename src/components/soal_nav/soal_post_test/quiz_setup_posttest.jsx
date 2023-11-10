@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from '../../navbar';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
@@ -6,15 +6,22 @@ import { useDispatch } from 'react-redux';
 import { setUserId } from '../../../redux/result_reducer';
 
 const Quiz_setup_posttest = () => {
-    const inputRef = useRef(null)
+    const inputRef = useRef()
     const dispatch = useDispatch()
     
-
     const startQuiz = () => {
         if(inputRef.current?.value) {
             dispatch(setUserId(inputRef.current?.value))
         }
     }
+
+    useEffect(() => {
+        const nama = localStorage.getItem('NAMA'); 
+        if (nama) {
+          // Tetapkan nilai input dengan nama pengguna
+          inputRef.current.value = nama;
+        }
+      }, []);
 
     // Agen pedagogis
     const [showText, setShowText] = useState(false);

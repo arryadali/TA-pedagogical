@@ -47,15 +47,24 @@ const Navbar = () => {
                   Soal
                 </li>
               </Link>
-            </ul>
 
-            <span>{localStorage.getItem('NAMA')}</span>
-            <button
-              onClick={() => {
-                localStorage.clear()
-                navigate('/loginpage')
-              }}
-            >Logout</button>
+              <button
+                className='block py-2 pl-3 pr-4 rounded md:hover:bg-[#1D809F] hover:text-white text-black font-[Georgia]'
+                onClick={() => {
+                  // Tampilkan konfirmasi
+                  const userConfirmation = window.confirm("Apakah Anda yakin ingin keluar?");
+
+                  // Jika pengguna mengkonfirmasi, hapus data dari localStorage dan navigasikan ke halaman login
+                  if (userConfirmation) {
+                    localStorage.clear();
+                    navigate('/loginpage');
+                  }
+                }}
+              >
+                Logout
+              </button>
+            </ul>
+            
           </div>
         </div>
       </nav>
