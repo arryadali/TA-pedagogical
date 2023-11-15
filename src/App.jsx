@@ -12,9 +12,7 @@ import Biodatasiswa from "./components/biodata_nav/biodatasiswa";
 // Materi
 import Materi from "./components/materi_nav/materi";
 import Page_materi_posttest from "./components/materi_nav/materi_post_test/page_materi_posttest";
-import Page_materi_pretest from "./components/materi_nav/materi_pre_test/page_materi_pretest";
 import Materi_belajar_posttest from "./components/materi_nav/materi_post_test/materi_belajar_posttest";
-import Materi_belajar_pretest from "./components/materi_nav/materi_pre_test/materi_belajar_pretest";
 
 // Soal
 import Soal from "./components/soal_nav/soal";
@@ -27,6 +25,7 @@ import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_bel
 import Result_posttest from "./components/soal_nav/soal_post_test/result_posttest";
 
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
+import Latsol_materi_posttest from "./components/materi_nav/materi_post_test/latsol_materi_posttest";
 
 function App() {
   return (
@@ -41,15 +40,15 @@ function App() {
         {/* Materi */}
         <Route path="/materi" element={<Materi/>}/>
         <Route path="/page_materi_posttest" element={<Page_materi_posttest/>}/>
-        <Route path="/page_materi_pretest" element={<Page_materi_pretest/>}/>
         <Route path="/materi_belajar_posttest" element={<Materi_belajar_posttest/>}/>
-        <Route path="/materi_belajar_pretest" element={<Materi_belajar_pretest/>}/>
 
         {/* Soal */}
         <Route path="/soal" element={<Soal/>}/>
         <Route path="/page_soal_posttest" element={<Page_soal_posttest/>}/>
         <Route path="/page_soal_pretest" element={<Page_soal_pretest/>}/>
         <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
+        <Route path="/latihan_soal_posttest" element={<Latsol_materi_posttest/>}/>
+
 
         {/* Check user Exist */}
         <Route path="/quiz_setup" element={<Quiz_setup_posttest/>}/>

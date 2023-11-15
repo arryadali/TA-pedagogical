@@ -32,54 +32,30 @@ const Dashboard = () => {
   return (
     <section id='dashboard'>
         <Navbar/>
-        <div className='max-w-7xl m-auto overflow-y-hidden'>
-          <div className='flex-col items-center justify-center text-center'>
-            <div className='font-[Georgia] mt-[6%]'>
+        <div className="max-w-7xl m-auto overflow-y-hidden min-h-screen font-[georgia]">
+          <div className='flex-col justify-center text-center items-center'>
+            <div className='mt-[6%]'>
               <p className='text-4xl font-bold'>Selamat Datang di MathPed</p>
               <p className='text-lg'>Website pembelajaran Matematika berbasis Agen Pedagogis</p>
             </div>
-            
-            <div className='flex border-2 w-[30%] justify-center m-auto rounded-xl border-[#1D809F]'>
+          </div>
+
+          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl'>
+            <div className='flex w-[40%] justify-end'>
               <img src="../asset/agen/guru.png" alt="" width={230}/>
             </div>
 
-            <div className='flex justify-center'>
-              {/* <button 
-              type="button" 
-              class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-3 font-[Georgia]"
-              onClick={speak}>
-                KLIK SAYA
-              </button> */}
-            </div>
-
-            <div className='flex justify-center items-center h-auto mt-10'>
-              <div className='grid grid-cols-2 md:grid-cols-2 gap-8 w-[50%]'>
-                <div className='flex flex-col items-center bg-[#1D809F] rounded-md '>
-
-                  <p className='font-[Georgia] text-lg'>Profile Sekolah</p>
-
-                  <img src="../asset/sekolah/gedung_sekolah.png" alt="Gedung Sekolah" width={200} />
-
-                  <button className='btn font-[Georgia]'>
-                    Lihat Profile
-                  </button>
-                </div>
-
-                <div className='bg-[#1D809F] rounded-md'>
-                  INI ADALAH SEKOLAH
-                </div>
-
-                <div className='bg-[#1D809F] rounded-md'>
-                  INI ADALAH SEKOLAH
-                </div>
-
-                <div className=''>
-                  INI ADALAH SEKOLAH
-                </div>
-
+            <div className='bg-[#D9D9D9] w-[40%] m-auto h-[124px] rounded-[10px] mx-auto overflow-hidden'>
+              <div className='p-4 text-justify'>
+                Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sint, doloremque corporis enim aliquam dolorum vel porro libero, ipsam animi odit corrupti neque iusto repellat repudiandae placeat itaque optio? Quos?
               </div>
             </div>
+          </div>
 
+          <div className='text-center mt-10'>
+            <p>
+              Ayo Mulai Belajar!
+            </p>
           </div>
         </div>
     </section>

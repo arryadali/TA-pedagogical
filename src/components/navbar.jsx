@@ -51,10 +51,8 @@ const Navbar = () => {
               <button
                 className='block py-2 pl-3 pr-4 rounded md:hover:bg-[#1D809F] hover:text-white text-black font-[Georgia]'
                 onClick={() => {
-                  // Tampilkan konfirmasi
                   const userConfirmation = window.confirm("Apakah Anda yakin ingin keluar?");
 
-                  // Jika pengguna mengkonfirmasi, hapus data dari localStorage dan navigasikan ke halaman login
                   if (userConfirmation) {
                     localStorage.clear();
                     navigate('/loginpage');

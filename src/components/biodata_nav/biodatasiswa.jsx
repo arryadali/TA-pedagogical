@@ -10,9 +10,6 @@ import Navbar from '../navbar';
 import TablePagination from '@mui/material/TablePagination';
 import axios from 'axios';
 
-    
-  
-
 const Biodatasiswa = () => {
     const [page, setPage] = useState(0);
     const [students, setStudents] = useState([]);
