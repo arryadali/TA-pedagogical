@@ -1,41 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../navbar';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 
 const Materi_belajar_posttest = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [materi, setMateri] = useState([]);
   const [showSteps, setShowSteps] = useState(false);
   const navigate = useNavigate()
-  const [audio] = useState(new Audio());
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/materi');
-        console.log(response.data);
-  
-        if (response.data && response.data.length > 0) {
-          setMateri(response.data[0]?.materi || []);
-          setShowSteps(false);
-        } else {
-          console.error('Invalid response format:', response.data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
-    fetchData();
-
-
-  }, []);
+  const stepMateri = [
+    {
+      judul: "Langkah 1",
+      konten: `Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>&#xd7;</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>=</mo></math>`
+    },
+    {
+      judul: "Langkah 2",
+      konten: `Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa. 2 1/3 => (2 x 3) + 1 / 3 => 7/3`
+    },
+    {
+      judul: "Langkah 3",
+      konten: `Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. 7/3 x 3/4 = 7x3 / 3x4 = 7x3 / 3x4 = 7/4 Sekarang, ubahlah menjadi bilangan campuran!`
+    },
+    {
+      judul: "Langkah 4",
+      konten: `Jawaban yang benar adalah 1 3/4`
+    },
+  ];
   
   
   const handleNext = () => {
-    if (currentStep < materi.length - 1) {
+    if (currentStep < stepMateri.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
       navigate('/latihan_soal_posttest');
@@ -48,26 +41,8 @@ const Materi_belajar_posttest = () => {
     }
   };
 
-  const speakStep = (stepIndex) => {
-    if ('speechSynthesis' in window && stepIndex < materi.length) {
-      const synthesis = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(materi[stepIndex]?.konten);
-
-      synthesis.speak(utterance);
-
-      utterance.onend = () => {
-        speakStep(stepIndex + 1);
-      };
-    } else {
-      console.error('Web Speech API is not supported in this browser or step index is out of bounds.');
-    }
-  }
-
   const handleStart = async () => {
     setShowSteps(true);
-
-    // Start speaking from the first step
-    speakStep(0);
   };
 
   return (
@@ -91,57 +66,59 @@ const Materi_belajar_posttest = () => {
                 className="btn mt-12"
                 onClick={handleStart}
               >
-                Start Step
+                Mulai
               </button>
             )}
 
-            {showSteps && materi && materi.length > 0 && (
-              <>
-                <h2 className="text-2xl font-bold mb-4 mt-12">
-                  {materi[currentStep]?.judul}
-                </h2>
-                <p style={{ whiteSpace: "pre-line" }}>{materi[currentStep]?.konten}</p>
-                <div className="flex justify-between mt-4">
-                  {currentStep > 0 && (
-                    <button
-                      className="btn"
-                      onClick={handlePrevious}
-                    >
-                      Previous
-                    </button>
-                  )}
-                  {currentStep === materi.length - 1 ? (
-                    <button
-                      className="rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]"
-                      onClick={handleNext}
-                      disabled={!showSteps}
-                    >
-                      Selesai
-                    </button>
-                  ) : (
-                    <button
-                      className="rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]"
-                      onClick={handleNext}
-                      disabled={!showSteps}
-                    >
-                      Next
-                    </button>
-                  )}
-                </div>
-              </>
-            )}
+            {showSteps && stepMateri && stepMateri.length > 0 && (
+                <>
+                  <h2 className="text-2xl font-bold mb-4 mt-12">
+                    {stepMateri[currentStep]?.judul}
+                  </h2>
+                  <p style={{ whiteSpace: "pre-line" }}>{stepMateri[currentStep]?.konten}</p>
+                  <div className="flex justify-between mt-4">
+                    {currentStep > 0 && (
+                      <button
+                        className="btn"
+                        onClick={handlePrevious}
+                      >
+                        Kembali
+                      </button>
+                    )}
+                    {currentStep === stepMateri.length - 1 ? (
+                      <button
+                        className="rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]"
+                        onClick={handleNext}
+                        disabled={!showSteps}
+                      >
+                        Selesai
+                      </button>
+                    ) : (
+                      <button
+                        className="rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]"
+                        onClick={handleNext}
+                        disabled={!showSteps}
+                      >
+                        Selanjutnya
+                      </button>
+                    )}
+                  </div>
+                </>
+              )}
 
           </div>
         </div>
 
-        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-          <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-          <div>
-            <button>
-              MULAI
-            </button>
+        <aside className='mt-16'>
+          <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+            <div>
+              <button>
+                MULAI
+              </button>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
   )

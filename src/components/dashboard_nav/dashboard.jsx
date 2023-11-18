@@ -16,7 +16,7 @@ const Dashboard = () => {
     if (!hasSoundPlayed) {
       // Jika belum diputar, mainkan suara selamat datang
 
-      const audio = new Audio('../asset/audio/test.mp4');
+      const audio = new Audio('../asset/audio/dashboard/test.mp4');
       audio.play();
 
       // Setel status telah diputar ke localStorage
@@ -40,7 +40,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl'>
+          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl rounded-md'>
             <div className='flex w-[40%] justify-end'>
               <img src="../asset/agen/guru.png" alt="" width={230}/>
             </div>

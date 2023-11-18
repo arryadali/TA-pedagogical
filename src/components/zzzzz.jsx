@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../navbar';
 
 const Latsol_materi_posttest = () => {
@@ -27,9 +27,10 @@ const Latsol_materi_posttest = () => {
         setShowHintButton(true);
         setShowHintMessage(true);
 
+        // Hide the message after 5 seconds
         setTimeout(() => {
           setShowHintMessage(false);
-        }, 6000);
+        }, 5000);
       } else {
         alert('Jawaban Anda salah. Coba lagi.');
       }
@@ -113,17 +114,26 @@ const Latsol_materi_posttest = () => {
                 Submit
               </button>
 
-              {showHintButton && (
+            </div>
+
+            {showHintButton && (
               <button
-                className='ml-4 underline'
+                className='mt-4 bg-yellow-500 text-white py-2 px-4 rounded'
                 onClick={handleHintClick}
                 disabled={hintCount < maxWrongAttemptsBeforeHint}
               >
-                Hint!
+                Hint
               </button>
             )}
 
-            </div>
+            {showHintMessage && (
+              <div className='mt-4'>
+                <h2 className='font-bold text-xl mb-2'>Hint:</h2>
+                {showHintMessage && (
+                  <>Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dibawah.</>
+                )}
+              </div>
+            )}
 
             {showHintImage && (
               <div className='mt-4'>
@@ -137,13 +147,11 @@ const Latsol_materi_posttest = () => {
 
         <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
           <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-          {showHintMessage && (
-              <div className='px-4 py-6'>
-                {showHintMessage && (
-                  <>Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dibawah.</>
-                )}
-              </div>
-            )}
+          <div>
+            <p>
+              
+            </p>
+          </div>
         </div>
       </div>
     </section>

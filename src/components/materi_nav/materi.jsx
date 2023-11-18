@@ -19,18 +19,17 @@ const Materi = () => {
         <Navbar/>
 
         <div className='agenped'>
-            <div className=''>
+            <div className='mt-16'>
 
               <h1 className='font-[georgia] text-[40px] text-center'>MATERI</h1>
 
-              {/* KELAS KONTROL */}
-              <div className='font-[georgia]'>
-                <p>KELAS KONTROL</p>
+              <div className='font-[georgia] mt-6'>
+                <p>Perkalian dan Pembagian Pecahan</p>
 
-                <Link to={"/materi_belajar_posttest"}>
+                <Link to={"/page_materi"}>
                   <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                     <div className=''>
-                    <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Post-Test</label>
+                    <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Baca Materi</label>
                     </div>
                   </div>
                 </Link>
@@ -39,13 +38,15 @@ const Materi = () => {
 
             </div>
 
-            <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
-                <div>
-                  <button onClick={handleMulaiClick}>MULAI</button>
-                  {showText && <div className=''>AYOO SEMANGAT MENGERJAKANNYA Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate cumque natus ipsum dignissimos eveniet praesentium facilis itaque nisi, commodi obcaecati consequatur odio repudiandae, deleniti architecto eligendi enim ea repellat dicta? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae nobis ducimus alias odit necessitatibus nemo ipsum a amet itaque facere! Accusantium, fugiat a! Placeat, eaque? Dignissimos esse asperiores tempore nam.</div>}
-                </div>
-            </div>
+            <aside className='mt-16'>
+              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+                  <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
+                  <div>
+                    <button onClick={handleMulaiClick}>MULAI</button>
+                    {showText && <div className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam officia nemo doloremque ea consequatur recusandae fuga vitae dolorum quam laudantium, cumque ipsa eaque velit iure quia aliquam quo veritatis delectus.</div>}
+                  </div>
+              </div>
+            </aside>
         </div>
     </section>
   )
