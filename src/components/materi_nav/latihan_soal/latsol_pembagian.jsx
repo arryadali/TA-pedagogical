@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Navbar from '../../navbar';
+import React, {useState} from 'react'
+import Navbar from '../../navbar'
 import { useNavigate } from 'react-router-dom';
 
-const LatsolPerkalian = () => {
+const Latsol_pembagian = () => {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [wrongAnswer, setWrongAnswer] = useState(null);
     const [hintCount, setHintCount] = useState(0);
@@ -12,9 +12,9 @@ const LatsolPerkalian = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
 
-    const correctAnswer = 'B';
+    const correctAnswer = 'C';
     const maxWrongAttemptsBeforeHint = 2;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleAnswerSelect = (answer) => {
         if (!isAnswered) {
@@ -52,16 +52,17 @@ const LatsolPerkalian = () => {
     };
 
     const handleNextClick = () => {
-        navigate('/materi_pembagian')
+        navigate('/materi_pembagian');
     };
 
-    return (
-        <section id='materi_posttest'>
+
+  return (
+    <section id='materi_posttest'>
             <Navbar />
             <div className='agenped font-[georgia] overflow-hidden'>
                 <div className="container mx-auto p-4">
                     <div className="bg-white p-5 rounded">
-                        <h1 className='font-bold text-center text-2xl mb-4'>Latihan Soal Perkalian</h1>
+                        <h1 className='font-bold text-center text-2xl mb-4'>Latihan Soal Pembagian</h1>
                         <div className='border-2 h-auto p-4 text-center'>
                             <p className='mb-4'>
                                 Jika setiap hari kita minum <sup>5</sup>/<sub>6</sub> liter susu, maka berapa liter susu yang diminum selama 3 hari?
@@ -127,11 +128,18 @@ const LatsolPerkalian = () => {
                             </ul>
 
                             {!isAnswered ? (
-                                <button className='mt-4 bg-blue-500 text-white py-2 px-4 rounded' onClick={handleSubmit}>
+                                <button
+                                    className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
+                                    onClick={handleSubmit}
+                                    disabled={selectedAnswer === null}
+                                >
                                     Submit
                                 </button>
                             ) : (
-                                <button className='mt-4 bg-blue-500 text-white py-2 px-4 rounded' onClick={handleNextClick}>
+                                <button
+                                    className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
+                                    onClick={handleNextClick}
+                                >
                                     Selanjutnya
                                 </button>
                             )}
@@ -147,6 +155,7 @@ const LatsolPerkalian = () => {
                             )}
                             
                         </div>
+
                         {showHintImage && (
                             <div className='mt-4'>
                                 {showHintImage && (
@@ -154,6 +163,7 @@ const LatsolPerkalian = () => {
                                 )}
                             </div>
                         )}
+                        
                     </div>
                 </div>
 
@@ -169,7 +179,7 @@ const LatsolPerkalian = () => {
                 </aside>
             </div>
         </section>
-    )
+  )
 }
 
-export default LatsolPerkalian;
+export default Latsol_pembagian

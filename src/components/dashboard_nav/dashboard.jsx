@@ -32,7 +32,7 @@ const Dashboard = () => {
   return (
     <section id='dashboard'>
         <Navbar/>
-        <div className="max-w-7xl m-auto overflow-y-hidden min-h-screen font-[georgia]">
+        <div className='font-[georgia] max-w-7xl m-auto'>
           <div className='flex-col justify-center text-center items-center'>
             <div className='mt-[6%]'>
               <p className='text-4xl font-bold'>Selamat Datang di MathPed</p>

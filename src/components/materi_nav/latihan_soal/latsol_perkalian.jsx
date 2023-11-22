@@ -14,7 +14,7 @@ const LatsolPerkalian = () => {
 
     const correctAnswer = 'B';
     const maxWrongAttemptsBeforeHint = 2;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleAnswerSelect = (answer) => {
         if (!isAnswered) {
@@ -52,7 +52,7 @@ const LatsolPerkalian = () => {
     };
 
     const handleNextClick = () => {
-        navigate('/materi_pembagian')
+        navigate('/materi_pembagian');
     };
 
     return (
@@ -127,11 +127,18 @@ const LatsolPerkalian = () => {
                             </ul>
 
                             {!isAnswered ? (
-                                <button className='mt-4 bg-blue-500 text-white py-2 px-4 rounded' onClick={handleSubmit}>
+                                <button
+                                    className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
+                                    onClick={handleSubmit}
+                                    disabled={selectedAnswer === null}
+                                >
                                     Submit
                                 </button>
                             ) : (
-                                <button className='mt-4 bg-blue-500 text-white py-2 px-4 rounded' onClick={handleNextClick}>
+                                <button
+                                    className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
+                                    onClick={handleNextClick}
+                                >
                                     Selanjutnya
                                 </button>
                             )}
@@ -147,6 +154,7 @@ const LatsolPerkalian = () => {
                             )}
                             
                         </div>
+
                         {showHintImage && (
                             <div className='mt-4'>
                                 {showHintImage && (
@@ -154,6 +162,7 @@ const LatsolPerkalian = () => {
                                 )}
                             </div>
                         )}
+                        
                     </div>
                 </div>
 
@@ -169,7 +178,7 @@ const LatsolPerkalian = () => {
                 </aside>
             </div>
         </section>
-    )
+    );
 }
 
 export default LatsolPerkalian;

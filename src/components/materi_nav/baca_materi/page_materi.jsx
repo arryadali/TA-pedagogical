@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../../navbar';
-import { Link } from 'react-router-dom';
+import Navbar from '../../navbar'
+import { Link } from 'react-router-dom'
 
 const Page_materi = () => {
   return (
@@ -12,7 +12,7 @@ const Page_materi = () => {
                 <div className='flex justify-center'>
                     <img src="../asset/materi/pecahandanpembagian.png" alt="materi" className='h-[500px]'/>
                 </div>
-                <Link to={'/materi_belajar_posttest'}>
+                <Link to={'/materi_perkalian'}>
                     <button className='btn'>
                         Lanjutkan
                     </button>
@@ -29,11 +29,8 @@ const Page_materi = () => {
                 </div>
             </aside>
         </div>
-        {/* <div className='flex max-w-7xl m-auto justify-center'>
-            <img src="../asset/materi/pecahandanpembagian.png" alt="" height={200} className='h-[500px]'/>
-        </div> */}
     </section>
   )
 }
 
-export default Page_materi;
+export default Page_materi

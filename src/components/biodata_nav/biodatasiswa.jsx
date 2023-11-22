@@ -34,11 +34,9 @@ const Biodatasiswa = () => {
   return (
     <section id='biodatasiswa'>
         <Navbar/>
-        <div className='font-[poppins] text-center font-bold text-lg'>
-            BIODATA SISWA
-        </div>
+        <h1 className='font-[georgia] text-[40px] text-center mt-16'>BIODATA SISWA</h1>
 
-        <div className='w-[80%] h-auto m-auto'>
+        <div className='w-[80%] h-auto m-auto mt-6'>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
 
