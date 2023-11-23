@@ -19,7 +19,7 @@ const Navbar = () => {
       <nav class="bg-white border-gray-200 container">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className='flex items-center'>
-            <img src="../asset/logo2.png" class="h-8 mr-3" alt="Flowbite Logo" />
+            <img src="../asset/mathped.png" class="h-8 mr-3" alt="Mathped Logo" />
           </div>
 
           <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">

@@ -10,15 +10,16 @@ const Page_materi = () => {
         <div className='agenped'>
             <div className='text-center'>
                 <div className='flex justify-center'>
-                    <img src="../asset/materi/pecahandanpembagian.png" alt="materi" className='h-[500px]'/>
+                    <img src="../asset/materi/pecahandanpembagian.png" alt="materi" className='h-[550px]'/>
                 </div>
                 <Link to={'/materi_perkalian'}>
-                    <button className='btn'>
+                    <button className='btn mt-4'>
                         Lanjutkan
                     </button>
                 </Link>
             </div>
-            <aside className='mt-16'>
+            
+            <aside className='mt-12'>
                 <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
                     <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
                     <div>

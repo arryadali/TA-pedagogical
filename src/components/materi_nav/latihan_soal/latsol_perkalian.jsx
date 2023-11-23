@@ -13,7 +13,7 @@ const LatsolPerkalian = () => {
     const [isAnswered, setIsAnswered] = useState(false);
 
     const correctAnswer = 'B';
-    const maxWrongAttemptsBeforeHint = 2;
+    const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
 
     const handleAnswerSelect = (answer) => {
@@ -25,7 +25,7 @@ const LatsolPerkalian = () => {
 
     const handleSubmit = () => {
         if (selectedAnswer === correctAnswer) {
-            setMessage("Wow kamu melakukannya dengan baik!!!");
+            setMessage("Wow kamu melakukannya dengan baik!");
             setShowHintButton(false);
             setShowHintImage(false);
             setIsCorrect(true);
@@ -40,7 +40,11 @@ const LatsolPerkalian = () => {
             setHintCount(hintCount + 1);
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
-                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dibawah.");
+                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint untuk bantuan. Semangat ya!");
+
+                setTimeout(() => {
+                    setMessage(null);
+                },6000);
             } else {
                 setMessage(null);
             }
@@ -166,15 +170,17 @@ const LatsolPerkalian = () => {
                     </div>
                 </div>
 
-                <aside className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    <p>
-                        {message && (
-                            <div className='px-4 py-6 text-justify'>
-                                {message}
-                            </div>
-                        )}
-                    </p>
+                <aside className='mt-12'>
+                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        <p>
+                            {message && (
+                                <div className='px-4 py-6 text-justify'>
+                                    {message}
+                                </div>
+                            )}
+                        </p>
+                    </div>
                 </aside>
             </div>
         </section>

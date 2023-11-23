@@ -12,6 +12,12 @@ import Biodatasiswa from "./components/biodata_nav/biodatasiswa";
 // Materi
 import Materi from "./components/materi_nav/materi";
 import Materi_perkalian from "./components/materi_nav/baca_materi/materi_perkalian";
+import Materi_pembagian from "./components/materi_nav/baca_materi/materi_pembagian";
+import Full_materi from "./components/materi_nav/baca_materi/full_materi";
+
+// Latihan Soal
+import Latsol_perkalian from "./components/materi_nav/latihan_soal/latsol_perkalian";
+import Latsol_pembagian from "./components/materi_nav/latihan_soal/latsol_pembagian";
 
 // Soal
 import Soal from "./components/soal_nav/soal";
@@ -22,12 +28,8 @@ import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_bel
 
 // Tambahan
 import Result_posttest from "./components/soal_nav/soal_post_test/result_posttest";
-
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 import Page_materi from "./components/materi_nav/baca_materi/page_materi";
-import Latsol_perkalian from "./components/materi_nav/latihan_soal/latsol_perkalian";
-import Materi_pembagian from "./components/materi_nav/baca_materi/materi_pembagian";
-import Latsol_pembagian from "./components/materi_nav/latihan_soal/latsol_pembagian";
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
         <Route path="/page_materi" element={<Page_materi/>}/>
         <Route path="/materi_perkalian" element={<Materi_perkalian/>}/>
         <Route path="/materi_pembagian" element={<Materi_pembagian/>}/>
+        <Route path="/full_materi" element={<Full_materi/>}/>
 
         {/* Latihan Soal */}
         <Route path="/latihan_soal_perkalian" element={<Latsol_perkalian/>}/>
