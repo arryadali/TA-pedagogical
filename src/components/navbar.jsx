@@ -30,9 +30,9 @@ const Navbar = () => {
                 </li>
               </Link>
 
-              <Link to={'/biodatasiswa'}>
+              <Link to={'/profile'}>
                 <li className='block py-2 pl-3 pr-4 rounded md:hover:bg-[#1D809F] hover:text-white text-black font-[Georgia]'>
-                  Biodata Siswa
+                  Profile
                 </li>
               </Link>
 

@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react'
-import Navbar from '../../navbar'
+import React, {useState} from 'react'
 import Questions from '../../Questions';
 
 import { moveNextAction, movePrevAction } from '../../../redux/question_reducer';
@@ -51,12 +50,8 @@ const Soal_belajar_posttest = () => {
 
   // ====================KUIS NYA======================== //
 
-
-
   return (
     <section id='soal_belajar_posttest'>
-        <Navbar/>
-
         <div className='container'>
           <div className='grid grid-cols-2 gap-10 w-[82%] m-auto mt-[39px]'>
       
@@ -80,10 +75,6 @@ const Soal_belajar_posttest = () => {
 
               <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
                   <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
-                  {/* <div>
-                    <button onClick={handleMulaiClick}>MULAI</button>
-                    {showText && <div className=''>AYOO SEMANGAT MENGERJAKANNYA</div>}
-                  </div> */}
               </div>
           </div> 
         </div> 

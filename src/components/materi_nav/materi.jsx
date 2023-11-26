@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Materi = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showMessage, setShowMessage] = useState(true);
 
   const location = useLocation();
   const isBacaMateri = location.pathname === '/materi';
   const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
-
-  const [showMessage, setShowMessage] = useState(true);
 
   const playAudioMateri = () => {
     if (isPlaying) {

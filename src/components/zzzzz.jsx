@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react'
+import { useEffect } from 'react';
 import { getServerData } from '../helper/helper';
+import { useState } from 'react';
 
 const TabelHasil = () => {
-  const [data, setData] = useState([]);
-  const loggedInUsername = localStorage.getItem('NAMA');
+
+  const [data, setData] = useState([])
 
   useEffect(() => {
     getServerData('http://localhost:5000/api/result', (res) => {
-      setData(res);
-    });
-  }, []);
-
-  const filteredData = data.filter((v) => v.username === loggedInUsername);
+      setData(res)
+    })
+  })
 
   return (
     <div style={{ overflowY: 'auto', maxHeight: '350px' }}>
@@ -25,23 +25,19 @@ const TabelHasil = () => {
         </thead>
 
         <tbody>
-          {!filteredData.length ? (
-            <tr>
-              <td colSpan="3" className="text-center">Tidak ada data</td>
-            </tr>
-          ) : (
-            filteredData.map((v, i) => (
+          {!data ? <div>Tidak ada data</div> : 
+            data.map((v, i) => (
               <tr className='table-body' key={i}>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.username || ''}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.attempts || 0}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.points || 0}</td>
               </tr>
             ))
-          )}
+          }      
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
 export default TabelHasil;

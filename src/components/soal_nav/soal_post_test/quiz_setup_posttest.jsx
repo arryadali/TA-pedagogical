@@ -18,7 +18,6 @@ const Quiz_setup_posttest = () => {
     useEffect(() => {
         const nama = localStorage.getItem('NAMA'); 
         if (nama) {
-          // Tetapkan nilai input dengan nama pengguna
           inputRef.current.value = nama;
         }
       }, []);

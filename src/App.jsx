@@ -7,7 +7,7 @@ import Welcomepage from "./components/welcomepage";
 import Loginpage from "./components/loginpage";
 import Registrasi from "./components/registrasi";
 import Dashboard from "./components/dashboard_nav/dashboard";
-import Biodatasiswa from "./components/biodata_nav/biodatasiswa";
+import Profile from "./components/profile_nav/profile";
 
 // Materi
 import Materi from "./components/materi_nav/materi";
@@ -21,8 +21,6 @@ import Latsol_pembagian from "./components/materi_nav/latihan_soal/latsol_pembag
 
 // Soal
 import Soal from "./components/soal_nav/soal";
-import Page_soal_posttest from "./components/soal_nav/soal_post_test/page_soal_posttest";
-import Page_soal_pretest from "./components/soal_nav/soal_pre_test/page_soal_pretest";
 import Soal_belajar_pretest from "./components/soal_nav/soal_pre_test/soal_belajar_pretest";
 import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_belajar_posttest";
 
@@ -30,6 +28,7 @@ import Soal_belajar_posttest from "./components/soal_nav/soal_post_test/soal_bel
 import Result_posttest from "./components/soal_nav/soal_post_test/result_posttest";
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 import Page_materi from "./components/materi_nav/baca_materi/page_materi";
+
 
 function App() {
   return (
@@ -39,7 +38,8 @@ function App() {
         <Route path="/loginpage" element={<Loginpage/>}/>
         <Route path="/registrasi" element={<Registrasi/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/biodatasiswa" element={<Biodatasiswa/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+
 
         {/* Materi */}
         <Route path="/materi" element={<Materi/>}/>
@@ -54,8 +54,6 @@ function App() {
 
         {/* Soal */}
         <Route path="/soal" element={<Soal/>}/>
-        <Route path="/page_soal_posttest" element={<Page_soal_posttest/>}/>
-        <Route path="/page_soal_pretest" element={<Page_soal_pretest/>}/>
         <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
         
         {/* Check user Exist */}

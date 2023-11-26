@@ -42,13 +42,14 @@ const Dashboard = () => {
             </div>
 
             <div className='bg-[#D9D9D9] w-[40%] m-auto h-[50%] rounded-[10px] mx-auto overflow-hidden'>
-              <div className='p-4 text-justify overflow-hidden'>
-                Halo, perkenalkan nama saya Vania. Saya adalah agen pedagogis pada website MathPed yang akan membantu kalian. 
+              <div className='p-4 text-center overflow-hidden'>
+                Saya adalah Vania. Agen Pedagogis yang akan membantu kalian!
+                {/* Halo, perkenalkan nama saya Vania. Saya adalah agen pedagogis pada website MathPed yang akan membantu kalian.  */}
               </div>
             </div>
           </div>
 
-          <div className='text-center mt-10' onClick={playAudioDashboard}>
+          <div className='w-0 m-auto text-center mt-10' onClick={playAudioDashboard}>
           <button className='btn'>
             {isPlaying ? 'Hentikan' : 'Suara'}
           </button>

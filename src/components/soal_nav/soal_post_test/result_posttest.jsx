@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
-import TabelHasil from '../../tabelHasil';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/helper';
 
@@ -8,6 +7,7 @@ import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/
 import { resetAllAction } from '../../../redux/question_reducer';
 import { resetResultAction } from '../../../redux/result_reducer';
 import { usePublishResult } from '../../../hooks/setResult';
+import Navbar from '../../navbar';
 
 
 const Result_posttest = () => {
@@ -48,6 +48,7 @@ const Result_posttest = () => {
     
   return (
     <section id='hasil'>
+        <Navbar/>
         <div className='agenped'>
             <div>
                 <h1 className='font-bold text-center mb-4'>HASIL BELAJAR</h1>
@@ -88,11 +89,7 @@ const Result_posttest = () => {
                 <div className='text-center'>
                     <Link className='btn font-[georgia]' to={"/quiz_setup"} onClick={onRestart}>DONE</Link>
                 </div>
-
-                <div className='container mt-[5%]'>
-                    {/* Tabel Hasil */}
-                    <TabelHasil></TabelHasil>
-                </div>
+                
             </div>
             <div>
                 <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
