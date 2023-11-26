@@ -1,15 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Navbar from '../navbar';
 import TabelHasil from '../tabelHasil';
 
 const Profile = () => {
-    useEffect(() => {
-        const nama = localStorage.getItem('NAMA');
-    })
-
 
   return (
-    <section id='profile'>
+    <section id='profile' className='bg-[#FDFDFD] h-screen'>
         <Navbar/>
 
         <div className='font-[georgia] max-w-7xl m-auto'>

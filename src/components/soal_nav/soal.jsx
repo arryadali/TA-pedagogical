@@ -68,7 +68,7 @@ const Soal = () => {
         </div>
 
         <aside className='mt-12'>
-          <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+          <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
             <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
             <div className='px-4 py-6 text-justify'>
               {isBacaSoal && showMessage ? (

@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
 
               <button
-                className='block py-2 pl-3 pr-4 rounded md:hover:bg-[#1D809F] hover:text-white text-black font-[Georgia]'
+                className='block py-2 pl-3 pr-4 rounded md:hover:bg-[#D33737] hover:text-white text-black font-[Georgia]'
                 onClick={() => {
                   const userConfirmation = window.confirm("Apakah Anda yakin ingin keluar?");
 

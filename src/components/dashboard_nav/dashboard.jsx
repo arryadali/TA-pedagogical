@@ -26,7 +26,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   return (
-    <section id='dashboard'>
+    <section id='dashboard' className='bg-[#FDFDFD] h-screen'>
         <Navbar/>
         <div className='font-[georgia] max-w-7xl m-auto'>
           <div className='flex-col justify-center text-center items-center'>
@@ -36,7 +36,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl rounded-md'>
+          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl rounded-md bg-white'>
             <div className='flex w-[40%] justify-end'>
               <img src="../asset/agen/guru.png" alt="" width={230}/>
             </div>
@@ -44,7 +44,6 @@ const Dashboard = () => {
             <div className='bg-[#D9D9D9] w-[40%] m-auto h-[50%] rounded-[10px] mx-auto overflow-hidden'>
               <div className='p-4 text-center overflow-hidden'>
                 Saya adalah Vania. Agen Pedagogis yang akan membantu kalian!
-                {/* Halo, perkenalkan nama saya Vania. Saya adalah agen pedagogis pada website MathPed yang akan membantu kalian.  */}
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ const Page_materi = () => {
     <section id='page_materi'>
         <Navbar/>
 
-        <div className='agenped'>
+        <div>
             <div className='text-center'>
                 <div className='flex justify-center'>
                     <img src="../asset/materi/pecahandanpembagian.png" alt="materi" className='h-[550px]'/>
@@ -18,17 +18,6 @@ const Page_materi = () => {
                     </button>
                 </Link>
             </div>
-            
-            <aside className='mt-12'>
-                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    <div>
-                        <button>
-                        MULAI
-                        </button>
-                    </div>
-                </div>
-            </aside>
         </div>
     </section>
   )

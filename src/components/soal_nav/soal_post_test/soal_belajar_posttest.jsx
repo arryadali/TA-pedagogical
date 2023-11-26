@@ -4,7 +4,6 @@ import Questions from '../../Questions';
 import { moveNextAction, movePrevAction } from '../../../redux/question_reducer';
 import {PushAnswer} from '../../../hooks/setResult'
 
-// Redux store import
 import {useSelector, useDispatch} from 'react-redux'
 import { Navigate } from 'react-router-dom';
 
@@ -18,7 +17,6 @@ const Soal_belajar_posttest = () => {
   const {queue, trace} = useSelector(state => state.questions)
   const dispatch = useDispatch()
 
-  // next button even handler
   const onSelanjutnya = () => {
     if(trace < queue.length) {
       dispatch(moveNextAction())
@@ -27,12 +25,9 @@ const Soal_belajar_posttest = () => {
         dispatch(PushAnswer(check))
       }
     }
-
-    // reset the value
     setChecked(undefined)
   }
 
-  // prev button even handler
   const onKembali = () => {
     if(trace > 0) {
       dispatch(movePrevAction())
@@ -43,7 +38,6 @@ const Soal_belajar_posttest = () => {
     setChecked(check)
   }
 
-  // Finished exam after the last question
   if(result.length && result.length >= queue.length) {
     return <Navigate to={'/result_posttest'} replace={true}></Navigate>
   }

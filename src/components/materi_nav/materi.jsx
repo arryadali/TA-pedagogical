@@ -9,7 +9,7 @@ const Materi = () => {
 
   const location = useLocation();
   const isBacaMateri = location.pathname === '/materi';
-  const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
+  const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
 
   const playAudioMateri = () => {
     if (isPlaying) {
@@ -74,7 +74,7 @@ const Materi = () => {
             </div>
 
             <aside className='mt-12'>
-              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
                 <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
                   <div className='px-4 py-6 text-justify'>
                     {isBacaMateri && showMessage ? (
@@ -93,7 +93,6 @@ const Materi = () => {
               </div>
             </aside>
 
-            
         </div>
     </section>
   )
