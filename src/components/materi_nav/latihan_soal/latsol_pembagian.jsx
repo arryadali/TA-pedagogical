@@ -11,10 +11,81 @@ const Latsol_pembagian = () => {
     const [message, setMessage] = useState(null);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
 
-    const correctAnswer = 'C';
-    const maxWrongAttemptsBeforeHint = 2;
+    const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
+
+    const questionsPembagian = [
+        {
+            question: "Seorang anak memiliki 3/4 liter susu. Jika dia membaginya menjadi 2 gelas yang sama, berapa liter susu yang ada di setiap gelas?",
+            options: [
+                {
+                    id: 'A',
+                    text: "2/3 liter",
+                },
+                {
+                    id: 'B',
+                    text: "6/4 liter",
+                },
+                {
+                    id: 'C',
+                    text: "3/2 liter",
+                },
+                {
+                    id: 'D',
+                    text: "3/8 liter",
+                },
+            ],
+            correctAnswer: 'D',
+        },
+        {
+            question: "Dua teman, Aji dan Budi, memiliki 2 2/3 kantong permen. Jika mereka membagi rata permen tersebut, berapa banyak permen yang akan dimiliki oleh masing-masing teman?",
+            options: [
+                {
+                    id: 'A',
+                    text: '5/3 permen',
+                },
+                {
+                    id: 'B',
+                    text: '16/3 permen',
+                },
+                {
+                    id: 'C',
+                    text: '3/4 permen',
+                },
+                {
+                    id: 'D',
+                    text: '4/3 permen',
+                },
+            ],
+            correctAnswer: 'D',
+        },
+        {
+            question: "Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            options: [
+                {
+                    id: 'A',
+                    text: '8/3 meter',
+                },
+                {
+                    id: 'B',
+                    text: '12/5 meter',
+                },
+                {
+                    id: 'C',
+                    text: '14/5 meter',
+                },
+                {
+                    id: 'D',
+                    text: '10/3 meter',
+                },
+            ],
+            correctAnswer: 'A',
+        },
+    ];
+
+    const currentQuestionDataPembagian = questionsPembagian[currentQuestion - 1];
 
     const handleAnswerSelect = (answer) => {
         if (!isAnswered) {
@@ -24,7 +95,7 @@ const Latsol_pembagian = () => {
     };
 
     const handleSubmit = () => {
-        if (selectedAnswer === correctAnswer) {
+        if (selectedAnswer === currentQuestionDataPembagian.correctAnswer) {
             setMessage("Wow kamu melakukannya dengan baik!!!");
             setShowHintButton(false);
             setShowHintImage(false);
@@ -41,6 +112,10 @@ const Latsol_pembagian = () => {
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
                 setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dibawah.");
+
+                setTimeout(() => {
+                    setMessage(null);
+                },6000);
             } else {
                 setMessage(null);
             }
@@ -52,7 +127,23 @@ const Latsol_pembagian = () => {
     };
 
     const handleNextClick = () => {
-        navigate('/materi_pembagian');
+        if (currentQuestion < questionsPembagian.length) {
+            setCurrentQuestion(currentQuestion + 1);
+            resetState();
+        } else {
+            navigate('/materi_pembagian');
+        }
+    };
+
+    const resetState = () => {
+        setSelectedAnswer(null);
+        setWrongAnswer(null);
+        setHintCount(0);
+        setShowHintButton(false);
+        setShowHintImage(false);
+        setMessage(null);
+        setIsCorrect(false);
+        setIsAnswered(false);
     };
 
 
@@ -69,62 +160,22 @@ const Latsol_pembagian = () => {
                             </p>
 
                             <ul className='text-left text-sm'>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'A' ? 'text-red-500' : ''} ${selectedAnswer === 'A' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="A"
-                                            checked={selectedAnswer === 'A'}
-                                            onChange={() => handleAnswerSelect('A')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        A. <sup>8</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'B' ? 'text-red-500' : ''} ${selectedAnswer === 'B' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="B"
-                                            checked={selectedAnswer === 'B'}
-                                            onChange={() => handleAnswerSelect('B')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        B. <sup>15</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'C' ? 'text-red-500' : ''} ${selectedAnswer === 'C' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="C"
-                                            checked={selectedAnswer === 'C'}
-                                            onChange={() => handleAnswerSelect('C')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        C. <sup>2</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'D' ? 'text-red-500' : ''} ${selectedAnswer === 'D' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="D"
-                                            checked={selectedAnswer === 'D'}
-                                            onChange={() => handleAnswerSelect('D')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        D. <sup>3</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
+                                {currentQuestionDataPembagian.options.map((option) => (
+                                    <li key={option.id} className='mb-5'>
+                                        <label className={`${wrongAnswer === option.id ? 'text-red-500' : ''} ${selectedAnswer === option.id && isCorrect ? 'text-green-500' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="answer"
+                                                value={option.id}
+                                                checked={selectedAnswer === option.id}
+                                                onChange={() => handleAnswerSelect(option.id)}
+                                                className='mr-2'
+                                                disabled={isAnswered}
+                                            />
+                                            {option.text}
+                                        </label>
+                                    </li>
+                                ))}
                             </ul>
 
                             {!isAnswered ? (
@@ -140,7 +191,7 @@ const Latsol_pembagian = () => {
                                     className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
                                     onClick={handleNextClick}
                                 >
-                                    Selanjutnya
+                                    {currentQuestion < questionsPembagian.length ? 'Selanjutnya' : 'Selesai'}
                                 </button>
                             )}
 
@@ -167,15 +218,17 @@ const Latsol_pembagian = () => {
                     </div>
                 </div>
 
-                <aside className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    <p>
-                        {message && (
-                            <div className='px-4 py-6 text-justify'>
-                                {message}
-                            </div>
-                        )}
-                    </p>
+                <aside className='mt-12'>
+                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        <p>
+                            {message && (
+                                <div className='px-4 py-6 text-justify'>
+                                    {message}
+                                </div>
+                            )}
+                        </p>
+                    </div>
                 </aside>
             </div>
         </section>

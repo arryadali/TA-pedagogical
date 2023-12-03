@@ -36,7 +36,7 @@ const Soal = () => {
       <div className='agenped'>
         <div className='mt-16'>
           <div className='font-[georgia] text-center'>
-            <h1 className=' text-[40px]'>SOAL</h1>
+            <h1 className='text-[40px]'>SOAL</h1>
             <p className='text-[20px]'>Perkalian dan Pembagian Pecahan</p>
           </div>
 

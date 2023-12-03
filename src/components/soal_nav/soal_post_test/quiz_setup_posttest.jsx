@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUserId } from '../../../redux/result_reducer';
+import { useLocation } from 'react-router-dom';
 
 const Quiz_setup_posttest = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showMessage, setShowMessage] = useState(true);
+
     const inputRef = useRef()
     const dispatch = useDispatch()
+    const location = useLocation()
+    const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
+    const isBacaSoal = location.pathname === "/quiz_setup"
     
     const startQuiz = () => {
         if(inputRef.current?.value) {
@@ -15,32 +22,36 @@ const Quiz_setup_posttest = () => {
         }
     }
 
+    const playAudioSoal = () => {
+        if (isPlaying) {
+          audio.pause();
+          audio.currentTime = 0;
+        } else {
+          audio.play();
+        }
+        setIsPlaying(!isPlaying);
+      };
+
     useEffect(() => {
         const nama = localStorage.getItem('NAMA'); 
         if (nama) {
           inputRef.current.value = nama;
         }
+
+        const timer = setTimeout(() => {
+            setShowMessage(false);
+          }, 6000);
+      
+          return () => clearTimeout(timer);
       }, []);
-
-    // Agen pedagogis
-    const [showText, setShowText] = useState(false);
-
-    const handleMulaiClick = () => {
-        setShowText(true)
-
-        // Set timeout untuk menyembunyikan teks setelah 5 detik
-        setTimeout(() => {
-        setShowText(false);
-        }, 5000); // 5000 milidetik = 5 detik
-    }
 
   return (
     <section id='quiz_setup'>
         <Navbar/>
 
         <div className='agenped'>
-            <div className='text-center font-[Georgia]'>
-                <h1 className='text-center font-bold text-2xl mb-[5%]'>INTRUKSI QUIZ</h1>
+            <div className='mt-16 text-center font-[Georgia]'>
+                <h1 className='text-[40px] mb-[5%]'>INTRUKSI QUIZ</h1>
 
                 <ol className='mb-[5%] list-decimal pl-4 text-justify'>
                     <li>Quiz ini mempunyai 10 soal yang harus kalian jawab</li>
@@ -59,13 +70,25 @@ const Quiz_setup_posttest = () => {
                 </div>
             </div>
 
-            <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
-                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto'/>
-                <div>
-                    <button onClick={handleMulaiClick}>MULAI</button>
-                {showText && <div className=''>AYOO SEMANGAT MENGERJAKANNYA</div>}
+            <aside className='mt-12'>
+                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                    <div className='px-4 py-6 text-justify'>
+                    {isBacaSoal && showMessage ? (
+                        <p className='font-[georgia]'>
+                        Disini kita akan mengerjakan quiz. Semangat mengerjakan ya!!!
+                        </p>
+                    ) : null}
+                    </div>
                 </div>
-            </div>
+
+                <div className='text-center font-[georgia] mt-4'>
+                    <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                    <button className='btn mt-4' onClick={playAudioSoal}>
+                    {isPlaying ? 'Hentikan' : 'Suara'}
+                    </button>
+                </div>
+            </aside>
         </div>
     </section>
   )

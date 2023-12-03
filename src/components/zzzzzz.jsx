@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/helper';
@@ -12,8 +12,11 @@ import Navbar from '../../navbar';
 
 const Result_posttest = () => {
 
+    const refLikert = useRef(null);
+
     const [showLikert, setShowLikert] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    const [chosen, setChosen] = useState(null)
 
     const dispatch = useDispatch();
     const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state);
@@ -55,6 +58,88 @@ const Result_posttest = () => {
         setShowLikert(false);
     };
 
+    const likertOptions = {
+        questions: [
+            {
+                id: 1,
+                question: "Seberapa jauh kamu menguasai perkalian?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+            {
+                id: 2,
+                question: "Seberapa jauh kamu menguasai pembagian?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+            {
+                id: 3,
+                question: "Seberapa jauh kamu menguasai perkalian pecahan?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+            {
+                id: 4,
+                question: "Seberapa jauh kamu menguasai perkalian pecahan?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+            {
+                id: 5,
+                question: "Seberapa jelas penjelasan yang diberikan dalam materi pembelajaran ini?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+            {
+                id: 6,
+                question: "Sejauh mana materi pembelajaran ini dapat membantu Anda memahami konsep-konsep matematika dengan lebih baik?",
+                responses: [
+                    { value: 1, text: "Sangat Buruk" },
+                    { value: 2, text: "Buruk" },
+                    { value: 3, text: "Netral", checked: true },
+                    { value: 4, text: "Baik" },
+                    { value: 5, text: "Sangat Baik" }
+                ]
+            },
+        ]
+    };
+
+    const onChange = (chosen) => {
+        const content = (
+          <span>
+            You chose:{" "}
+            <strong>
+              {chosen?.value}—{chosen?.text}
+            </strong>
+          </span>
+        );
+        setChosen(content);
+      };
     
   return (
     <section id='hasil'>
@@ -108,77 +193,20 @@ const Result_posttest = () => {
 
                 {showLikert && (
                     <div className='likert-popup'>
-                    <h3 className='text-center'>Silahkan menilai kepuasan Anda mengenai Pembelajaran ini </h3>
+                    <h3 className='text-center'>Umpan Balik terhadap Materi Pembelajaran</h3>
             
-                    <div className="grid">
-                        <p>Seberapa jauh kamu menguasai perkalian?</p>
+                    {likertOptions.questions.map((question) => (
+                    <div key={question.id}>
+                        <p>{question.question}</p>
                         <Likert
-                        id="1"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
+                            responses={question.responses}
+                            onChange={(chosen) => onChange(chosen, question.id)}
+                            ref={refLikert}
+                            className="withBackground"
                         />
-                        <p>Seberapa jauh kamu menguasai pembagian?</p>
-                        <Likert
-                        id="2"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jauh kamu menguasai perkalian pecahan?</p>
-                        <Likert
-                        id="3"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jauh kamu menguasai perkalian pecahan?</p>
-                        <Likert
-                        id="4"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jelas penjelasan yang diberikan dalam materi pembelajaran ini?</p>
-                        <Likert
-                        id="5"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Sejauh mana materi pembelajaran ini dapat membantu Anda memahami konsep-konsep matematika dengan lebih baik?</p>
-                        <Likert
-                        id="6"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-
                     </div>
+                ))}
+                    <p style={{ textAlign: "center" }}>{chosen}</p>
             
                     <button className='btn font-[georgia]'>DONE</button>
                     <button className='btn font-[georgia]' onClick={handleCloseClick}>CLOSE</button>

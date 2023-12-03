@@ -49,9 +49,9 @@ const Dashboard = () => {
           </div>
 
           <div className='w-0 m-auto text-center mt-10' onClick={playAudioDashboard}>
-          <button className='btn'>
-            {isPlaying ? 'Hentikan' : 'Suara'}
-          </button>
+            <button className='btn'>
+              {isPlaying ? 'Hentikan' : 'Suara'}
+            </button>
           </div>
         </div>
     </section>

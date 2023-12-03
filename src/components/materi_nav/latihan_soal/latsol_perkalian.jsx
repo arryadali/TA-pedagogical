@@ -11,10 +11,81 @@ const LatsolPerkalian = () => {
     const [message, setMessage] = useState(null);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
 
-    const correctAnswer = 'B';
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
+
+    const questionsPerkalian = [
+        {
+            question: "Jika setiap hari kita minum 5/6 liter susu, maka berapa liter susu yang diminum selama 3 hari?",
+            options: [
+                {
+                    id: 'A',
+                    text: "8/6 liter",
+                },
+                {
+                    id: 'B',
+                    text: "15/6 liter",
+                },
+                {
+                    id: 'C',
+                    text: "2/6 liter",
+                },
+                {
+                    id: 'D',
+                    text: "3/6 liter",
+                },
+            ],
+            correctAnswer: 'B',
+        },
+        {
+            question: "Seorang petani memiliki ladang sepanjang 1 3/7 kilometer. Jika petani tersebut ingin membangun pagar sepanjang dua kali panjang ladangnya, berapa panjang total pagar yang akan dibangun petani tersebut?",
+            options: [
+                {
+                    id: 'A',
+                    text: '1 1/7 km',
+                },
+                {
+                    id: 'B',
+                    text: '1 4/7 km',
+                },
+                {
+                    id: 'C',
+                    text: '2 6/7 km',
+                },
+                {
+                    id: 'D',
+                    text: '3 5/7 km',
+                },
+            ],
+            correctAnswer: 'C',
+        },
+        {
+            question: "Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            options: [
+                {
+                    id: 'A',
+                    text: '8/3 meter',
+                },
+                {
+                    id: 'B',
+                    text: '12/5 meter',
+                },
+                {
+                    id: 'C',
+                    text: '14/5 meter',
+                },
+                {
+                    id: 'D',
+                    text: '10/3 meter',
+                },
+            ],
+            correctAnswer: 'A',
+        },
+    ];
+
+    const currentQuestionData = questionsPerkalian[currentQuestion - 1];
 
     const handleAnswerSelect = (answer) => {
         if (!isAnswered) {
@@ -24,7 +95,7 @@ const LatsolPerkalian = () => {
     };
 
     const handleSubmit = () => {
-        if (selectedAnswer === correctAnswer) {
+        if (selectedAnswer === currentQuestionData.correctAnswer) {
             setMessage("Wow kamu melakukannya dengan baik!");
             setShowHintButton(false);
             setShowHintImage(false);
@@ -56,7 +127,23 @@ const LatsolPerkalian = () => {
     };
 
     const handleNextClick = () => {
-        navigate('/materi_pembagian');
+        if (currentQuestion < questionsPerkalian.length) {
+            setCurrentQuestion(currentQuestion + 1);
+            resetState();
+        } else {
+            navigate('/materi_pembagian');
+        }
+    };
+
+    const resetState = () => {
+        setSelectedAnswer(null);
+        setWrongAnswer(null);
+        setHintCount(0);
+        setShowHintButton(false);
+        setShowHintImage(false);
+        setMessage(null);
+        setIsCorrect(false);
+        setIsAnswered(false);
     };
 
     return (
@@ -68,66 +155,26 @@ const LatsolPerkalian = () => {
                         <h1 className='font-bold text-center text-2xl mb-4'>Latihan Soal Perkalian</h1>
                         <div className='border-2 h-auto p-4 text-center'>
                             <p className='mb-4'>
-                                Jika setiap hari kita minum <sup>5</sup>/<sub>6</sub> liter susu, maka berapa liter susu yang diminum selama 3 hari?
+                                {currentQuestionData.question}
                             </p>
 
                             <ul className='text-left text-sm'>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'A' ? 'text-red-500' : ''} ${selectedAnswer === 'A' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="A"
-                                            checked={selectedAnswer === 'A'}
-                                            onChange={() => handleAnswerSelect('A')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        A. <sup>8</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'B' ? 'text-red-500' : ''} ${selectedAnswer === 'B' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="B"
-                                            checked={selectedAnswer === 'B'}
-                                            onChange={() => handleAnswerSelect('B')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        B. <sup>15</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'C' ? 'text-red-500' : ''} ${selectedAnswer === 'C' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="C"
-                                            checked={selectedAnswer === 'C'}
-                                            onChange={() => handleAnswerSelect('C')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        C. <sup>2</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
-                                <li className='mb-5'>
-                                    <label className={`${wrongAnswer === 'D' ? 'text-red-500' : ''} ${selectedAnswer === 'D' && isCorrect ? 'text-green-500' : ''}`}>
-                                        <input
-                                            type="radio"
-                                            name="answer"
-                                            value="D"
-                                            checked={selectedAnswer === 'D'}
-                                            onChange={() => handleAnswerSelect('D')}
-                                            className='mr-2'
-                                            disabled={isAnswered}
-                                        />
-                                        D. <sup>3</sup>/<sub>6</sub> liter
-                                    </label>
-                                </li>
+                                {currentQuestionData.options.map((option) => (
+                                    <li key={option.id} className='mb-5'>
+                                        <label className={`${wrongAnswer === option.id ? 'text-red-500' : ''} ${selectedAnswer === option.id && isCorrect ? 'text-green-500' : ''}`}>
+                                            <input
+                                                type="radio"
+                                                name="answer"
+                                                value={option.id}
+                                                checked={selectedAnswer === option.id}
+                                                onChange={() => handleAnswerSelect(option.id)}
+                                                className='mr-2'
+                                                disabled={isAnswered}
+                                            />
+                                            {option.text}
+                                        </label>
+                                    </li>
+                                ))}
                             </ul>
 
                             {!isAnswered ? (
@@ -143,7 +190,7 @@ const LatsolPerkalian = () => {
                                     className='mt-4 bg-blue-500 text-white py-2 px-4 rounded'
                                     onClick={handleNextClick}
                                 >
-                                    Selanjutnya
+                                    {currentQuestion < questionsPerkalian.length ? 'Selanjutnya' : 'Selesai'}
                                 </button>
                             )}
 
@@ -156,7 +203,7 @@ const LatsolPerkalian = () => {
                                     Hint!
                                 </button>
                             )}
-                            
+
                         </div>
 
                         {showHintImage && (
@@ -166,12 +213,12 @@ const LatsolPerkalian = () => {
                                 )}
                             </div>
                         )}
-                        
+
                     </div>
                 </div>
 
                 <aside className='mt-12'>
-                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden'>
+                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
                         <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
                         <p>
                             {message && (
