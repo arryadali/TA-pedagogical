@@ -12,13 +12,18 @@ const LatsolPerkalian = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(1);
+    const [hintImagePerkalian, setHintImagePerkalian] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [hintClicked, setHintClicked] = useState(false);
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
 
     const questionsPerkalian = [
         {
-            question: "Jika setiap hari kita minum 5/6 liter susu, maka berapa liter susu yang diminum selama 3 hari?",
+            question: "1. Jika setiap hari kita minum 5/6 liter susu, maka berapa liter susu yang diminum selama 3 hari?",
+            hintImagePerkalian: "../asset/materi/hint/perkalian/hint1.png",
+            suara: "../asset/audio/materi/materi.mp4",
             options: [
                 {
                     id: 'A',
@@ -40,7 +45,9 @@ const LatsolPerkalian = () => {
             correctAnswer: 'B',
         },
         {
-            question: "Seorang petani memiliki ladang sepanjang 1 3/7 kilometer. Jika petani tersebut ingin membangun pagar sepanjang dua kali panjang ladangnya, berapa panjang total pagar yang akan dibangun petani tersebut?",
+            question: "2. Seorang petani memiliki ladang sepanjang 1 3/7 kilometer. Jika petani tersebut ingin membangun pagar sepanjang dua kali panjang ladangnya, berapa panjang total pagar yang akan dibangun petani tersebut?",
+            hintImagePerkalian: "../asset/materi/hint/perkalian/hint2.png",
+            suara: "/../asset/audio/materi/perkalian/hint/hintstep2.mp4",
             options: [
                 {
                     id: 'A',
@@ -62,7 +69,9 @@ const LatsolPerkalian = () => {
             correctAnswer: 'C',
         },
         {
-            question: "Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            question: "3. Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            hintImagePerkalian: "../asset/materi/hint/perkalian/hint3.png",
+            suara: "/../asset/audio/materi/perkalian/hint/hintstep3.mp4",
             options: [
                 {
                     id: 'A',
@@ -86,6 +95,22 @@ const LatsolPerkalian = () => {
     ];
 
     const currentQuestionData = questionsPerkalian[currentQuestion - 1];
+
+    const playAudioMateri = () => {
+        const audioPath = currentQuestion.suara;
+        const audio = new Audio(audioPath);
+    
+        if (isPlaying) {
+          audio.pause();
+          audio.currentTime = 0;
+        } else {
+          audio.play();
+        }
+    
+        setIsPlaying(!isPlaying);
+    };
+
+    
 
     const handleAnswerSelect = (answer) => {
         if (!isAnswered) {
@@ -123,7 +148,10 @@ const LatsolPerkalian = () => {
     };
 
     const handleHintClick = () => {
+        const currentQuestionData = questionsPerkalian[currentQuestion - 1];
         setShowHintImage(true);
+        setHintImagePerkalian(currentQuestionData.hintImagePerkalian);
+        setHintClicked(true);
     };
 
     const handleNextClick = () => {
@@ -144,6 +172,8 @@ const LatsolPerkalian = () => {
         setMessage(null);
         setIsCorrect(false);
         setIsAnswered(false);
+        setHintImagePerkalian(null);
+        setHintClicked(false)
     };
 
     return (
@@ -209,7 +239,7 @@ const LatsolPerkalian = () => {
                         {showHintImage && (
                             <div className='mt-4'>
                                 {showHintImage && (
-                                    <img src="../asset/materi/hint/hint.png" alt="Hint" className='mx-auto' />
+                                    <img src={hintImagePerkalian} alt="Hint" className='mx-auto' />
                                 )}
                             </div>
                         )}
@@ -228,6 +258,15 @@ const LatsolPerkalian = () => {
                             )}
                         </p>
                     </div>
+
+                    {hintClicked && (
+                        <div className='text-center font-[georgia] mt-4'>
+                            <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                            <button className='btn mt-4' onClick={playAudioMateri}>
+                                {isPlaying ? 'Hentikan' : 'Suara'}
+                            </button>
+                        </div>
+                    )}
                 </aside>
             </div>
         </section>

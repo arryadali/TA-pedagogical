@@ -1,242 +1,109 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
+import Navbar from '../navbar';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/helper';
-import Likert from 'react-likert-scale';
 
-// import action
-import { resetAllAction } from '../../../redux/question_reducer';
-import { resetResultAction } from '../../../redux/result_reducer';
-import { usePublishResult } from '../../../hooks/setResult';
-import Navbar from '../../navbar';
+const Materi = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showMessage, setShowMessage] = useState(true);
 
-const Result_posttest = () => {
+  const location = useLocation();
+  const isBacaMateri = location.pathname === '/materi';
+  const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
 
-    const refLikert = useRef(null);
+  const userKelas = localStorage.getItem('JENISKELAS');
+  const showKelasKontrolMateri = userKelas === 'kelas-kontrol' && isBacaMateri;
+  const showKelasEksperimenMateri = userKelas === 'kelas-eksperiment' && isBacaMateri;
 
-    const [showLikert, setShowLikert] = useState(false);
-    const [showOverlay, setShowOverlay] = useState(false);
-    const [chosen, setChosen] = useState(null)
+  const playAudioMateri = () => {
+    if (isPlaying) {
+      audio.pause();
+      audio.currentTime = 0;
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
-    const dispatch = useDispatch();
-    const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMessage(false);
+    }, 6000);
 
-    const totalPoints = queue.length * 10;
-    const attempts = attempts_Number(result);
-    const earnPoints = earnPoints_Number(result, answers, 10);
-    const flag = flagResult(totalPoints, earnPoints);
+    return () => clearTimeout(timer);
+  }, []);
 
-
-    // store user result
-    usePublishResult({
-        result,
-        username: userId,
-        attempts,
-        points: earnPoints,
-        achived: flag ? "Passed" : "Failed"
-    });
-
-    const onRestart = () => {
-        dispatch(resetAllAction());
-        dispatch(resetResultAction());
-    };
-
-    const showLikertScale = () => {
-        setShowLikert(true);
-        setShowOverlay(true);
-    };
-
-    const handleOverlayClick = () => {
-        if (showOverlay) {
-            setShowOverlay(false);
-            setShowLikert(false);
-        }
-    };
-
-    const handleCloseClick = () => {
-        setShowOverlay(false);
-        setShowLikert(false);
-    };
-
-    const likertOptions = {
-        questions: [
-            {
-                id: 1,
-                question: "Seberapa jauh kamu menguasai perkalian?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-            {
-                id: 2,
-                question: "Seberapa jauh kamu menguasai pembagian?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-            {
-                id: 3,
-                question: "Seberapa jauh kamu menguasai perkalian pecahan?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-            {
-                id: 4,
-                question: "Seberapa jauh kamu menguasai perkalian pecahan?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-            {
-                id: 5,
-                question: "Seberapa jelas penjelasan yang diberikan dalam materi pembelajaran ini?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-            {
-                id: 6,
-                question: "Sejauh mana materi pembelajaran ini dapat membantu Anda memahami konsep-konsep matematika dengan lebih baik?",
-                responses: [
-                    { value: 1, text: "Sangat Buruk" },
-                    { value: 2, text: "Buruk" },
-                    { value: 3, text: "Netral", checked: true },
-                    { value: 4, text: "Baik" },
-                    { value: 5, text: "Sangat Baik" }
-                ]
-            },
-        ]
-    };
-
-    const onChange = (chosen) => {
-        const content = (
-          <span>
-            You chose:{" "}
-            <strong>
-              {chosen?.value}—{chosen?.text}
-            </strong>
-          </span>
-        );
-        setChosen(content);
-      };
-    
   return (
-    <section id='hasil'>
+    <section id='materi'>
         <Navbar/>
+
         <div className='agenped'>
-            <div>
-                <h1 className='font-bold text-center mb-4'>HASIL BELAJAR</h1>
+            <div className='mt-16'>
 
-                <div className='flex justify-center flex-col border w-2/5 m-auto p-8 mb-4'>
-                    <div className='flex justify-between'>
-                        <span className='font-[16px]'>Username</span>
-                        <span className='font-bold'>Daily Tuition</span>
+              <div className='font-[georgia] text-center'>
+                <h1 className=' text-[40px]'>MATERI</h1>
+                <p className='text-[20px]'>Perkalian dan Pembagian Pecahan</p>
+              </div>
+
+              <div className='font-[georgia] mt-10'>
+
+              {showKelasKontrolMateri && (
+                <div>
+                  <p>Kelas Kontrol</p>
+                  <Link to="/full_materi">
+                    <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
+                      <div>
+                        <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
+                          Baca Materi
+                        </label>
+                      </div>
                     </div>
-
-                    <div className='flex justify-between'>
-                        <span>Total Quiz Point : </span>
-                        <span className='font-bold'>{totalPoints || 0}</span>
-                    </div>
-
-                    <div className='flex justify-between'>
-                        <span>Total Question : </span>
-                        <span className='font-bold'>{queue.length || 0}</span>
-                    </div>
-
-                    <div className='flex justify-between'>
-                        <span>Total Attempts : </span>
-                        <span className='font-bold'>{attempts || 0}</span>
-                    </div>
-
-                    <div className='flex justify-between'>
-                        <span>Total Earn Points : </span>
-                        <span className='font-bold'>{earnPoints || 0}</span>
-                    </div>
-
-                    <div className='flex justify-between'>
-                        <span>Quiz Result</span>
-                        <span style={{color : `${flag ? "#00b058" : "#ff2a66"}`}} className='font-bold'>{flag ? "Passed" : "Failed"}</span>
-                    </div>
-
+                  </Link>
                 </div>
-
-                <div className='text-center'>
-                        <Link className='btn font-[georgia]' to={"/quiz_setup"} onClick={onRestart}>DONE</Link>
-                        <button className='btn font-[georgia]' onClick={showLikertScale}>Likert Scale</button>
-                    </div>
-
-                
-                {showOverlay && (
-                        <div className="overlay" onClick={handleOverlayClick}></div>
-                    )}
-
-                {showLikert && (
-                    <div className='likert-popup'>
-                    <h3 className='text-center'>Umpan Balik terhadap Materi Pembelajaran</h3>
-            
-                    {likertOptions.questions.map((question) => (
-                    <div key={question.id}>
-                        <p>{question.question}</p>
-                        <Likert
-                            responses={question.responses}
-                            onChange={(chosen) => onChange(chosen, question.id)}
-                            ref={refLikert}
-                            className="withBackground"
-                        />
-                    </div>
-                ))}
-                    <p style={{ textAlign: "center" }}>{chosen}</p>
-            
-                    <button className='btn font-[georgia]'>DONE</button>
-                    <button className='btn font-[georgia]' onClick={handleCloseClick}>CLOSE</button>
+              )}
+              
+              {showKelasEksperimenMateri && (
+                <div>
+                  <p>Kelas Eksperimen</p>
+                  <Link to="/page_materi">
+                      <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
+                        <div>
+                          <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
+                            Baca Materi
+                          </label>
+                        </div>
+                      </div>
+                  </Link>
                 </div>
-                )}
-                
+              )}
+
+              </div>
+
             </div>
 
-            {/* <aside className='mt-12'>
-                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    <div className='px-4 py-6 text-justify'>
-                    {isBacaSoal && showMessage ? (
-                        <p className='font-[georgia]'>
-                        Disini kita akan mengerjakan quiz. Semangat mengerjakan ya!!!
-                        </p>
+            <aside className='mt-12'>
+              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                  <div className='px-4 py-6 text-justify'>
+                    {isBacaMateri && showMessage ? (
+                      <p className='font-[georgia]'>
+                        Disini kita akan membaca materi tentang perkalian dan pembagian pecahan. Silahkan klik “ Baca Materi “
+                      </p>
                     ) : null}
-                    </div>
-                </div>
+                  </div>
+              </div>
 
-                <div className='text-center font-[georgia] mt-4'>
-                    <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                    <button className='btn mt-4' onClick={playAudioSoal}>
-                    {isPlaying ? 'Hentikan' : 'Suara'}
-                    </button>
-                </div>
-            </aside> */}
+              <div className='text-center font-[georgia] mt-4'>
+                <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                <button className='btn mt-4' onClick={playAudioMateri}>
+                  {isPlaying ? 'Hentikan' : 'Suara'}
+                </button>
+              </div>
+            </aside>
+
         </div>
     </section>
   )
 }
 
-export default Result_posttest;
+export default Materi;

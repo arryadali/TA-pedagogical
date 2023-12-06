@@ -38,7 +38,7 @@ const Dashboard = () => {
 
           <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl rounded-md bg-white'>
             <div className='flex w-[40%] justify-end'>
-              <img src="../asset/agen/guru.png" alt="" width={230}/>
+              <img src="../asset/agen/merem.png" alt="" width={230}/>
             </div>
 
             <div className='bg-[#D9D9D9] w-[40%] m-auto h-[50%] rounded-[10px] mx-auto overflow-hidden'>

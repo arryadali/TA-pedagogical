@@ -10,7 +10,6 @@ const Loginpage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(username, password)
         axios.post('http://localhost:5000/api/signin', {
         username : username,
         password : password
@@ -29,6 +28,7 @@ const Loginpage = () => {
                 navigate('/dashboard')
                 localStorage.setItem('TOKEN', res.data.token)
                 localStorage.setItem('NAMA', res.data.nama)
+                localStorage.setItem('JENISKELAS', res.data.jeniskelas)
             }
         }).catch(err => {
             console.log(err)

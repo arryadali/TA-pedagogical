@@ -12,13 +12,15 @@ const Latsol_pembagian = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(1);
+    const [hintImagePembagian, setHintImagePembagian] = useState(null);
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
 
     const questionsPembagian = [
         {
-            question: "Seorang anak memiliki 3/4 liter susu. Jika dia membaginya menjadi 2 gelas yang sama, berapa liter susu yang ada di setiap gelas?",
+            question: "1. Seorang anak memiliki 3/4 liter susu. Jika dia membaginya menjadi 2 gelas yang sama, berapa liter susu yang ada di setiap gelas?",
+            hintImagePembagian: "../asset/materi/hint/pembagian/hint1.png",
             options: [
                 {
                     id: 'A',
@@ -40,7 +42,8 @@ const Latsol_pembagian = () => {
             correctAnswer: 'D',
         },
         {
-            question: "Dua teman, Aji dan Budi, memiliki 2 2/3 kantong permen. Jika mereka membagi rata permen tersebut, berapa banyak permen yang akan dimiliki oleh masing-masing teman?",
+            question: "2. Dua teman, Aji dan Budi, memiliki 2 2/3 kantong permen. Jika mereka membagi rata permen tersebut, berapa banyak permen yang akan dimiliki oleh masing-masing teman?",
+            hintImagePembagian: "../asset/materi/hint/pembagian/hint2.png",
             options: [
                 {
                     id: 'A',
@@ -62,7 +65,8 @@ const Latsol_pembagian = () => {
             correctAnswer: 'D',
         },
         {
-            question: "Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            question: "3. Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            hintImagePembagian: "../asset/materi/hint/pembagian/hint3.png",
             options: [
                 {
                     id: 'A',
@@ -123,7 +127,9 @@ const Latsol_pembagian = () => {
     };
 
     const handleHintClick = () => {
+        const currentQuestionData = questionsPembagian[currentQuestion - 1];
         setShowHintImage(true);
+        setHintImagePembagian(currentQuestionData.hintImagePembagian);
     };
 
     const handleNextClick = () => {
@@ -144,6 +150,7 @@ const Latsol_pembagian = () => {
         setMessage(null);
         setIsCorrect(false);
         setIsAnswered(false);
+        setHintImagePembagian(null);
     };
 
 
@@ -210,7 +217,7 @@ const Latsol_pembagian = () => {
                         {showHintImage && (
                             <div className='mt-4'>
                                 {showHintImage && (
-                                    <img src="../asset/materi/hint/hint.png" alt="Hint" className='mx-auto' />
+                                    <img src={hintImagePembagian} alt="Hint" className='mx-auto' />
                                 )}
                             </div>
                         )}

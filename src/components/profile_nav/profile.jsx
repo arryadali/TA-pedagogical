@@ -11,21 +11,31 @@ const Profile = () => {
         <div className='font-[georgia] max-w-7xl m-auto'>
             <div className='text-center'>
                 <h1 className='text-4xl mt-[6%] font-bold'>
-                    Hi, {localStorage.getItem('NAMA')}!
+                    Hallo, {localStorage.getItem('NAMA')}!
                 </h1>
+                
                 <p className='text-base'>Disini halaman untuk melihat progres kamu!</p>
             </div>
             
-            
             <section id='hero'>
-                <div className='w-1/2 m-auto h-20 rounded-md outline outline-offset-2 outline-[#D3C5D6]'>
-                    <div className='rounded-md bg-[#EBEBEB] p-3 outline outline-offset-2 outline-[#D3C5D6] mt-11'>
-                        <h1 className='text-lg'>Progress Belajar</h1>
-                    </div>
-                </div>
+
                 <div className='mt-[5%]'>
-                    <TabelHasil></TabelHasil>
+                    <div className='w-full h-auto rounded-md outline outline-offset-0 outline-[#D3C5D6]'>
+                        <div className='rounded-md bg-[#EBEBEB] p-3 outline outline-offset-0 outline-[#D3C5D6] '>
+                            <h1 className='text-lg text-center'>Progress Belajar {localStorage.getItem('JENISKELAS')}</h1>
+                        </div>
+                        <div className='grid grid-cols-2'>
+                            <div>
+                                <TabelHasil></TabelHasil>
+                            </div>
+                            <div className='bg-red-600'>
+                                BELOM
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+
             </section>
         </div>
     </section>

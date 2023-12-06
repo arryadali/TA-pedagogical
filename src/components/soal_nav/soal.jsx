@@ -40,28 +40,20 @@ const Soal = () => {
             <p className='text-[20px]'>Perkalian dan Pembagian Pecahan</p>
           </div>
 
-          {/* KELAS KONTROL */}
           <div className='font-[georgia] mt-10'>
-            <p>Kelas Kontrol</p>
+            <h1>Pilihlah Soal Berikut</h1>
 
             <Link to={"/quiz_setup"}>
               <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                <div className=''>
-                  <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Post-Test</label>
-                </div>
+                <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Post-Test</p>
               </div>
             </Link>
           </div>
 
-          {/* KELAS EKSPERIMEN */}
           <div className='font-[georgia]'>
-            <p>Kelas Eksperimen</p>
-
             <Link to={'//page_soal_pretest'}>
               <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                <div className=''>
-                  <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Pre-Test</label>
-                </div>
+                <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Pre-Test</p>
               </div>
             </Link>
           </div>

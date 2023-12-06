@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/helper';
 import Likert from 'react-likert-scale';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 // import action
 import { resetAllAction } from '../../../redux/question_reducer';
@@ -11,6 +13,31 @@ import { usePublishResult } from '../../../hooks/setResult';
 import Navbar from '../../navbar';
 
 const Result_posttest = () => {
+
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showMessage, setShowMessage] = useState(true);
+
+    const location = useLocation()
+    const isResultPosttest = location.pathname === '/result_posttest';
+    const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
+
+    const playAudioResult = () => {
+        if (isPlaying) {
+          audio.pause();
+          audio.currentTime = 0;
+        } else {
+          audio.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+    
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        setShowMessage(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+    }, []);
 
     const [showLikert, setShowLikert] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
@@ -55,6 +82,51 @@ const Result_posttest = () => {
         setShowLikert(false);
     };
 
+    const [likertResults, setLikertResults] = useState({
+        question1: 0,
+        question2: 0,
+        question3: 0,
+        question4: 0,
+        question5: 0,
+        question6: 0,
+      });
+
+    const handleLikertChange = (questionId, value) => {
+    setLikertResults((prevResults) => ({
+        ...prevResults,
+        [questionId]: value,
+    }));
+    };
+
+    const handleFinishClick = async () => {
+        const flattenedResults = Object.entries(likertResults).map(([questionId, data]) => ({
+            userId,
+            questionId,
+            value: data.value,
+            text: data.text,
+          }));
+        
+          console.log('Likert Results:', flattenedResults);
+        
+          try {
+            await axios.post('http://localhost:5000/api/likert', flattenedResults);
+        
+            console.log('Data Likert Scale berhasil dikirim');
+            handleCloseClick();
+          } catch (error) {
+            console.error('Error saat mengirim data Likert Scale:', error);
+          }
+    };
+
+    const questionsLikert = [
+        "Seberapa jauh kamu menguasai perkalian?",
+        "Seberapa jauh kamu menguasai pembagian?",
+        "Seberapa jauh kamu menguasai perkalian pecahan?",
+        "Seberapa jauh kamu menguasai pembagian pecahan?",
+        "Seberapa jelas penjelasan yang diberikan dalam materi pembelajaran ini?",
+        "Sejauh mana materi pembelajaran ini dapat membantu Anda memahami konsep-konsep matematika dengan lebih baik?",
+    ]
+
     
   return (
     <section id='hasil'>
@@ -97,9 +169,9 @@ const Result_posttest = () => {
                 </div>
 
                 <div className='text-center'>
-                        <Link className='btn font-[georgia]' to={"/quiz_setup"} onClick={onRestart}>DONE</Link>
-                        <button className='btn font-[georgia]' onClick={showLikertScale}>Likert Scale</button>
-                    </div>
+                    <Link className='btn font-[georgia]' to={"/quiz_setup"} onClick={onRestart}>DONE</Link>
+                    <button className='btn font-[georgia]' onClick={showLikertScale}>Likert Scale</button>
+                </div>
 
                 
                 {showOverlay && (
@@ -111,101 +183,56 @@ const Result_posttest = () => {
                     <h3 className='text-center'>Silahkan menilai kepuasan Anda mengenai Pembelajaran ini </h3>
             
                     <div className="grid">
-                        <p>Seberapa jauh kamu menguasai perkalian?</p>
+                    {questionsLikert.map((question, index) => (
+                        <div key={index}>
+                        <p>{question}</p>
                         <Likert
-                        id="1"
-                        responses={[
+                            id={`question${index + 1}`}
+                            responses={[
                             { value: 1, text: "Sangat Buruk" },
                             { value: 2, text: "Buruk" },
                             { value: 5, text: "Netral" },
                             { value: 6, text: "Baik" },
                             { value: 7, text: "Sangat Baik" }
-                        ]}
+                            ]}
+                            onChange={(value) => handleLikertChange(`question${index + 1}`, value)}
                         />
-                        <p>Seberapa jauh kamu menguasai pembagian?</p>
-                        <Likert
-                        id="2"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jauh kamu menguasai perkalian pecahan?</p>
-                        <Likert
-                        id="3"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jauh kamu menguasai perkalian pecahan?</p>
-                        <Likert
-                        id="4"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Seberapa jelas penjelasan yang diberikan dalam materi pembelajaran ini?</p>
-                        <Likert
-                        id="5"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-                        <p>Sejauh mana materi pembelajaran ini dapat membantu Anda memahami konsep-konsep matematika dengan lebih baik?</p>
-                        <Likert
-                        id="6"
-                        responses={[
-                            { value: 1, text: "Sangat Buruk" },
-                            { value: 2, text: "Buruk" },
-                            { value: 5, text: "Netral" },
-                            { value: 6, text: "Baik" },
-                            { value: 7, text: "Sangat Baik" }
-                        ]}
-                        />
-
+                        </div>
+                    ))}
                     </div>
             
-                    <button className='btn font-[georgia]'>DONE</button>
-                    <button className='btn font-[georgia]' onClick={handleCloseClick}>CLOSE</button>
+                    <button className='btn font-[georgia]' onClick={handleFinishClick}>Selesai</button>
+                    <button className='btn font-[georgia]' onClick={handleCloseClick}>Tutup</button>
                 </div>
                 )}
                 
             </div>
 
-            {/* <aside className='mt-12'>
+            <aside className='mt-12'>
                 <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                    <img src={flag ? "../asset/agen/seneng.png" : "../asset/agen/sedih.png"} alt="" width={230} className='mx-auto' />
                     <div className='px-4 py-6 text-justify'>
-                    {isBacaSoal && showMessage ? (
-                        <p className='font-[georgia]'>
-                        Disini kita akan mengerjakan quiz. Semangat mengerjakan ya!!!
-                        </p>
-                    ) : null}
+                        {isResultPosttest && showMessage && (
+                            flag ? (
+                                <p className='font-[georgia]'>
+                                    Wow kamu hebat! Kamu sudah lulus quiznya!
+                                </p>
+                            ) : (
+                                <p className='font-[georgia]'>
+                                    Jangan sedih ya dan tetap semangat belajar!
+                                </p>
+                            )
+                        )}
                     </div>
                 </div>
 
                 <div className='text-center font-[georgia] mt-4'>
                     <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                    <button className='btn mt-4' onClick={playAudioSoal}>
+                    <button className='btn mt-4' onClick={playAudioResult}>
                     {isPlaying ? 'Hentikan' : 'Suara'}
                     </button>
                 </div>
-            </aside> */}
+            </aside>
         </div>
     </section>
   )

@@ -29,7 +29,6 @@ import Result_posttest from "./components/soal_nav/soal_post_test/result_posttes
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 import Page_materi from "./components/materi_nav/baca_materi/page_materi";
 
-
 function App() {
   return (
     <BrowserRouter>

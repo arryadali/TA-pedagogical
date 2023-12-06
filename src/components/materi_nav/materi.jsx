@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../navbar';
-import { Link } from 'react-router-dom';
 
 const Materi = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showMessage, setShowMessage] = useState(true);
 
   const location = useLocation();
+  const navigate = useNavigate()
   const isBacaMateri = location.pathname === '/materi';
   const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
+
+  const userKelas = localStorage.getItem('JENISKELAS');
 
   const playAudioMateri = () => {
     if (isPlaying) {
@@ -29,6 +31,16 @@ const Materi = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleBacaMateriClick = (kelas) => {
+    if (userKelas === kelas) {
+      if (kelas === "kelas-kontrol") {
+        navigate('/full_materi')
+      } else if (kelas === "kelas-eksperiment") {
+        navigate("/page_materi")
+      }
+    }
+  };
+
   return (
     <section id='materi'>
         <Navbar/>
@@ -42,36 +54,26 @@ const Materi = () => {
               </div>
 
               <div className='font-[georgia] mt-10'>
-                
                 <div>
                   <p>Kelas Kontrol</p>
-                  <Link to={"/full_materi"}>
-                    <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                      <div>
-                        <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
-                          Baca Materi
-                        </label>
-                      </div>
-                    </div>
-                  </Link>
+                  <div className={`flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center ${userKelas !== "kelas-kontrol" ? "opacity-50" : ""} ${userKelas === "kelas-kontrol" ? " cursor-pointer" : "cursor-not-allowed"}`}
+                      onClick={() => handleBacaMateriClick("kelas-kontrol")}
+                    >
+                      <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl'>Baca Materi</p>
+                  </div>
                 </div>
 
                 <div>
                   <p>Kelas Eksperimen</p>
-                  <Link to={"/page_materi"}>
-                    <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                      <div>
-                        <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
-                          Baca Materi
-                        </label>
-                      </div>
-                    </div>
-                  </Link>
+                  <div className={`flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center ${userKelas !== "kelas-eksperiment" ? "opacity-50" : ""} ${userKelas === "kelas-eksperiment" ? " cursor-pointer" : "cursor-not-allowed"}`}
+                      onClick={() => handleBacaMateriClick("kelas-eksperiment")}
+                    >
+                      <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl'>Baca Materi</p>
+                  </div>
                 </div>
-
               </div>
 
-            </div>
+          </div>
 
             <aside className='mt-12'>
               <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>

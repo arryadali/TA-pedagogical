@@ -6,16 +6,21 @@ const Registrasi = () => {
 
   const [nama, setNama] = useState('')
   const [kelas, setKelas] = useState('')
+  const [jeniskelas, setJenisKelas] = useState('')
   const [absen, setAbsen] = useState('')
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(nama, kelas, username, password)
+    if (!nama || !kelas || !jeniskelas || !absen || !username || !password) {
+      alert("Harap isi semua kolom formulir.");
+      return;
+    }
     axios.post('http://localhost:5000/api/signup', {
       nama : nama,
       kelas : kelas,
+      jeniskelas : jeniskelas,
       absen : absen,
       username : username,
       password : password
@@ -31,8 +36,6 @@ const Registrasi = () => {
       }).catch(err => {
         console.log(err)
       })
-
-      
   }
 
   return (
@@ -58,15 +61,44 @@ const Registrasi = () => {
 
                 <div>
                   <label class="text-gray-800 font-semibold block my-3 text-md" for="kelas">Kelas</label>
-                  <input
-                  onChange={(e) => {
-                    setKelas(e.target.value)
-                  }}
-                  value={kelas} 
-                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="text" 
-                  name="kelas" 
-                  id="kelas"/>
+                  <select
+                    onChange={(e) => {
+                      setKelas(e.target.value);
+                    }}
+                    value={kelas}
+                    className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+                    name="kelas"
+                    id="kelas"
+                  >
+                    <option value="" disabled selected>
+                      Pilih Kelas
+                    </option>
+                    <option value="kelas-kontrol">5A</option>
+                    <option value="kelas-eksperiment">5B</option>
+                    <option value="kelas-eksperiment">5C</option>
+                    <option value="kelas-eksperiment">5D</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-gray-800 font-semibold block my-3 text-md" for="jeniskelas">
+                    Jenis Kelas
+                  </label>
+                  <select
+                    onChange={(e) => {
+                      setJenisKelas(e.target.value);
+                    }}
+                    value={jeniskelas}
+                    className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+                    name="jeniskelas"
+                    id="jeniskelas"
+                  >
+                    <option value="" disabled selected>
+                      Pilih Jenis Kelas
+                    </option>
+                    <option value="kelas-kontrol">Kelas Kontrol</option>
+                    <option value="kelas-eksperiment">Kelas Eksperimen</option>
+                  </select>
                 </div>
 
                 <div>
@@ -103,7 +135,7 @@ const Registrasi = () => {
                   }}
                   value={password} 
                   class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="password" 
+                   
                   name="password" 
                   id="password" />
                 </div>
