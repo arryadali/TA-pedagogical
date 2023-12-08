@@ -126,14 +126,9 @@ const Materi_pembagian = () => {
             </div>
 
             <aside className='mt-12'>
-              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                <div>
-                  <button>
-                    MULAI
-                  </button>
+                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
                 </div>
-              </div>
             </aside>
         </div>
     </section>

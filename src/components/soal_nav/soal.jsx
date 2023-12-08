@@ -24,7 +24,7 @@ const Soal = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(false);
-    }, 6000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -43,20 +43,19 @@ const Soal = () => {
           <div className='font-[georgia] mt-10'>
             <h1>Pilihlah Soal Berikut</h1>
 
-            <Link to={"/quiz_setup"}>
+            <Link to={'/quiz_setup_pretest'}>
+              <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
+                <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Pre-Test</p>
+              </div>
+            </Link>
+
+            <Link to={"/quiz_setup_posttest"}>
               <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
                 <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Post-Test</p>
               </div>
             </Link>
           </div>
-
-          <div className='font-[georgia]'>
-            <Link to={'//page_soal_pretest'}>
-              <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                <p className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>Pre-Test</p>
-              </div>
-            </Link>
-          </div>
+          
         </div>
 
         <aside className='mt-12'>
@@ -65,7 +64,7 @@ const Soal = () => {
             <div className='px-4 py-6 text-justify'>
               {isBacaSoal && showMessage ? (
                 <p className='font-[georgia]'>
-                  Disini kita akan mengerjakan soal. Pilihlah salah satu antara Post-test atau Pre-test
+                  Disini kita akan mengerjakan soal. Silahkan kerjakan Pre-Test terlebih dahulu baru kerjakan Post-Test
                 </p>
               ) : null}
             </div>

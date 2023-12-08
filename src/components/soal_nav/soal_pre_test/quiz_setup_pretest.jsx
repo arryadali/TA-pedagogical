@@ -3,10 +3,10 @@ import Navbar from '../../navbar';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUserId } from '../../../redux/result_reducer_posttest';
+import { setUserIdPretest } from '../../../redux/result_reducer_pretest';
 import { useLocation } from 'react-router-dom';
 
-const Quiz_setup_posttest = () => {
+const Quiz_setup_pretest = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
 
@@ -14,11 +14,11 @@ const Quiz_setup_posttest = () => {
     const dispatch = useDispatch()
     const location = useLocation()
     const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
-    const isBacaSoal = location.pathname === "/quiz_setup_posttest"
+    const isBacaSoal = location.pathname === "/quiz_setup_pretest"
     
     const startQuiz = () => {
         if(inputRef.current?.value) {
-            dispatch(setUserId(inputRef.current?.value))
+            dispatch(setUserIdPretest(inputRef.current?.value))
         }
     }
 
@@ -46,12 +46,12 @@ const Quiz_setup_posttest = () => {
       }, []);
 
   return (
-    <section id='quiz_setup'>
+    <section id='quiz_setup_pretest'>
         <Navbar/>
 
         <div className='agenped'>
             <div className='mt-16 text-center font-[Georgia]'>
-                <h1 className='text-[40px] mb-[5%]'>INTRUKSI QUIZ POST-TEST</h1>
+                <h1 className='text-[40px] mb-[5%]'>INTRUKSI QUIZ PRE-TEST</h1>
 
                 <ol className='mb-[5%] list-decimal pl-4 text-justify'>
                     <li>Quiz ini mempunyai 10 soal yang harus kalian jawab</li>
@@ -66,7 +66,7 @@ const Quiz_setup_posttest = () => {
                 </form>
 
                 <div className='text-center'>
-                    <Link className='btn' to={'/soal_belajar_posttest'} onClick={startQuiz}>Start Quiz</Link>
+                    <Link className='btn' to={'/soal_belajar_pretest'} onClick={startQuiz}>Start Quiz</Link>
                 </div>
             </div>
 
@@ -94,4 +94,4 @@ const Quiz_setup_posttest = () => {
   )
 }
 
-export default Quiz_setup_posttest;
+export default Quiz_setup_pretest;

@@ -1,15 +1,13 @@
 import React, {useState} from 'react'
 import Questions from '../../Questions';
 
-import { moveNextAction, movePrevAction } from '../../../redux/question_reducer';
+import { moveNextAction, movePrevAction } from '../../../redux/question_reducer_posttest';
 import {PushAnswer} from '../../../hooks/setResult'
 
 import {useSelector, useDispatch} from 'react-redux'
 import { Navigate } from 'react-router-dom';
 
 const Soal_belajar_posttest = () => {
-
-  // ====================KUIS NYA======================== //
 
   const [check, setChecked] = useState(undefined)
 
@@ -41,8 +39,6 @@ const Soal_belajar_posttest = () => {
   if(result.length && result.length >= queue.length) {
     return <Navigate to={'/result_posttest'} replace={true}></Navigate>
   }
-
-  // ====================KUIS NYA======================== //
 
   return (
     <section id='soal_belajar_posttest'>

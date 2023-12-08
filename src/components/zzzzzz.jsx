@@ -1,109 +1,61 @@
-import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
-import Navbar from '../navbar';
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Materi = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showMessage, setShowMessage] = useState(true);
-
-  const location = useLocation();
-  const isBacaMateri = location.pathname === '/materi';
-  const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
-
-  const userKelas = localStorage.getItem('JENISKELAS');
-  const showKelasKontrolMateri = userKelas === 'kelas-kontrol' && isBacaMateri;
-  const showKelasEksperimenMateri = userKelas === 'kelas-eksperiment' && isBacaMateri;
-
-  const playAudioMateri = () => {
-    if (isPlaying) {
-      audio.pause();
-      audio.currentTime = 0;
-    } else {
-      audio.play();
+const Full_materi = () => {
+  const materiBacaPerkalianPembagian = [
+    {
+      judul : "perkalian dan pembagian pecahan",
+      materi : "coba ini"
     }
-    setIsPlaying(!isPlaying);
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMessage(false);
-    }, 6000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  ]
 
   return (
-    <section id='materi'>
-        <Navbar/>
+    <section id='full_materi'>
 
-        <div className='agenped'>
-            <div className='mt-16'>
-
-              <div className='font-[georgia] text-center'>
-                <h1 className=' text-[40px]'>MATERI</h1>
-                <p className='text-[20px]'>Perkalian dan Pembagian Pecahan</p>
-              </div>
-
-              <div className='font-[georgia] mt-10'>
-
-              {showKelasKontrolMateri && (
-                <div>
-                  <p>Kelas Kontrol</p>
-                  <Link to="/full_materi">
-                    <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                      <div>
-                        <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
-                          Baca Materi
-                        </label>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              )}
-              
-              {showKelasEksperimenMateri && (
-                <div>
-                  <p>Kelas Eksperimen</p>
-                  <Link to="/page_materi">
-                      <div className='flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center'>
-                        <div>
-                          <label className='font-[Georgia] font-medium text-white text-[20px] bg-[#1D809F] p-2 rounded-xl cursor-pointer'>
-                            Baca Materi
-                          </label>
-                        </div>
-                      </div>
-                  </Link>
-                </div>
-              )}
-
-              </div>
-
-            </div>
-
-            <aside className='mt-12'>
-              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                  <div className='px-4 py-6 text-justify'>
-                    {isBacaMateri && showMessage ? (
-                      <p className='font-[georgia]'>
-                        Disini kita akan membaca materi tentang perkalian dan pembagian pecahan. Silahkan klik “ Baca Materi “
-                      </p>
-                    ) : null}
-                  </div>
-              </div>
-
-              <div className='text-center font-[georgia] mt-4'>
-                <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                <button className='btn mt-4' onClick={playAudioMateri}>
-                  {isPlaying ? 'Hentikan' : 'Suara'}
-                </button>
-              </div>
-            </aside>
-
+      <nav>
+        <div className='h-16 py-4 px-11'>
+          <Link className='flex w-min gap-4' to={"/materi"}>
+            <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+            </svg>
+            <p className='text-xl font-[georgia]'>Materi</p>
+          </Link>
         </div>
+        <hr />
+      </nav>
+
+      <section id='hero' className='mt-14 m-auto max-w-screen-xl h-[400px] bg-red-400'>
+        {materiBacaPerkalianPembagian.map((materi, index) => (
+          <div key={index} className='font-[georgia]'>
+            <h1 className='font-bold uppercase text-3xl'>{materi.judul}</h1>
+            <p className='mt-2 text-xl'>{materi.materi}</p>
+          </div>
+        ))}
+      </section>
+
+      <footer>
+          <div className='container'>
+            <div className='h-16 bg-yellow-300 py-5'>
+              <ul className='grid grid-cols-2 text-center'>
+                <li className='bg-red-500 w-1/2 place-content-end'>Pengenalan Pecahan</li>
+                <li className='bg-green-500 w-1/2 place-content-end'>Perkalian Pecahan dengan Bilangan Bulat</li>
+              </ul>
+              {/* <ul className='flex text-lg'>
+                <li className='flex justify-end w-full bg-red-500 min-w-max'>
+                  Pengenalan Pecahan
+                </li>
+                <li className='flex justify-end w-[78%] bg-green-500'>
+                  Perkalian Pecahan dengan Bilangan Bulat
+                  <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"/>
+                  </svg>
+                </li>
+              </ul> */}
+            </div>
+          </div>
+      </footer>
+
     </section>
   )
 }
-
-export default Materi;
+export default Full_materi;

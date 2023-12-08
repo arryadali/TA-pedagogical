@@ -5,12 +5,12 @@ import { attempts_Number, earnPoints_Number, flagResult } from '../../../helper/
 import { useLocation } from 'react-router-dom';
 
 // import action
-import { resetAllAction } from '../../../redux/question_reducer_posttest';
-import { resetResultAction } from '../../../redux/result_reducer_posttest';
+import { resetAllActionPretest } from '../../../redux/question_reducer_pretest';
+import { resetResultActionPretest } from '../../../redux/result_reducer_pretest';
 import { usePublishResult } from '../../../hooks/setResult';
 import Navbar from '../../navbar';
 
-const Result_posttest = () => {
+const Result_pretest = () => {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
@@ -56,8 +56,8 @@ const Result_posttest = () => {
     });
 
     const onRestart = () => {
-        dispatch(resetAllAction());
-        dispatch(resetResultAction());
+        dispatch(resetAllActionPretest());
+        dispatch(resetResultActionPretest());
     };
     
   return (
@@ -67,10 +67,10 @@ const Result_posttest = () => {
             <div>
                 <h1 className='font-bold text-center mb-4'>HASIL BELAJAR</h1>
 
-                <div className='flex justify-center flex-col border w-1/2 m-auto p-8 mb-4'>
+                <div className='flex justify-center flex-col border w-2/5 m-auto p-8 mb-4'>
                     <div className='flex justify-between'>
                         <span className='font-[16px]'>Username</span>
-                        <span className='font-bold'>{localStorage.getItem("NAMA")}</span>
+                        <span className='font-bold'>Daily Tuition</span>
                     </div>
 
                     <div className='flex justify-between'>
@@ -101,7 +101,7 @@ const Result_posttest = () => {
                 </div>
 
                 <div className='text-center'>
-                    <Link className='btn font-[georgia]' to={"/quiz_setup_posttest"} onClick={onRestart}>DONE</Link>
+                    <Link className='btn font-[georgia]' to={"/quiz_setup_pretest"} onClick={onRestart}>DONE</Link>
                 </div>    
             </div>
 
@@ -135,4 +135,4 @@ const Result_posttest = () => {
   )
 }
 
-export default Result_posttest;
+export default Result_pretest;

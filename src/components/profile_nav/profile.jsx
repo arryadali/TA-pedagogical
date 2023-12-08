@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../navbar';
 import TabelHasil from '../tabelHasil';
+import TabelHasilPretest from '../tabelHasilPretest';
 
 const Profile = () => {
 
@@ -29,7 +30,7 @@ const Profile = () => {
                                 <TabelHasil></TabelHasil>
                             </div>
                             <div className='bg-red-600'>
-                                BELOM
+                                <TabelHasilPretest></TabelHasilPretest>
                             </div>
                         </div>
                     </div>

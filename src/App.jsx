@@ -29,6 +29,9 @@ import Result_posttest from "./components/soal_nav/soal_post_test/result_posttes
 import Quiz_setup_posttest from "./components/soal_nav/soal_post_test/quiz_setup_posttest";
 import Page_materi from "./components/materi_nav/baca_materi/page_materi";
 
+import Result_pretest from "./components/soal_nav/soal_pre_test/result_pretest";
+import Quiz_setup_pretest from "./components/soal_nav/soal_pre_test/quiz_setup_pretest";
+
 function App() {
   return (
     <BrowserRouter>
@@ -53,12 +56,15 @@ function App() {
 
         {/* Soal */}
         <Route path="/soal" element={<Soal/>}/>
-        <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest/>}/>
+
         
         {/* Check user Exist */}
-        <Route path="/quiz_setup" element={<Quiz_setup_posttest/>}/>
+        <Route path="/quiz_setup_posttest" element={<Quiz_setup_posttest/>}/>
+        <Route path="/quiz_setup_pretest" element={<Quiz_setup_pretest/>}/>
         <Route path="/soal_belajar_posttest" element={<CheckUserExist><Soal_belajar_posttest /></CheckUserExist>} />
+        <Route path="/soal_belajar_pretest" element={<CheckUserExist><Soal_belajar_pretest /></CheckUserExist>} />
         <Route path="/result_posttest" element={<CheckUserExist><Result_posttest /></CheckUserExist>} />
+        <Route path="/result_pretest" element={<CheckUserExist><Result_pretest /></CheckUserExist>} />
 
       </Routes>
     </BrowserRouter>

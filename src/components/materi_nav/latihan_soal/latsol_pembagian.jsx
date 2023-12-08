@@ -137,7 +137,7 @@ const Latsol_pembagian = () => {
             setCurrentQuestion(currentQuestion + 1);
             resetState();
         } else {
-            navigate('/materi_pembagian');
+            navigate('/soal');
         }
     };
 
