@@ -8,7 +8,7 @@ const Soal = () => {
   const [showMessage, setShowMessage] = useState(true);
 
   const location = useLocation()
-  const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
+  const [audio] = useState(new Audio("../asset/audio/soal/soal.mp4"));
   const isBacaSoal = location.pathname === "/soal"
 
   const playAudioSoal = () => {
@@ -64,7 +64,7 @@ const Soal = () => {
             <div className='px-4 py-6 text-justify'>
               {isBacaSoal && showMessage ? (
                 <p className='font-[georgia]'>
-                  Disini kita akan mengerjakan soal. Silahkan kerjakan Pre-Test terlebih dahulu baru kerjakan Post-Test
+                  Disini kita akan mengerjakan soal. Silahkan kerjakan Pre-Test terlebih dahulu baru kerjakan Post-Test. Semangat!
                 </p>
               ) : null}
             </div>

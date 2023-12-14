@@ -56,32 +56,32 @@ export const movePrevQuestion = () => async (dispatch) => {
 // Pre - Test
 export const useFetchQestionPretest = () => {
     const dispatch = useDispatch()
-    const [getData, setGetData] = useState({ isLoading : false, apiData : [], serverError : null});
+    const [getDataPretest, setGetDataPretest] = useState({ isLoading : false, apiData : [], serverError : null});
 
     useEffect(() => {
-        setGetData(prev => ({...prev, isLoading : true}));
+        setGetDataPretest(prev => ({...prev, isLoading : true}));
 
         (async() => {
             try {
-                const [{questions, answers}] = await getServerDataPretest("http://localhost:5000/api/questionsPretest", (data) => data)
+                const [{questionsPretest, answersPretest}] = await getServerDataPretest("http://localhost:5000/api/questionsPretest", (data) => data)
 
-                if(questions.length > 0) {
-                    setGetData(prev => ({...prev, isLoading : false}));
-                    setGetData(prev => ({...prev, apiData : {questions, answers}}));
+                if(questionsPretest.length > 0) {
+                    setGetDataPretest(prev => ({...prev, isLoading : false}));
+                    setGetDataPretest(prev => ({...prev, apiData : {questionsPretest, answersPretest}}));
 
-                    dispatch(ActionPretest.startExamActionPretest({question : questions, answers}))
+                    dispatch(ActionPretest.startExamActionPretest({questionPretest : questionsPretest, answersPretest}))
                 } else {
                     throw new Error("No Question Avalibale")
                 }
 
             } catch (error) {
-                setGetData(prev => ({...prev, isLoading : false}));
-                setGetData(prev => ({...prev, serverError : error}));
+                setGetDataPretest(prev => ({...prev, isLoading : false}));
+                setGetDataPretest(prev => ({...prev, serverError : error}));
             }
         })();
     }, [dispatch]);
 
-    return [getData, setGetData];
+    return [getDataPretest, setGetDataPretest];
 }
 
 export const moveNextQuestionPretest = () => async (dispatch) => {

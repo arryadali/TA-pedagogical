@@ -38,21 +38,21 @@ const Result_pretest = () => {
     }, []);
 
     const dispatch = useDispatch();
-    const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state);
+    const { questionsPretest: { queuePretest, answersPretest }, resultPretest: { resultPretest, userIdPretest } } = useSelector(state => state);
 
-    const totalPoints = queue.length * 10;
-    const attempts = attempts_Number(result);
-    const earnPoints = earnPoints_Number(result, answers, 10);
-    const flag = flagResult(totalPoints, earnPoints);
+    const totalPoints = queuePretest.length * 10;
+    const attemptsPretest = attempts_Number(resultPretest);
+    const earnPointsPretest = earnPoints_Number(resultPretest, answersPretest, 10);
+    const flag = flagResult(totalPoints, earnPointsPretest);
 
 
     // store user result
     usePublishResult({
-        result,
-        username: userId,
-        attempts,
-        points: earnPoints,
-        achived: flag ? "Passed" : "Failed"
+        resultPretest,
+        usernamePretest: userIdPretest,
+        attemptsPretest,
+        pointsPretest: earnPointsPretest,
+        achivedPretest: flag ? "Passed" : "Failed"
     });
 
     const onRestart = () => {
@@ -80,17 +80,17 @@ const Result_pretest = () => {
 
                     <div className='flex justify-between'>
                         <span>Total Question : </span>
-                        <span className='font-bold'>{queue.length || 0}</span>
+                        <span className='font-bold'>{queuePretest.length || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
                         <span>Total Attempts : </span>
-                        <span className='font-bold'>{attempts || 0}</span>
+                        <span className='font-bold'>{attemptsPretest || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
                         <span>Total Earn Points : </span>
-                        <span className='font-bold'>{earnPoints || 0}</span>
+                        <span className='font-bold'>{earnPointsPretest || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>

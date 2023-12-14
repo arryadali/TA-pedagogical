@@ -27,10 +27,10 @@ const Profile = () => {
                         </div>
                         <div className='grid grid-cols-2'>
                             <div>
-                                <TabelHasil></TabelHasil>
-                            </div>
-                            <div className='bg-red-600'>
                                 <TabelHasilPretest></TabelHasilPretest>
+                            </div>
+                            <div>
+                                <TabelHasil></TabelHasil>
                             </div>
                         </div>
                     </div>

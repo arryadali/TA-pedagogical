@@ -12,20 +12,20 @@ export const questionReducerPretest = createSlice({
             let {questionPretest, answersPretest} = action.payload
             return {
                 ...state,
-                queue : questionPretest,
+                queuePretest : questionPretest,
                 answersPretest
             }
         },
         moveNextActionPretest : (state, action) => {
             return {
                 ...state, 
-                trace : state.trace + 1
+                tracePretest : state.tracePretest + 1
             }
         },
         movePrevActionPretest : (state) => {
             return {
                 ...state,
-                trace : state.trace - 1
+                tracePretest : state.tracePretest - 1
             }
         },
         resetAllActionPretest : () => {

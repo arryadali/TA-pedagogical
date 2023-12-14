@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import Questions from '../../Questions';
+import QuestionsPretest from '../../questions_pretest';
 
 import { moveNextActionPretest, movePrevActionPretest } from '../../../redux/question_reducer_pretest';
-import {PushAnswer} from '../../../hooks/setResult'
+import { PushAnswerPretest} from '../../../hooks/setResult'
 
 import {useSelector, useDispatch} from 'react-redux'
 import { Navigate } from 'react-router-dom';
@@ -13,23 +13,23 @@ const Soal_belajar_pretest = () => {
 
   const [check, setChecked] = useState(undefined)
 
-  const result = useSelector(state => state.result.result)
-  const {queue, trace} = useSelector(state => state.questions)
+  const resultPretest = useSelector(state => state.resultPretest.resultPretest)
+  const {queuePretest, tracePretest} = useSelector(state => state.questionsPretest)
   const dispatch = useDispatch()
 
   const onSelanjutnya = () => {
-    if(trace < queue.length) {
+    if(tracePretest < queuePretest.length) {
       dispatch(moveNextActionPretest())
 
-      if(result.length <= trace) {
-        dispatch(PushAnswer(check))
+      if(resultPretest.length <= tracePretest) {
+        dispatch(PushAnswerPretest(check))
       }
     }
     setChecked(undefined)
   }
 
   const onKembali = () => {
-    if(trace > 0) {
+    if(tracePretest > 0) {
       dispatch(movePrevActionPretest())
     }
   }
@@ -38,21 +38,21 @@ const Soal_belajar_pretest = () => {
     setChecked(check)
   }
 
-  if(result.length && result.length >= queue.length) {
+  if(resultPretest.length && resultPretest.length >= queuePretest.length) {
     return <Navigate to={'/result_pretest'} replace={true}></Navigate>
   }
 
   // ====================KUIS NYA======================== //
 
   return (
-    <section id='soal_belajar_posttest'>
+    <section id='soal_belajar_pretest'>
         <div className='container'>
           <div className='grid grid-cols-2 gap-10 w-[82%] m-auto mt-[39px]'>
       
               <div>
-                <Questions onChecked={onChecked}/>
+                <QuestionsPretest onChecked={onChecked}/>
                 <div className='grid grid-cols-2'>
-                  {trace > 0 ? <button 
+                  {tracePretest > 0 ? <button 
                   onClick={onKembali}
                   className='bg-[#1D809F] text-[1.2rem] rounded-[1rem] py-[16px] px-[27.2px]'>
                     Kembali

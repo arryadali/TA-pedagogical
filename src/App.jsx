@@ -17,7 +17,7 @@ import Full_materi from "./components/materi_nav/baca_materi/full_materi";
 
 // Latihan Soal
 import Latsol_perkalian from "./components/materi_nav/latihan_soal/latsol_perkalian";
-import Latsol_pembagian from "./components/materi_nav/latihan_soal/latsol_pembagian";
+import LatsolPembagian from "./components/materi_nav/latihan_soal/latsol_pembagian";
 
 // Soal
 import Soal from "./components/soal_nav/soal";
@@ -52,17 +52,17 @@ function App() {
 
         {/* Latihan Soal */}
         <Route path="/latihan_soal_perkalian" element={<Latsol_perkalian/>}/>
-        <Route path="/latihan_soal_pembagian" element={<Latsol_pembagian/>}/>
+        <Route path="/latihan_soal_pembagian" element={<LatsolPembagian/>}/>
 
         {/* Soal */}
         <Route path="/soal" element={<Soal/>}/>
 
-        
         {/* Check user Exist */}
         <Route path="/quiz_setup_posttest" element={<Quiz_setup_posttest/>}/>
         <Route path="/quiz_setup_pretest" element={<Quiz_setup_pretest/>}/>
-        <Route path="/soal_belajar_posttest" element={<CheckUserExist><Soal_belajar_posttest /></CheckUserExist>} />
-        <Route path="/soal_belajar_pretest" element={<CheckUserExist><Soal_belajar_pretest /></CheckUserExist>} />
+
+        <Route path="/soal_belajar_posttest" element={<Soal_belajar_posttest />} />
+        <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest />} />
         <Route path="/result_posttest" element={<CheckUserExist><Result_posttest /></CheckUserExist>} />
         <Route path="/result_pretest" element={<CheckUserExist><Result_pretest /></CheckUserExist>} />
 

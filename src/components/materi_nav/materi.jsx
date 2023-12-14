@@ -55,7 +55,7 @@ const Materi = () => {
 
               <div className='font-[georgia] mt-10'>
                 <div>
-                  <p>Kelas Kontrol</p>
+                  <p>Materi Pembelajaran</p>
                   <div className={`flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center ${userKelas !== "kelas-kontrol" ? "opacity-50" : ""} ${userKelas === "kelas-kontrol" ? " cursor-pointer" : "cursor-not-allowed"}`}
                       onClick={() => handleBacaMateriClick("kelas-kontrol")}
                     >
@@ -64,7 +64,7 @@ const Materi = () => {
                 </div>
 
                 <div>
-                  <p>Kelas Eksperimen</p>
+                  <p>Materi Pembelajaran</p>
                   <div className={`flex max-w-full mx-auto bg-[#1D809F] h-16 rounded-[10px] items-center my-4 px-4 justify-center ${userKelas !== "kelas-eksperiment" ? "opacity-50" : ""} ${userKelas === "kelas-eksperiment" ? " cursor-pointer" : "cursor-not-allowed"}`}
                       onClick={() => handleBacaMateriClick("kelas-eksperiment")}
                     >

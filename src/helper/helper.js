@@ -45,7 +45,7 @@ export function flagResultPretest(totalPoints, earnPoints) {
 }
 
 export function CheckUserExistPretest({children}) {
-    const auth = useSelector(state => state.result.userId)
+    const auth = useSelector(state => state.resultPretest.userIdPretest)
 
     return auth ? children : <Navigate to={"/quiz_setup_pretest"} replace={true}></Navigate>
 }

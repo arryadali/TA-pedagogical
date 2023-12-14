@@ -3,17 +3,17 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 // costum hook
-import { useFetchQestionPretest } from '../hooks/fetchQuestion'
-import { updateResultPretest } from '../hooks/setResult'
+import { useFetchQestionPretest } from '../hooks/fetchQuestion.js'
+import { updateResultPretest } from '../hooks/setResult.js'
 
 
-const questions_pretest = ({onChecked}) => {
+const QuestionsPretest = ({onChecked}) => {
     const [checked, setChecked] = useState(undefined)
     const {trace} = useSelector(state => state.questionsPretest)
-    const result = useSelector(state => state.result.result)
+    const result = useSelector(state => state.resultPretest.resultPretest)
     const [{isLoading, apiData, serverError}] = useFetchQestionPretest()
     
-    const questions = useSelector(state => state.questions.queue[state.questions.trace])
+    const questions = useSelector(state => state.questionsPretest.queuePretest[state.questionsPretest.tracePretest])
 
     const dispatch = useDispatch()
 
@@ -32,9 +32,9 @@ const questions_pretest = ({onChecked}) => {
 
 
   return (
-    <section id='questions'>
+    <section id='questionsPretest'>
         {/* Pertanyaannya */}
-        <h2 className='font-[Georgia]'>{questions?.question}</h2>
+        <h2 className='font-[Georgia]'>{questions?.questionsPretest}</h2>
 
         {/* Pilihan gandanya */}
         <ul key={questions?.id}>
@@ -58,4 +58,4 @@ const questions_pretest = ({onChecked}) => {
   )
 }
 
-export default questions_pretest
+export default QuestionsPretest

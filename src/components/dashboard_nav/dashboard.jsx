@@ -43,7 +43,7 @@ const Dashboard = () => {
 
             <div className='bg-[#D9D9D9] w-[40%] m-auto h-[50%] rounded-[10px] mx-auto overflow-hidden'>
               <div className='p-4 text-center overflow-hidden'>
-                Saya adalah Vania. Agen Pedagogis yang akan membantu kalian!
+                Halo teman-teman! Saya Vania yang akan membantu dan menemani kalian selama kalian berada pada web ini!
               </div>
             </div>
           </div>

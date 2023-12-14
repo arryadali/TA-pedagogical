@@ -88,7 +88,7 @@ const Loginpage = () => {
                 </form>
 
                 <div class="mt-6 text-center">
-                    <p>Daftar sebagai administrator pada aplikasi ini?</p>
+                    <p>Daftar sebagai siswa pada aplikasi ini?</p>
                     <Link to={'/registrasi'}>
                         <p className='hover:underline text-blue-500'>Daftar Disini!</p>
                     </Link>
