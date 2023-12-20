@@ -11,11 +11,11 @@ const LatsolPerkalian = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(1);
-    const [showHintImage, setShowHintImage] = useState(false);
+    const [showHint, setShowHint] = useState(false);
     const [stepsHint, setstepsHint] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [hintClicked, setHintClicked] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
+    const [buttonSuara, setButtonSuara] = useState(false);
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
@@ -64,7 +64,7 @@ const LatsolPerkalian = () => {
                     suara: "../asset/audio/materi/perkalian/hint/hint1.3.mp4",
                 },
             ],
-            linkHint : "https://www.youtube.com/watch?v=RUFF770BIg4"
+            linkHint : "https://youtu.be/UAughJJJe3I"
         },
         {
             question: "2. Seorang petani memiliki ladang sepanjang 1 3/7 kilometer. Jika petani tersebut ingin membangun pagar sepanjang dua kali panjang ladangnya, berapa panjang total pagar yang akan dibangun petani tersebut?",
@@ -115,7 +115,7 @@ const LatsolPerkalian = () => {
                     suara: "../asset/audio/materi/perkalian/hint/hint2.4.mp4",
                 },
             ],
-            linkHint : "https://www.youtube.com/watch?v=_VC-gEFHeeY"
+            linkHint : "https://youtu.be/EHPItFfsjNA"
         },
         {
             question: "3. Rizky memiliki sebatang pohon apel di halaman belakang rumahnya. Setiap hari, dia memetik 2 3/2 dari apel yang matang di pohon. Jika ada 6 2/1 apel yang matang hari ini, berapa banyak apel yang akan Rizky petik?",
@@ -159,21 +159,27 @@ const LatsolPerkalian = () => {
                     suara: "../asset/audio/materi/perkalian/hint/hint3.3.mp4",
                 },
             ],
-            linkHint : "https://www.youtube.com/watch?v=sXtTnH0aD8U"
+            linkHint : "https://youtu.be/jb6pKDXPaHU"
         },
     ];
 
     const currentQuestionData = questionsPerkalian[currentQuestion - 1];
 
     const playAudioMateri = () => {
-        const audioPath = currentQuestionData.suara;
+        let audioPath;
+        if (isCorrect) {
+            audioPath = "../asset/audio/materi/perkalian/hint/hintbenar.mp4";
+        } else {
+            audioPath = "../asset/audio/materi/perkalian/hint/hintsalah.mp4";
+        }
+
         const audio = new Audio(audioPath);
     
         if (isPlaying) {
-          audio.pause();
-          audio.currentTime = 0;
+            audio.pause();
+            audio.currentTime = 0;
         } else {
-          audio.play();
+            audio.play();
         }
     
         setIsPlaying(!isPlaying);
@@ -190,9 +196,10 @@ const LatsolPerkalian = () => {
         if (selectedAnswer === currentQuestionData.correctAnswer) {
             setMessage("Wow kamu melakukannya dengan baik!");
             setShowHintButton(false);
-            setShowHintImage(false);
+            setShowHint(false);
             setIsCorrect(true);
             setIsAnswered(true);
+            setButtonSuara(true)
 
             setTimeout(() => {
                 setMessage(null);
@@ -201,9 +208,10 @@ const LatsolPerkalian = () => {
         } else {
             setWrongAnswer(selectedAnswer);
             setHintCount(hintCount + 1);
+            setButtonSuara(true)
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
-                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint untuk bantuan. Semangat ya!");
+                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dan vidio untuk bantuan. Semangat ya!");
 
                 setTimeout(() => {
                     setMessage(null);
@@ -221,7 +229,7 @@ const LatsolPerkalian = () => {
     };
 
     const handleSelesai = () => {
-        setShowHintImage(false);
+        setShowHint(false);
     }
 
     const handlePrevious = () => {
@@ -239,9 +247,8 @@ const LatsolPerkalian = () => {
 
     const handleHintClick = () => {
         const currentQuestionData = questionsPerkalian[currentQuestion - 1];
-        setShowHintImage(true);
+        setShowHint(true);
         setstepsHint(currentQuestionData.stepsHint);
-        setHintClicked(true);
         setCurrentHintIndex(0);
     };
 
@@ -269,12 +276,11 @@ const LatsolPerkalian = () => {
         setWrongAnswer(null);
         setHintCount(0);
         setShowHintButton(false);
-        setShowHintImage(false);
+        setShowHint(false);
         setMessage(null);
         setIsCorrect(false);
         setIsAnswered(false);
         setstepsHint(null);
-        setHintClicked(false)
     };
 
     return (
@@ -351,7 +357,7 @@ const LatsolPerkalian = () => {
 
                         </div>
 
-                        {showHintImage && (
+                        {showHint && (
                         <div className='mt-4'>
                             {stepsHint && (
                                 <>
@@ -411,14 +417,16 @@ const LatsolPerkalian = () => {
                         </p>
                     </div>
 
-                    {hintClicked && (
-                        <div className='text-center font-[georgia] mt-4'>
-                            <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                            <button className='btn mt-4' onClick={playAudioMateri}>
-                                {isPlaying ? 'Hentikan' : 'Suara'}
-                            </button>
-                        </div>
-                    )}
+                    <div className='text-center font-[georgia] mt-4'>
+                        {buttonSuara && (
+                            <>
+                                <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                                <button className='btn mt-4' onClick={playAudioMateri}>
+                                    {isPlaying ? 'Hentikan' : 'Suara'}
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </aside>
             </div>
         </section>

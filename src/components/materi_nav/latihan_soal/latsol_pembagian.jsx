@@ -11,11 +11,11 @@ const LatsolPembagian = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isAnswered, setIsAnswered] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(1);
-    const [showHintImage, setShowHintImage] = useState(false);
+    const [showHint, setShowHint] = useState(false);
     const [stepsHint, setstepsHint] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [hintClicked, setHintClicked] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
+    const [buttonSuara, setButtonSuara] = useState(false);
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
@@ -62,7 +62,8 @@ const LatsolPembagian = () => {
                     text: `Hasilnya adalah ... ?`,
                     suara: "../asset/audio/materi/pembagian/hint/hint1.3.mp4",
                 },
-            ]
+            ],
+            linkHint : "https://youtu.be/i06vt-g3B4w"
         },
         {
             question: "2. Dua teman, Aji dan Budi, memiliki 2 2/3 kantong permen. Jika mereka membagi rata permen tersebut, berapa banyak permen yang akan dimiliki oleh masing-masing teman?",
@@ -95,45 +96,37 @@ const LatsolPembagian = () => {
                 },
                 {
                     judul : "Langkah 2",
-                    text: `Pertama-tama ubahlah pecahan campuran ke pecahan biasa terlebih dahulu
-                    1 3/7 = … ?
+                    text: `Setelah diubah ke pecahan biasa. Tukarlah pembilang dan penyebutnya tersebut
+                    8/3 x 1/2 = ... ?
                     `,
                     suara: "../asset/audio/materi/pembagian/hint/hint2.2.mp4",
                 },
                 {
                     judul : "Langkah 3",
-                    text: `Lalu kalikan pecahan tersebut
-                    10/7 x 2 = … ?
-                    `,
+                    text: "Lalu kalikan pecahan tersebut dan sederhanakanlah!",
                     suara: "../asset/audio/materi/pembagian/hint/hint2.3.mp4",
                 },
-                {
-                    judul : "Langkah 4",
-                    text: `Dan yang terakhir ubahlah kepecahan campuran.
-                    20/7 = 2 6/7 km
-                    `,
-                    suara: "../asset/audio/materi/pembagian/hint/hint2.4.mp4",
-                },
-            ]
+            ],
+            linkHint : "https://youtu.be/hPNoYM2lDC8"
         },
         {
-            question: "3. Alya memiliki sepotong tali yang panjangnya 2 1/3  meter, dan Rian memiliki sepotong tali yang panjangnya 4 2/5  meter. Mereka ingin menggabungkan kedua potongan tali tersebut menjadi satu. Berapa panjang total tali yang dimiliki Alya dan Rian?",
+            question: "3. Rudi memiliki sebidang tanah yang panjangnya 2 3/2 kilometer. Dia membaginya menjadi 6 2/1 bagian yang sama besar. Berapa panjang setiap bagian tanah yang baru?",
             options: [
                 {
                     id: 'A',
-                    text: '8/3 meter',
+                    text: '7/16 kilometer',
                 },
                 {
                     id: 'B',
-                    text: '12/5 meter',
+                    text: '28/1 kilometer',
                 },
                 {
                     id: 'C',
-                    text: '14/5 meter',
+                    text: '10/16 kilometer',
                 },
                 {
                     id: 'D',
-                    text: '10/3 meter',
+                    text: '4/16 kilometer',
                 },
             ],
             correctAnswer: 'A',
@@ -142,14 +135,13 @@ const LatsolPembagian = () => {
                     judul : "Langkah 1",
                     text : `Ubahlah kedua bilangan tersebut ke bilangan pecahan biasa
                     2 3/2 = … ? dan 6 2/1 = … ?
-
                     `,
                     suara: "/../asset/audio/materi/perkalian/hint/hintstep1.mp4",
                 },
                 {
                     judul : "Langkah 2",
-                    text: `Setelah itu, kalikan kedua bilangan tersebut
-                    7/2 x 8 = … ?
+                    text: `Setelah diubah ke pecahan biasa. Tukarlah pembilang dan penyebutnya tersebut
+                    7/2 x 1/8 = ... ?
                     `,
                     suara: "/../asset/audio/materi/perkalian/hint/hintstep2.mp4",
                 },
@@ -158,23 +150,28 @@ const LatsolPembagian = () => {
                     text: "Apakah kamu sudah mengetahui jawabannya?",
                     suara: "/../asset/audio/materi/perkalian/hint/hintstep3.mp4",
                 },
-            ]
+            ],
+            linkHint : "https://youtu.be/CoEggpHZfH4"
         },
     ];
-
-    
 
     const currentQuestionData = questionsPembagian[currentQuestion - 1];
 
     const playAudioMateri = () => {
-        const audioPath = currentQuestionData.suara;
+        let audioPath;
+        if (isCorrect) {
+            audioPath = "../asset/audio/materi/perkalian/hint/hintbenar.mp4";
+        } else {
+            audioPath = "../asset/audio/materi/perkalian/hint/hintsalah.mp4";
+        }
+
         const audio = new Audio(audioPath);
     
         if (isPlaying) {
-          audio.pause();
-          audio.currentTime = 0;
+            audio.pause();
+            audio.currentTime = 0;
         } else {
-          audio.play();
+            audio.play();
         }
     
         setIsPlaying(!isPlaying);
@@ -191,9 +188,10 @@ const LatsolPembagian = () => {
         if (selectedAnswer === currentQuestionData.correctAnswer) {
             setMessage("Wow kamu melakukannya dengan baik!");
             setShowHintButton(false);
-            setShowHintImage(false);
+            setShowHint(false);
             setIsCorrect(true);
             setIsAnswered(true);
+            setButtonSuara(true);
 
             setTimeout(() => {
                 setMessage(null);
@@ -202,9 +200,10 @@ const LatsolPembagian = () => {
         } else {
             setWrongAnswer(selectedAnswer);
             setHintCount(hintCount + 1);
+            setButtonSuara(true);
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
-                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint untuk bantuan. Semangat ya!");
+                setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dan vidio untuk bantuan. Semangat ya!");
 
                 setTimeout(() => {
                     setMessage(null);
@@ -216,13 +215,13 @@ const LatsolPembagian = () => {
     };
 
     const handleNext = () => {
-        if (currentHintIndex < currentQuestionData.stepsHint.length - 1) { // Menggunakan currentQuestionData
+        if (currentHintIndex < currentQuestionData.stepsHint.length - 1) {
             setCurrentHintIndex(currentHintIndex + 1);
         }
     };
 
     const handleSelesai = () => {
-        setShowHintImage(false);
+        setShowHint(false);
     }
 
     const handlePrevious = () => {
@@ -240,10 +239,19 @@ const LatsolPembagian = () => {
 
     const handleHintClick = () => {
         const currentQuestionData = questionsPembagian[currentQuestion - 1];
-        setShowHintImage(true);
+        setShowHint(true);
         setstepsHint(currentQuestionData.stepsHint);
-        setHintClicked(true);
         setCurrentHintIndex(0);
+    };
+
+    const handleVideoClick = () => {
+        const youtubeLink = currentQuestionData.linkHint;
+
+        if (youtubeLink) {
+            window.open(youtubeLink, '_blank');
+        } else {
+            console.log("YouTube link not available for this question");
+        }
     };
 
     const handleNextClick = () => {
@@ -260,12 +268,11 @@ const LatsolPembagian = () => {
         setWrongAnswer(null);
         setHintCount(0);
         setShowHintButton(false);
-        setShowHintImage(false);
+        setShowHint(false);
         setMessage(null);
         setIsCorrect(false);
         setIsAnswered(false);
         setstepsHint(null);
-        setHintClicked(false)
     };
 
     return (
@@ -316,21 +323,33 @@ const LatsolPembagian = () => {
                                 </button>
                             )}
 
-                            {showHintButton && (
-                                <button
-                                className='ml-4'
-                                onClick={handleHintClick}
-                                disabled={hintCount < maxWrongAttemptsBeforeHint}
-                            >
-                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 15 20">
-                                    <path d="M9.092 18h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2Zm-2-18a7.009 7.009 0 0 0-7 7 7.8 7.8 0 0 0 2.219 5.123c.956 1.195 1.781 2.228 1.781 3.877a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1c0-1.7.822-2.7 1.774-3.868A7.63 7.63 0 0 0 14.092 7a7.009 7.009 0 0 0-7-7Zm0 5a2 2 0 0 0-2 2 1 1 0 0 1-2 0 4 4 0 0 1 4-4 1 1 0 0 1 0 2Z"/>
-                                </svg>
-                            </button>
+                                {showHintButton && (
+                                <div className='items-center mt-4'>
+                                    <button
+                                        className=''
+                                        onClick={handleHintClick}
+                                        disabled={hintCount < maxWrongAttemptsBeforeHint}
+                                    >
+                                        <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 15 20">
+                                            <path d="M9.092 18h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2Zm-2-18a7.009 7.009 0 0 0-7 7 7.8 7.8 0 0 0 2.219 5.123c.956 1.195 1.781 2.228 1.781 3.877a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1c0-1.7.822-2.7 1.774-3.868A7.63 7.63 0 0 0 14.092 7a7.009 7.009 0 0 0-7-7Zm0 5a2 2 0 0 0-2 2 1 1 0 0 1-2 0 4 4 0 0 1 4-4 1 1 0 0 1 0 2Z"/>
+                                        </svg>
+                                    </button>
+        
+                                    <button
+                                        className='ml-4'
+                                        onClick={handleVideoClick}
+                                        disabled={hintCount < maxWrongAttemptsBeforeHint}
+                                    >
+                                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                                            <path d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             )}
 
                         </div>
 
-                        {showHintImage && (
+                        {showHint && (
                         <div className='mt-4'>
                             {stepsHint && (
                                 <>
@@ -390,14 +409,16 @@ const LatsolPembagian = () => {
                         </p>
                     </div>
 
-                    {hintClicked && (
-                        <div className='text-center font-[georgia] mt-4'>
-                            <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                            <button className='btn mt-4' onClick={playAudioMateri}>
-                                {isPlaying ? 'Hentikan' : 'Suara'}
-                            </button>
-                        </div>
-                    )}
+                    <div className='text-center font-[georgia] mt-4'>
+                        {buttonSuara && (
+                            <>
+                                <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                                <button className='btn mt-4' onClick={playAudioMateri}>
+                                    {isPlaying ? 'Hentikan' : 'Suara'}
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </aside>
             </div>
         </section>

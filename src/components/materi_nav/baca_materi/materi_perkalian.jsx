@@ -4,60 +4,187 @@ import { useNavigate } from 'react-router-dom';
 
 const Materi_perkalian = () => {
     const [currentStepPerkalian, setCurrentStepPerkalian] = useState(0);
+    const [currentMateriIndex, setCurrentMateriIndex] = useState(0);
     const [showStepsPerkalian, setshowStepsPerkalian] = useState(false);
     const [audioSrcPerkalian, setAudioSrcPerkalian] = useState('');
 
     const navigate = useNavigate();
 
-    const stepMateriPerkalian = [
+    const materiPerkalian = [
         {
-            judul: "Langkah 1",
-            konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
-            gambar: "/../asset/step/perkalian/step1.png",
+            question: "1. INI NO 1",
+            options: [
+                {
+                    id: 'A',
+                    text: "1 7/12",
+                },
+                {
+                    id: 'B',
+                    text: "3 1/9",
+                },
+                {
+                    id: 'C',
+                    text: "1 3/4",
+                },
+                {
+                    id: 'D',
+                    text: "3 1/12",
+                },
+            ],
+            stepsMateriPerkalian : [
+                {
+                    judul: "Langkah 1",
+                    konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
+                    gambar: "/../asset/step/perkalian/step1.png",
+                    suara : "../asset/audio/materi/perkalian/step1.mp4"
+                },
+                {
+                    judul: "Langkah 2",
+                    konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
+                    gambar: "/../asset/step/perkalian/step2.png",
+                    suara : "../asset/audio/materi/perkalian/step2.mp4"
+                },
+                {
+                    judul: "Langkah 3",
+                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
+                    gambar: "/../asset/step/perkalian/step3.png",
+                    suara : "../asset/audio/materi/perkalian/step3.mp4"
+                },
+                {
+                    judul: "Langkah 4",
+                    konten: "Jawaban yang benar adalah C",
+                    gambar: "/../asset/step/perkalian/step4.png",
+                    suara : "../asset/audio/materi/perkalian/step4.mp4"
+                },
+            ],
         },
         {
-            judul: "Langkah 2",
-            konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
-            gambar: "/../asset/step/perkalian/step2.png",
+            question: "2. Lisa mengikuti resep kue yang jumlah gulanya dibutuhkan 3/4 jumlah tepung yang dibutuhkan. Jika Lisa menggunakan 2 1/3 cangkir tepung. Berapa cangkir gula yang dibutuhkan Lisa untuk membuat kuenya?",
+            options: [
+                {
+                    id: 'A',
+                    text: "1 7/12",
+                },
+                {
+                    id: 'B',
+                    text: "3 1/9",
+                },
+                {
+                    id: 'C',
+                    text: "1 3/4",
+                },
+                {
+                    id: 'D',
+                    text: "3 1/12",
+                },
+            ],
+            stepsMateriPerkalian : [
+                {
+                    judul: "Langkah 1",
+                    konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
+                    gambar: "/../asset/step/perkalian/step1.png",
+                    suara : "../asset/audio/materi/perkalian/step1.mp4"
+                },
+                {
+                    judul: "Langkah 2",
+                    konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
+                    gambar: "/../asset/step/perkalian/step2.png",
+                    suara : "../asset/audio/materi/perkalian/step2.mp4"
+                },
+                {
+                    judul: "Langkah 3",
+                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
+                    gambar: "/../asset/step/perkalian/step3.png",
+                    suara : "../asset/audio/materi/perkalian/step3.mp4"
+                },
+                {
+                    judul: "Langkah 4",
+                    konten: "Jawaban yang benar adalah C",
+                    gambar: "/../asset/step/perkalian/step4.png",
+                    suara : "../asset/audio/materi/perkalian/step4.mp4"
+                },
+            ],
         },
         {
-            judul: "Langkah 3",
-            konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
-            gambar: "/../asset/step/perkalian/step3.png",
+            question: "3. INI NO 3",
+            options: [
+                {
+                    id: 'A',
+                    text: "1 7/12",
+                },
+                {
+                    id: 'B',
+                    text: "3 1/9",
+                },
+                {
+                    id: 'C',
+                    text: "1 3/4",
+                },
+                {
+                    id: 'D',
+                    text: "3 1/12",
+                },
+            ],
+            stepsMateriPerkalian : [
+                {
+                    judul: "Langkah 1",
+                    konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
+                    gambar: "/../asset/step/perkalian/step1.png",
+                    suara : "../asset/audio/materi/perkalian/step1.mp4"
+                },
+                {
+                    judul: "Langkah 2",
+                    konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
+                    gambar: "/../asset/step/perkalian/step2.png",
+                    suara : "../asset/audio/materi/perkalian/step2.mp4"
+                },
+                {
+                    judul: "Langkah 3",
+                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
+                    gambar: "/../asset/step/perkalian/step3.png",
+                    suara : "../asset/audio/materi/perkalian/step3.mp4"
+                },
+                {
+                    judul: "Langkah 4",
+                    konten: "Jawaban yang benar adalah C",
+                    gambar: "/../asset/step/perkalian/step4.png",
+                    suara : "../asset/audio/materi/perkalian/step4.mp4"
+                },
+            ],
         },
-        {
-            judul: "Langkah 4",
-            konten: "Jawaban yang benar adalah C",
-            gambar: "/../asset/step/perkalian/step4.png",
-        },
-    ];
-
-    const audioPathsPerkalian = [
-        '../asset/audio/materi/perkalian/step1.mp4',
-        '../asset/audio/materi/perkalian/step2.mp4',
-        '../asset/audio/materi/perkalian/step3.mp4',
-        '../asset/audio/materi/perkalian/step4.mp4',
     ];
 
     const handleNext = () => {
-        if (currentStepPerkalian < stepMateriPerkalian.length - 1) {
+        if (currentStepPerkalian < materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 1) {
             setCurrentStepPerkalian(currentStepPerkalian + 1);
-            setAudioSrcPerkalian(audioPathsPerkalian[currentStepPerkalian + 1]);
+            setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian + 1].suara);
         } else {
-            navigate('/latihan_soal_perkalian');
+            if (currentMateriIndex < materiPerkalian.length - 1) {
+                setCurrentMateriIndex(currentMateriIndex + 1);
+                setCurrentStepPerkalian(0);
+                setAudioSrcPerkalian(materiPerkalian[currentMateriIndex + 1].stepsMateriPerkalian[0].suara);
+            } else {
+                navigate('/latihan_soal_perkalian');
+            }
         }
     };
 
     const handlePrevious = () => {
         if (currentStepPerkalian > 0) {
             setCurrentStepPerkalian(currentStepPerkalian - 1);
-            setAudioSrcPerkalian(audioPathsPerkalian[currentStepPerkalian - 1]);
+            setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian - 1].suara);
+        } else {
+            if (currentMateriIndex > 0) {
+                setCurrentMateriIndex(currentMateriIndex - 1);
+                setCurrentStepPerkalian(materiPerkalian[currentMateriIndex - 1].stepsMateriPerkalian.length - 1);
+                setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian].suara);
+            }
         }
     };
 
     const handleStart = async () => {
         setshowStepsPerkalian(true);
-        setAudioSrcPerkalian(audioPathsPerkalian[currentStepPerkalian]);
+        setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian].suara);
     };
 
     return (
@@ -67,12 +194,11 @@ const Materi_perkalian = () => {
                 <div className="container mx-auto mt-10">
                     <div>
                         <div className='border-2 h-auto p-4 text-center'>
-                            <p>Lisa mengikuti resep kue yang jumlah gulanya dibutuhkan <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>  jumlah tepung yang dibutuhkan. <br />Jika Lisa menggunakan 2 <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>3</mn></mfrac></math>. cangkir tepung. <br /> Berapa cangkir gula yang dibutuhkan Lisa untuk membuat kuenya?</p>
+                            <p>{materiPerkalian[currentMateriIndex].question}</p>
                             <ul>
-                                <li className='mt-3'>A. 1 <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>7</mn><mn>12</mn></mfrac></math></li>
-                                <li className='mt-3'>B. 3 <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>9</mn></mfrac></math></li>
-                                <li className='mt-3'>C. 1 <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></li>
-                                <li className='mt-3'>D. 3 <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>12</mn></mfrac></math></li>
+                                {materiPerkalian[currentMateriIndex].options.map((option) => (
+                                    <li key={option.id} className='mt-3'>{`${option.id}. ${option.text}`}</li>
+                                ))}
                             </ul>
                         </div>
 
@@ -85,13 +211,13 @@ const Materi_perkalian = () => {
                             </button>
                         )}
 
-                        {showStepsPerkalian && stepMateriPerkalian && stepMateriPerkalian.length > 0 && (
+                        {showStepsPerkalian && materiPerkalian[currentMateriIndex].stepsMateriPerkalian && materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length > 0 && (
                             <>
                                 <h2 className="text-2xl font-bold mb-4 mt-6">
-                                    {stepMateriPerkalian[currentStepPerkalian]?.judul}
+                                    {materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian]?.judul}
                                 </h2>
-                                <p style={{ whiteSpace: "pre-line" }}>{stepMateriPerkalian[currentStepPerkalian]?.konten}</p>
-                                <img src={stepMateriPerkalian[currentStepPerkalian]?.gambar} alt="Step" className='m-auto' />
+                                <p style={{ whiteSpace: "pre-line" }}>{materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian]?.konten}</p>
+                                <img src={materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian]?.gambar} alt="Step" className='m-auto' />
 
                                 <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
 
@@ -104,7 +230,7 @@ const Materi_perkalian = () => {
                                             Kembali
                                         </button>
                                     )}
-                                    {currentStepPerkalian === stepMateriPerkalian.length - 1 ? (
+                                    {currentStepPerkalian === materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 1 ? (
                                         <button
                                             className="rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]"
                                             onClick={handleNext}
@@ -135,7 +261,7 @@ const Materi_perkalian = () => {
                 </aside>
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default Materi_perkalian;
