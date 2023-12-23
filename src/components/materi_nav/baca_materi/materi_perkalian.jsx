@@ -12,48 +12,48 @@ const Materi_perkalian = () => {
 
     const materiPerkalian = [
         {
-            question: "1. INI NO 1",
+            question: "1. Hisyam memiliki 2/3 jumlah makanan dan Kiani memiliki 5/6 jumlah makanan. Hisyam ingin mengalikan jumlah makanan tersebut dengan Kiani. Berapa total jumlah makanan yang dimiliki Hisyam setelah dikalikan dengan Kiani?",
             options: [
                 {
                     id: 'A',
-                    text: "1 7/12",
+                    text: "5/9",
                 },
                 {
                     id: 'B',
-                    text: "3 1/9",
+                    text: "10/6",
                 },
                 {
                     id: 'C',
-                    text: "1 3/4",
+                    text: "9/8",
                 },
                 {
                     id: 'D',
-                    text: "3 1/12",
+                    text: "7/6",
                 },
             ],
             stepsMateriPerkalian : [
                 {
                     judul: "Langkah 1",
-                    konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
-                    gambar: "/../asset/step/perkalian/step1.png",
+                    konten: "Jika Hisyam memiliki 2/3 makanan dan Kiani memiliki 5/6 jumlah makanan, maka",
+                    gambar: "/../asset/step/perkalian/step1.1.png",
                     suara : "../asset/audio/materi/perkalian/step1.mp4"
                 },
                 {
                     judul: "Langkah 2",
-                    konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
-                    gambar: "/../asset/step/perkalian/step2.png",
+                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya",
+                    gambar: "/../asset/step/perkalian/step1.2.png",
                     suara : "../asset/audio/materi/perkalian/step2.mp4"
                 },
                 {
                     judul: "Langkah 3",
-                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
-                    gambar: "/../asset/step/perkalian/step3.png",
+                    konten: "Jika pecahan tersebut bisa disederhanakan, sederhanakanlah pecahan tersebut",
+                    gambar: "/../asset/step/perkalian/step1.3.png",
                     suara : "../asset/audio/materi/perkalian/step3.mp4"
                 },
                 {
                     judul: "Langkah 4",
-                    konten: "Jawaban yang benar adalah C",
-                    gambar: "/../asset/step/perkalian/step4.png",
+                    konten: "Jawaban yang benar adalah A",
+                    gambar: "/../asset/step/perkalian/step1.4.png",
                     suara : "../asset/audio/materi/perkalian/step4.mp4"
                 },
             ],
@@ -82,25 +82,25 @@ const Materi_perkalian = () => {
                 {
                     judul: "Langkah 1",
                     konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
-                    gambar: "/../asset/step/perkalian/step1.png",
+                    gambar: "/../asset/step/perkalian/step2.1.png",
                     suara : "../asset/audio/materi/perkalian/step1.mp4"
                 },
                 {
                     judul: "Langkah 2",
                     konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
-                    gambar: "/../asset/step/perkalian/step2.png",
+                    gambar: "/../asset/step/perkalian/step2.2.png",
                     suara : "../asset/audio/materi/perkalian/step2.mp4"
                 },
                 {
                     judul: "Langkah 3",
                     konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
-                    gambar: "/../asset/step/perkalian/step3.png",
+                    gambar: "/../asset/step/perkalian/step2.3.png",
                     suara : "../asset/audio/materi/perkalian/step3.mp4"
                 },
                 {
                     judul: "Langkah 4",
                     konten: "Jawaban yang benar adalah C",
-                    gambar: "/../asset/step/perkalian/step4.png",
+                    gambar: "/../asset/step/perkalian/step2.4.png",
                     suara : "../asset/audio/materi/perkalian/step4.mp4"
                 },
             ],
@@ -128,25 +128,25 @@ const Materi_perkalian = () => {
             stepsMateriPerkalian : [
                 {
                     judul: "Langkah 1",
-                    konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
+                    konten: "BELOMMMMMMMMMM",
                     gambar: "/../asset/step/perkalian/step1.png",
                     suara : "../asset/audio/materi/perkalian/step1.mp4"
                 },
                 {
                     judul: "Langkah 2",
-                    konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
+                    konten: "BELOMMMMMMMMMM.",
                     gambar: "/../asset/step/perkalian/step2.png",
                     suara : "../asset/audio/materi/perkalian/step2.mp4"
                 },
                 {
                     judul: "Langkah 3",
-                    konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
+                    konten: "BELOMMMMMMMMMM",
                     gambar: "/../asset/step/perkalian/step3.png",
                     suara : "../asset/audio/materi/perkalian/step3.mp4"
                 },
                 {
                     judul: "Langkah 4",
-                    konten: "Jawaban yang benar adalah C",
+                    konten: "BELOMMMMMMMMMM",
                     gambar: "/../asset/step/perkalian/step4.png",
                     suara : "../asset/audio/materi/perkalian/step4.mp4"
                 },

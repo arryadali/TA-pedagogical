@@ -74,27 +74,27 @@ const Result_pretest = () => {
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Quiz Point : </span>
+                        <span>Total Kuis Poin : </span>
                         <span className='font-bold'>{totalPoints || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Question : </span>
+                        <span>Total Pertanyaan : </span>
                         <span className='font-bold'>{queuePretest.length || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Attempts : </span>
+                        <span>Total Menjawab : </span>
                         <span className='font-bold'>{attemptsPretest || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Earn Points : </span>
+                        <span>Total Points : </span>
                         <span className='font-bold'>{earnPointsPretest || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Quiz Result</span>
+                        <span>Hasil Kuis</span>
                         <span style={{color : `${flag ? "#00b058" : "#ff2a66"}`}} className='font-bold'>{flag ? "Passed" : "Failed"}</span>
                     </div>
 

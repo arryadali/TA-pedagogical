@@ -14,7 +14,7 @@ const TabelHasil = () => {
   const filteredData = data.filter((v) => v.username === loggedInUsername);
 
   return (
-    <div style={{ overflowY: 'auto', maxHeight: '350px' }}>
+    <div style={{ overflowY: 'auto', maxHeight: '56px' }}> 
       <table className='m-auto'>
         <thead className='text-[16px] bg-[#1D809F] border-2'>
           <tr>

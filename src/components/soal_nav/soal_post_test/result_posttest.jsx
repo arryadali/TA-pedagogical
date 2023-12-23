@@ -69,32 +69,32 @@ const Result_posttest = () => {
 
                 <div className='flex justify-center flex-col border w-1/2 m-auto p-8 mb-4'>
                     <div className='flex justify-between'>
-                        <span className='font-[16px]'>Username</span>
+                        <span className='font-[16px]'>Nama</span>
                         <span className='font-bold'>{localStorage.getItem("NAMA")}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Quiz Point : </span>
+                        <span>Total Kuis Poin : </span>
                         <span className='font-bold'>{totalPoints || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Question : </span>
+                        <span>Total Pertanyaan : </span>
                         <span className='font-bold'>{queue.length || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Attempts : </span>
+                        <span>Total Menjawab : </span>
                         <span className='font-bold'>{attempts || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Total Earn Points : </span>
+                        <span>Total Points : </span>
                         <span className='font-bold'>{earnPoints || 0}</span>
                     </div>
 
                     <div className='flex justify-between'>
-                        <span>Quiz Result</span>
+                        <span>Hasil Kuis</span>
                         <span style={{color : `${flag ? "#00b058" : "#ff2a66"}`}} className='font-bold'>{flag ? "Passed" : "Failed"}</span>
                     </div>
 
