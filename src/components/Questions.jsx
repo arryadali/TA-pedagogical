@@ -34,13 +34,13 @@ const Questions = ({onChecked}) => {
   return (
     <section id='questions'>
         {/* Pertanyaannya */}
-        <h2 className='font-[Georgia]'>{questions?.question}</h2>
+        <h2 className='font-[Georgia] text-xl'>{questions?.question}</h2>
 
         {/* Pilihan gandanya */}
         <ul key={questions?.id}>
             {
                 questions?.options.map((q, i) => (
-                    <li key={i} className='border-b-2 border-solid font-[Georgia]'>
+                    <li key={i} className='bulet'>
                         <input type="radio" 
                         value={false}
                         name='options'
@@ -48,8 +48,8 @@ const Questions = ({onChecked}) => {
                         onChange={() => onSelect(i)}
                         />
 
-                        <label className='max-w-full p-[1%] hover:text-[#FFFFFF]' htmlFor={`q${i}-option`}>{q}</label>
-                        <div className={`h-[25px] w-[25px] ${result[trace] === i ? 'checked':''}`}></div>
+                        <label className='max-w-full' htmlFor={`q${i}-option`}>{q}</label>
+                        <div className={`check ${result[trace] === i ? 'checked':''}`}></div>
                     </li>
                 ))
             }

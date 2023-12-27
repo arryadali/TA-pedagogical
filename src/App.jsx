@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CheckUserExist } from "./helper/helper";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CheckUserExist, CheckUserExistPretest } from "./helper/helper";
 
 import Welcomepage from "./components/welcomepage";
 import Loginpage from "./components/loginpage";
@@ -31,43 +32,44 @@ import Page_materi from "./components/materi_nav/baca_materi/page_materi";
 
 import Result_pretest from "./components/soal_nav/soal_pre_test/result_pretest";
 import Quiz_setup_pretest from "./components/soal_nav/soal_pre_test/quiz_setup_pretest";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Welcomepage/>}/>
+        <Route path="/" element={<PrivateRoute element={<Welcomepage/>} />} />
         <Route path="/loginpage" element={<Loginpage/>}/>
         <Route path="/registrasi" element={<Registrasi/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/dashboard" element={<PrivateRoute element={<Dashboard/>} />} />
+        <Route path="/profile" element={<PrivateRoute element={<Profile/>} />} />
 
 
         {/* Materi */}
-        <Route path="/materi" element={<Materi/>}/>
-        <Route path="/page_materi" element={<Page_materi/>}/>
-        <Route path="/materi_perkalian" element={<Materi_perkalian/>}/>
-        <Route path="/materi_pembagian" element={<Materi_pembagian/>}/>
-        <Route path="/full_materi" element={<Full_materi/>}/>
+        <Route path="/materi" element={<PrivateRoute element={<Materi/>} />} />
+        <Route path="/page_materi" element={<PrivateRoute element={<Page_materi/>} />} />
+        <Route path="/materi_perkalian" element={<PrivateRoute element={<Materi_perkalian/>} />} />
+        <Route path="/materi_pembagian" element={<PrivateRoute element={<Materi_pembagian/>} />} />
+        <Route path="/full_materi" element={<PrivateRoute element={<Full_materi/>} />} />
 
         {/* Latihan Soal */}
-        <Route path="/latihan_soal_perkalian" element={<Latsol_perkalian/>}/>
-        <Route path="/latihan_soal_pembagian" element={<LatsolPembagian/>}/>
+        <Route path="/latihan_soal_perkalian" element={<PrivateRoute element={<Latsol_perkalian/>} />} />
+        <Route path="/latihan_soal_pembagian" element={<PrivateRoute element={<LatsolPembagian/>} />} />
 
         {/* Soal */}
-        <Route path="/soal" element={<Soal/>}/>
+        <Route path="/soal" element={<PrivateRoute element={<Soal/>} />}/>
 
         {/* Check user Exist */}
-        <Route path="/quiz_setup_posttest" element={<Quiz_setup_posttest/>}/>
-        <Route path="/quiz_setup_pretest" element={<Quiz_setup_pretest/>}/>
+        <Route path="/quiz_setup_posttest" element={<PrivateRoute element={<Quiz_setup_posttest/>} />} />
+        <Route path="/quiz_setup_pretest" element={<PrivateRoute element={<Quiz_setup_pretest/>} />} />
 
-        <Route path="/soal_belajar_posttest" element={<Soal_belajar_posttest />} />
-        <Route path="/soal_belajar_pretest" element={<Soal_belajar_pretest />} />
-        <Route path="/result_posttest" element={<CheckUserExist><Result_posttest /></CheckUserExist>} />
-        <Route path="/result_pretest" element={<CheckUserExist><Result_pretest /></CheckUserExist>} />
+        <Route path="/soal_belajar_posttest" element={<PrivateRoute element={<Soal_belajar_posttest />} />}  />
+        <Route path="/soal_belajar_pretest" element={<PrivateRoute element={<Soal_belajar_pretest />} />}  />
+        <Route path="/result_posttest" element={<PrivateRoute element={<CheckUserExist><Result_posttest /></CheckUserExist>}/>}  />
+        <Route path="/result_pretest" element={<PrivateRoute element={<CheckUserExistPretest><Result_pretest /></CheckUserExistPretest>}/>}  />
 
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

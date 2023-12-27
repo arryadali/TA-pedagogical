@@ -37,86 +37,51 @@ code {
   margin: auto;
 }
 
-.likert-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background-color: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Warna hitam transparan */
-  z-index: 9998; /* Nomor yang lebih rendah dari likert-popup agar overlay muncul di belakang pop-up */
-}
-
-.btn:hover {
-  background-color: #444;
-}
-
-.btn:focus {
-  box-shadow: 0 0 5px #999;
-}
-
-.btn.dark {
-  background-color: #333;
-}
-
-.btn.dark:hover {
-  background-color: #555;
-}
-
-.btn.dark:focus {
-  box-shadow: 0 0 5px #777;
-}
-
-.btn.mt-3 {
-  margin-top: 15px;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 :root{
-  --primary-color: #0DFF92;
-  --light-color: #f0f0f0;
+  --primary-color: #1D809F;
+}
+
+ul li.bulet{
+  color: black;
+  display: block;
+  position: relative;
+  width: 50%;
+}
+
+ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
 }
 
 ul li label{
+  display: block;
+  position: relative;
   font-weight: 300;
-  font-size: 1.35em;
-  padding: 25px 25px 25px 80px;
-  margin: 10px auto;
-  height: 30px;
+  font-size: medium;
+  padding: 20px;
+  margin: 0px 30px;
+  height: 50px;
   z-index: 9;
   cursor: pointer;
-  -webkit-transition: all 0.25s linear;
 }
 
-ul li:hover .checked {
-  border: 5px solid #FFFFFF;
-}
-
-ul li .check::before {
-  display: block;
+ul li .check{
   position: absolute;
-	content: '';
+  border: 2px solid #AAAAAA;
   border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  top: 5px;
-	left: 5px;
-  margin: auto;
-	transition: background 0.25s linear;
-	-webkit-transition: background 0.25s linear;
+  height: 20px;
+  width: 20px;
+  top: 22px;
+  left: 20px;
+	transition: border .10s linear;
+	-webkit-transition: border .10s linear;
 }
-
 
 input[type=radio]:checked ~ .check {
   border: 5px solid var(--primary-color)
@@ -138,5 +103,3 @@ input[type=radio]:checked ~ .text-primary{
 .checked::before{
   background: var(--primary-color)
 }
-
-

@@ -1,6 +1,7 @@
 import { postServerData,  postServerDataPretest} from '../helper/helper'
 import * as Action from '../redux/result_reducer_posttest'
 import * as ActionPretest from '../redux/result_reducer_pretest'
+import { useEffect, useState } from 'react'
 
 // Post - Test
 export const PushAnswer = (result) => async (dispatch) => {
@@ -19,16 +20,43 @@ export const updateResult = (index) => async(dispatch) => {
     }
 }
 
+// export const usePublishResult = (resultData) => {
+//     const { result, username } = resultData;
+//     (async () => {
+//         try {
+//             if(result !== [] && !username) throw new Error("Couldn't get Result")
+//             await postServerData('http://localhost:5000/api/result', resultData, data => data)
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     })();
+// }
+
 export const usePublishResult = (resultData) => {
-    const { result, username } = resultData;
-    (async () => {
-        try {
-            if(result !== [] && !username) throw new Error("Couldn't get Result")
-            await postServerData('http://localhost:5000/api/result', resultData, data => data)
-        } catch (error) {
-            console.log(error)
+    console.log(resultData);
+    const [isDataSent, setIsDataSent] = useState(false);
+
+    useEffect(() => {
+        if (resultData && !isDataSent) {
+            const { result, username } = resultData;
+
+            (async () => {
+                try {
+                    if (result !== 0 && username) {
+                        await postServerData('http://localhost:5000/api/result', resultData, (data) => data);
+                        console.log('Successfully posted data');
+                        setIsDataSent(true);
+                    } else {
+                        throw new Error("Couldn't get result or username");
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            })();
+        } else {
+            console.log("resultData is undefined or data has been sent");
         }
-    })();
+    }, [resultData, isDataSent]);
 }
 
 // Pre - Test

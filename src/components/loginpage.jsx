@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -34,9 +34,16 @@ const Loginpage = () => {
             console.log(err)
         })
 
-        
-
     }
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('TOKEN');
+        const storedName = localStorage.getItem('NAMA');
+        if (storedToken && storedName){
+          navigate('/dashboard')
+        } 
+      }, [])
+
   return (
     <section id='loginpage'>
         <div class="bg-gray-100 flex justify-center items-center h-screen">

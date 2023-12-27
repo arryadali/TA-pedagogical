@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +12,8 @@ import { usePublishResult } from '../../../hooks/setResult';
 import Navbar from '../../navbar';
 
 const Result_posttest = () => {
+    {/** REFLEKSI */}
+    const [ ArraySalah, setArraySalah ] = useState([])
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
@@ -18,6 +21,8 @@ const Result_posttest = () => {
     const location = useLocation()
     const isResultPosttest = location.pathname === '/result_posttest';
     const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
+
+    const userKelas = localStorage.getItem('JENISKELAS');
 
     const playAudioResult = () => {
         if (isPlaying) {
@@ -30,19 +35,20 @@ const Result_posttest = () => {
     };
     
     useEffect(() => {
-    const timer = setTimeout(() => {
-        setShowMessage(false);
-    }, 6000);
+        refleksi(result, answers)
+        const timer = setTimeout(() => {
+            setShowMessage(false);
+        }, 6000);
 
-    return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
     }, []);
 
     const dispatch = useDispatch();
     const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state);
 
-    const totalPoints = queue.length * 10;
+    const totalPoints = queue.length * 5;
     const attempts = attempts_Number(result);
-    const earnPoints = earnPoints_Number(result, answers, 10);
+    const earnPoints = earnPoints_Number(result, answers, 5);
     const flag = flagResult(totalPoints, earnPoints);
 
 
@@ -59,9 +65,68 @@ const Result_posttest = () => {
         dispatch(resetAllAction());
         dispatch(resetResultAction());
     };
+
+    const refleksi = (result, answers) => {
+        let perkalianMudah = 0;
+        let perkalianSedang = 0;
+        let perkalianSulit = 0;
+        let pembagianMudah = 0;
+        let pembagianSedang = 0;
+        let pembagianSulit = 0;
+    
+        for(let i = 0; i < result.length; i++){
+            if(result[i] !== answers[i]){
+                if(i < 4){
+                    perkalianMudah = perkalianMudah + 1;
+                }
+                if(i <= 6 && i >= 4){
+                    perkalianSedang = perkalianSedang + 1;
+                }
+                if(i <= 9 && i >= 7){
+                    perkalianSulit = perkalianSulit + 1;
+                }
+                if(i <= 13 && i >= 10){
+                    pembagianMudah = pembagianMudah + 1;
+                }
+                if(i <= 16 && i >= 14){
+                    pembagianSedang = pembagianSedang + 1;
+                }
+                if(i <= 20 && i >= 17){
+                    pembagianSulit = pembagianSulit + 1;
+                }
+            }
+        }
+        
+        let temp_array = [
+            {'category': 'Perkalian Mudah', 'value': perkalianMudah}, 
+            {'category': 'Perkalian Sedang', 'value': perkalianSedang}, 
+            {'category': 'Perkalian Sulit', 'value': perkalianSulit}, 
+            {'category': 'Pembagian Mudah', 'value': pembagianMudah}, 
+            {'category': 'Pembagian Sedang', 'value':pembagianSedang}, 
+            {'category': 'Pembagian Sulit', 'value': pembagianSulit}];
+        
+        let dictionary = [
+            'Materi perkalian biasa dengan biasa',
+            'Materi perkalian biasa dengan campuran',
+            'Materi perkalian campuran dengan campuran',
+            'Materi pembagian biasa dengan biasa',
+            'Materi pembagian biasa dengan campuran',
+            'Materi pembagian campuran dengan campuran',
+        ]
+
+        let array = [];
+        for(let i = 0; i < temp_array.length; i++){
+            if(temp_array[i].value >= 2){
+                array.push(dictionary[i])
+            }
+        }
+        
+        console.log(array)
+        return setArraySalah(array)
+    }
     
   return (
-    <section id='hasil'>
+    <section  id='hasil'>
         <Navbar/>
         <div className='agenped'>
             <div>
@@ -100,12 +165,23 @@ const Result_posttest = () => {
 
                 </div>
 
+                <h1 className='font-bold text-center mb-4'>REFLEKSI</h1>
+                <div className='flex justify-center flex-col border w-3/4 m-auto p-8 mb-4'>
+                    <h3>Kamu harus memahami materi :</h3>
+                    {ArraySalah.map((item, index) => (
+                        <div key={index} className='flex justify-between'>
+                            <span>{item}</span>
+                        </div>
+                    ))}
+                </div>
+
                 <div className='text-center'>
                     <Link className='btn font-[georgia]' to={"/quiz_setup_posttest"} onClick={onRestart}>DONE</Link>
                 </div>    
             </div>
 
-            <aside className='mt-12'>
+            {userKelas === 'kelas-eksperiment' && (
+                <aside className='mt-12'>
                 <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
                     <img src={flag ? "../asset/agen/seneng.png" : "../asset/agen/sedih.png"} alt="" width={230} className='mx-auto' />
                     <div className='px-4 py-6 text-justify'>
@@ -130,6 +206,7 @@ const Result_posttest = () => {
                     </button>
                 </div>
             </aside>
+            )}
         </div>
     </section>
   )

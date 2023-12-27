@@ -12,143 +12,143 @@ const Materi_pembagian = () => {
 
     const materiPembagian = [
       {
-          question: "1. Hisyam memiliki 2/3 jumlah makanan dan Kiani memiliki 5/6 jumlah makanan. Hisyam ingin mengalikan jumlah makanan tersebut dengan Kiani. Berapa total jumlah makanan yang dimiliki Hisyam setelah dikalikan dengan Kiani?",
+          question: "1. Arfan membeli 6 kg tepung untuk membuat kue. Setiap adonan butuh 3/4 kg tepung. Jadi, berapa banyak adonan yang bisa dibuat?",
           options: [
               {
                   id: 'A',
-                  text: "5/9",
+                  text: "8 adonan",
               },
               {
                   id: 'B',
-                  text: "10/6",
+                  text: "7 adonan",
               },
               {
                   id: 'C',
-                  text: "9/8",
+                  text: "6 adonan",
               },
               {
                   id: 'D',
-                  text: "7/6",
+                  text: "5 adonan",
               },
           ],
           stepsMateriPembagian : [
               {
                   judul: "Langkah 1",
-                  konten: "Jika Hisyam memiliki 2/3 makanan dan Kiani memiliki 5/6 jumlah makanan, maka",
-                  gambar: "/../asset/step/perkalian/step1.1.png",
-                  suara : "../asset/audio/materi/perkalian/step1.mp4"
+                  konten: "Arfan membeli 6 kg tepung dan setiap adonan membutuhkan 3/4 kg tepung",
+                  gambar: "/../asset/step/pembagian/step1.1.png",
+                  suara : "../asset/audio/materi/pembagian/step1.1.mp4"
               },
               {
                   judul: "Langkah 2",
-                  konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya",
-                  gambar: "/../asset/step/perkalian/step1.2.png",
-                  suara : "../asset/audio/materi/perkalian/step2.mp4"
+                  konten: "Untuk membagi pecahan. Ubahlah posisi pembilang dan penyebutnya, lalu bagi dengan angka yang bisa dibagi oleh keduanya",
+                  gambar: "/../asset/step/pembagian/step1.2.png",
+                  suara : "../asset/audio/materi/pembagian/step1.2.mp4"
               },
               {
                   judul: "Langkah 3",
-                  konten: "Jika pecahan tersebut bisa disederhanakan, sederhanakanlah pecahan tersebut",
-                  gambar: "/../asset/step/perkalian/step1.3.png",
-                  suara : "../asset/audio/materi/perkalian/step3.mp4"
-              },
-              {
-                  judul: "Langkah 4",
                   konten: "Jawaban yang benar adalah A",
-                  gambar: "/../asset/step/perkalian/step1.4.png",
-                  suara : "../asset/audio/materi/perkalian/step4.mp4"
+                  gambar: "/../asset/step/pembagian/step1.3.png",
+                  suara : "../asset/audio/materi/pembagian/step1.3.mp4"
               },
           ],
       },
       {
-          question: "2. Lisa mengikuti resep kue yang jumlah gulanya dibutuhkan 3/4 jumlah tepung yang dibutuhkan. Jika Lisa menggunakan 2 1/3 cangkir tepung. Berapa cangkir gula yang dibutuhkan Lisa untuk membuat kuenya?",
-          options: [
+            question: "2. Sebatang besi yang panjangnya 3 m memiliki berat 2 1/4. Berapa berat per meternya?",
+            options: [
               {
                   id: 'A',
-                  text: "1 7/12",
+                  text: "1/4 m",
               },
               {
                   id: 'B',
-                  text: "3 1/9",
+                  text: "3/4 m",
               },
               {
                   id: 'C',
-                  text: "1 3/4",
+                  text: "2/3 m",
               },
               {
                   id: 'D',
-                  text: "3 1/12",
+                  text: "2/5 m",
               },
           ],
           stepsMateriPembagian : [
               {
                   judul: "Langkah 1",
-                  konten: "Jika dia membutuhkan 3/4 jumlah tepung kue, maka dia perlu 3/4 dari 2 1/3 cangkir. Menjadi",
-                  gambar: "/../asset/step/perkalian/step2.1.png",
-                  suara : "../asset/audio/materi/perkalian/step1.mp4"
+                  konten: "Sebatang besi memiliki panjang 3 meter dan berat 2 1/4.",
+                  gambar: "/../asset/step/pembagian/step2.1.png",
+                  suara : "../asset/audio/materi/pembagian/step2.1.mp4"
               },
               {
                   judul: "Langkah 2",
-                  konten: "Untuk mengalikan bilangan campuran dan pecahan, pertama-tama jadikan bilangan campuran tersebut menjadi pecahan biasa.",
-                  gambar: "/../asset/step/perkalian/step2.2.png",
-                  suara : "../asset/audio/materi/perkalian/step2.mp4"
+                  konten: "Ubahlah pecahan campuran menjadi pecahan biasa terlebih dahulu",
+                  gambar: "/../asset/step/pembagian/step2.2.png",
+                  suara : "../asset/audio/materi/pembagian/step2.2.mp4"
               },
               {
                   judul: "Langkah 3",
-                  konten: "Untuk mengalikan pecahan, kalikan pembilang dan penyebutnya, lalu sederhanakan. Setelah itu, ubahlah menjadi bilangan campuran!",
-                  gambar: "/../asset/step/perkalian/step2.3.png",
-                  suara : "../asset/audio/materi/perkalian/step3.mp4"
+                  konten: "Untuk membagi pecahan. Ubahlah posisi pembilang dan penyebutnya, lalu bagi dengan angka yang bisa dibagi oleh keduanya",
+                  gambar: "/../asset/step/pembagian/step2.3.png",
+                  suara : "../asset/audio/materi/pembagian/step2.3.mp4"
               },
               {
                   judul: "Langkah 4",
+                  konten: "Jawaban yang benar adalah B",
+                  gambar: "/../asset/step/pembagian/step2.4.png",
+                  suara : "../asset/audio/materi/pembagian/step2.4.mp4"
+              },
+          ],
+      },
+      {
+          question: "3. Kayla memiliki sebuah pita berukuran 2 3/4 m. Kayla ingin memotong pita tersebut menjadi beberapa bagian berukuran 1 1/2 m. Berapa banyak potongan pita yang dibuat Kayla?",
+          options: [
+              {
+                  id: 'A',
+                  text: "1 7/12 potong",
+              },
+              {
+                  id: 'B',
+                  text: "3 1/9 potong",
+              },
+              {
+                  id: 'C',
+                  text: "1 5/6 potong",
+              },
+              {
+                  id: 'D',
+                  text: "4 1/8 potong",
+              },
+          ],
+          stepsMateriPembagian : [
+              {
+                  judul: "Langkah 1",
+                  konten: "Kayla memiliki pita 2 3/4 m dan ingin dibagikan menjadi 1 1/2 m.",
+                  gambar: "/../asset/step/pembagian/step3.1.png",
+                  suara : "../asset/audio/materi/pembagian/step3.1.mp4"
+              },
+              {
+                  judul: "Langkah 2",
+                  konten: "Ubahlah pecahan campuran menjadi pecahan biasa terlebih dahulu",
+                  gambar: "/../asset/step/pembagian/step3.2.png",
+                  suara : "../asset/audio/materi/pembagian/step3.2.mp4"
+              },
+              {
+                  judul: "Langkah 3",
+                  konten: "Untuk membagi pecahan. Ubahlah posisi pembilang dan penyebutnya, lalu bagi dengan angka yang bisa dibagi oleh keduanya",
+                  gambar: "/../asset/step/pembagian/step3.3.png",
+                  suara : "../asset/audio/materi/pembagian/step3.3.mp4"
+              },
+              {
+                  judul: "Langkah 4",
+                  konten: "Jika pecahan tersebut bisa disederhanakan, sederhanakanlah pecahan tersebut",
+                  gambar: "/../asset/step/pembagian/step3.4.png",
+                  suara : "../asset/audio/materi/pembagian/step3.4.mp4"
+              },
+              {
+                  judul: "Langkah 5",
                   konten: "Jawaban yang benar adalah C",
-                  gambar: "/../asset/step/perkalian/step2.4.png",
-                  suara : "../asset/audio/materi/perkalian/step4.mp4"
-              },
-          ],
-      },
-      {
-          question: "3. INI NO 3",
-          options: [
-              {
-                  id: 'A',
-                  text: "1 7/12",
-              },
-              {
-                  id: 'B',
-                  text: "3 1/9",
-              },
-              {
-                  id: 'C',
-                  text: "1 3/4",
-              },
-              {
-                  id: 'D',
-                  text: "3 1/12",
-              },
-          ],
-          stepsMateriPembagian : [
-              {
-                  judul: "Langkah 1",
-                  konten: "BELOMMMMMMMMMM",
-                  gambar: "/../asset/step/perkalian/step1.png",
-                  suara : "../asset/audio/materi/perkalian/step1.mp4"
-              },
-              {
-                  judul: "Langkah 2",
-                  konten: "BELOMMMMMMMMMM.",
-                  gambar: "/../asset/step/perkalian/step2.png",
-                  suara : "../asset/audio/materi/perkalian/step2.mp4"
-              },
-              {
-                  judul: "Langkah 3",
-                  konten: "BELOMMMMMMMMMM",
-                  gambar: "/../asset/step/perkalian/step3.png",
-                  suara : "../asset/audio/materi/perkalian/step3.mp4"
-              },
-              {
-                  judul: "Langkah 4",
-                  konten: "BELOMMMMMMMMMM",
-                  gambar: "/../asset/step/perkalian/step4.png",
-                  suara : "../asset/audio/materi/perkalian/step4.mp4"
+                  gambar: "/../asset/step/pembagian/step3.5.png",
+                  suara : "../asset/audio/materi/pembagian/step3.5.mp4"
               },
           ],
       },

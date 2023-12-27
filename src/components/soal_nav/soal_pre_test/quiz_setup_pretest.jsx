@@ -54,8 +54,7 @@ const Quiz_setup_pretest = () => {
                 <h1 className='text-[40px] mb-[5%]'>INTRUKSI QUIZ PRE-TEST</h1>
 
                 <ol className='mb-[5%] list-decimal pl-4 text-justify'>
-                    <li>Quiz ini mempunyai 10 soal yang harus kalian jawab</li>
-                    <li>10 point diberikan jika kalian benar</li>
+                    <li>Quiz ini mempunyai 20 soal yang harus kalian jawab</li>
                     <li>Setiap pertanyaan memiliki beberapa opsi. Kalian hanya bisa memilih 1 jawaban</li>
                     <li>Kalian bisa mengganti jawaban ketika belum menyelesaikan quiz</li>
                     <li>Hasil akan keluar saat sudah menyelesaikan Quiz</li>

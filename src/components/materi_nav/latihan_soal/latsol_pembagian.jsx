@@ -97,7 +97,7 @@ const LatsolPembagian = () => {
                 {
                     judul : "Langkah 2",
                     text: `Setelah diubah ke pecahan biasa. Tukarlah pembilang dan penyebutnya tersebut
-                    8/3 x 1/2 = ... ?
+                    8/3 : 2 = 8/3 x 1/2 = ... ?
                     `,
                     suara: "../asset/audio/materi/pembagian/hint/hint2.2.mp4",
                 },
@@ -141,7 +141,7 @@ const LatsolPembagian = () => {
                 {
                     judul : "Langkah 2",
                     text: `Setelah diubah ke pecahan biasa. Tukarlah pembilang dan penyebutnya tersebut
-                    7/2 x 1/8 = ... ?
+                    7/2 : 8 = 7/2 x 1/8 = ... ?
                     `,
                     suara: "/../asset/audio/materi/perkalian/hint/hintstep2.mp4",
                 },

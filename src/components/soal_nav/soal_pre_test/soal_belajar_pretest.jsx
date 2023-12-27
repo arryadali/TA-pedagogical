@@ -54,13 +54,13 @@ const Soal_belajar_pretest = () => {
                 <div className='grid grid-cols-2'>
                   {tracePretest > 0 ? <button 
                   onClick={onKembali}
-                  className='bg-[#1D809F] text-[1.2rem] rounded-[1rem] py-[16px] px-[27.2px]'>
+                  className='btn'>
                     Kembali
                   </button> : <div></div>}
 
                   <button 
                   onClick={onSelanjutnya}
-                  className='bg-[#1D809F] text-[1.2rem] rounded-[1rem] py-[16px] px-[27.2px]'>
+                  className='bg-[#1D809F] w-40 rounded-sm text-white'>
                     Selanjutnya
                   </button>
 

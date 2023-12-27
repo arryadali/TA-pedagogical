@@ -12,16 +12,11 @@ const Page_materi = () => {
                 <div className='flex justify-center'>
                     <img src="../asset/materi/pecahandanpembagian.png" alt="materi" className='h-[550px]'/>
                 </div>
-                <Link to={'/full_materi'}>
+                <Link to={'/materi_perkalian'}>
                     <button className='btn mt-4'>
                         Lanjutkan
                     </button>
                 </Link>
-                {/* <Link to={'/materi_perkalian'}>
-                    <button className='btn mt-4'>
-                        Lanjutkan
-                    </button>
-                </Link> */}
             </div>
         </div>
     </section>

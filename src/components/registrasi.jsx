@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 
-const Registrasi = () => {
 
+const Loginpage = () => {
   const [nama, setNama] = useState('')
   const [kelas, setKelas] = useState('')
   const [jeniskelas, setJenisKelas] = useState('')
@@ -39,120 +39,129 @@ const Registrasi = () => {
   }
 
   return (
-    <section id='registrasi'>
-      <div className='h-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center items-center'>
+    <section id='loginpage'>
+        <div class="bg-gray-100 flex justify-center items-center h-screen">
 
-        <div class="lg:w-2/5 md:w-1/2 w-2/3">
-            <form class="bg-white p-10 rounded-lg shadow-lg min-w-full">
+            <div class="w-1/2 h-screen hidden lg:block">
+                <img src="../asset/sekolah/login.jpg" alt="" className='object-cover w-full h-full'/>
+            </div>
 
-              <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Registrasi</h1>
-                <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="name">Nama Lengkap</label>
-                  <input
-                  onChange={(e) => {
-                    setNama(e.target.value)
-                  }}
-                  value={nama} 
-                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="text" 
-                  name="name" 
-                  id="name"/>
-                </div>
+            <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+                <h1 class="text-2xl font-semibold mb-4">Register</h1>
 
-                <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="kelas">Kelas</label>
-                  <select
-                    onChange={(e) => {
-                      setKelas(e.target.value);
-                    }}
-                    value={kelas}
-                    className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
-                    name="kelas"
-                    id="kelas"
-                  >
-                    <option value="" disabled selected>
-                      Pilih Kelas
-                    </option>
-                    <option value="kelas-kontrol">5A</option>
-                    <option value="kelas-eksperiment">5B</option>
-                    <option value="kelas-eksperiment">5C</option>
-                    <option value="kelas-eksperiment">5D</option>
-                  </select>
-                </div>
+                <form>
 
-                <div>
-                  <label className="text-gray-800 font-semibold block my-3 text-md" for="jeniskelas">
-                    Jenis Kelas
-                  </label>
-                  <select
-                    onChange={(e) => {
-                      setJenisKelas(e.target.value);
-                    }}
-                    value={jeniskelas}
-                    className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
-                    name="jeniskelas"
-                    id="jeniskelas"
-                  >
-                    <option value="" disabled selected>
-                      Pilih Jenis Kelas
-                    </option>
-                    <option value="kelas-kontrol">Kelas Kontrol</option>
-                    <option value="kelas-eksperiment">Kelas Eksperimen</option>
-                  </select>
-                </div>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-600">Nama Lengkap</label>
+                        <input
+                        onChange={(e) => {
+                          setNama(e.target.value)
+                        }}
+                        value={nama}
+                        type="text" 
+                        name="name" 
+                        id="name"
+                        className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        />
+                    </div>
 
-                <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="absen">No Absen</label>
-                  <input
-                  onChange={(e) => {
-                    setAbsen(e.target.value)
-                  }}
-                  value={absen} 
-                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="text" 
-                  name="absen" 
-                  id="absen"/>
-                </div>
+                    <div class="mb-4">
+                        <label for="Kelas" class="block text-gray-600">Kelas</label>
+                        <select
+                          onChange={(e) => {
+                            setKelas(e.target.value);
+                          }}
+                          value={kelas} 
+                          type="text"
+                          id='kelas'
+                          name='kelas'
+                          className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        >
+                          <option value="" disabled selected>
+                            Pilih Kelas
+                          </option>
+                          <option value="5A">5A</option>
+                          <option value="5B">5B</option>
+                          <option value="5C">5C</option>
+                          <option value="5D">5D</option>
+                        </select>
+                    </div>
 
-                <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="username">Username</label>
-                  <input
-                  onChange={(e) => {
-                    setUserName(e.target.value)
-                  }}
-                  value={username} 
-                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                  type="text" 
-                  name="username" 
-                  id="username" />
-                </div>
-                
-                <div>
-                  <label class="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
-                  <input
-                  onChange={(e) => {
-                    setPassword(e.target.value)
-                  }}
-                  value={password} 
-                  class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" 
-                   
-                  name="password" 
-                  id="password" />
-                </div>
+                    <div class="mb-4">
+                        <label for="jeniskelas" class="block text-gray-600">Jenis Kelas</label>
+                        <select
+                          onChange={(e) => {
+                            setJenisKelas(e.target.value)
+                          }}
+                          value={jeniskelas}
+                          name="jeniskelas" 
+                          id="jeniskelas"
+                          className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        >
+                          <option value="" disabled selected>
+                            Pilih Jenis Kelas
+                          </option>
+                          <option value="kelas-kontrol">Kelas 1</option>
+                          <option value="kelas-eksperiment">Kelas 2</option>
+                        </select>
+                    </div>
 
-                <button
-                onClick={handleSubmit}
-                type="submit" 
-                class="w-full mt-8 bg-[#1D809F] rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
-                  Register
-                </button>
+                    <div class="mb-4">
+                        <label for="absen" class="block text-gray-600">No Absen</label>
+                        <input
+                        onChange={(e) => {
+                          setAbsen(e.target.value)
+                        }}
+                        value={absen}
+                        type="text" 
+                        name="absen" 
+                        id="absen"
+                        className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        />
+                    </div>
 
-            </form>
-          </div>
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-600">Username</label>
+                        <input
+                        onChange={(e) => {
+                          setUserName(e.target.value)
+                        }}
+                        value={username}
+                        type="text" 
+                        name="username" 
+                        id="username"
+                        className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        />
+                    </div>
 
-      </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-600">Password</label>
+                        <input
+                        onChange={(e) => {
+                          setPassword(e.target.value)
+                        }}
+                        value={password}
+                        type="text" 
+                        name="password" 
+                        id="password"
+                        className='w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none'
+                        />
+                    </div>
+
+                    <button
+                    onClick={handleSubmit} 
+                    type="submit" 
+                    class="bg-[#1D809F]  text-white font-semibold rounded-md py-2 px-4 w-full">
+                        Register
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
     </section>
   )
 }
 
-export default Registrasi;
+export default Loginpage;
