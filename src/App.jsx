@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PrivateRoute element={<Welcomepage/>} />} />
+        <Route path="/" element={<Welcomepage/>} />
         <Route path="/loginpage" element={<Loginpage/>}/>
         <Route path="/registrasi" element={<Registrasi/>}/>
         <Route path="/dashboard" element={<PrivateRoute element={<Dashboard/>} />} />

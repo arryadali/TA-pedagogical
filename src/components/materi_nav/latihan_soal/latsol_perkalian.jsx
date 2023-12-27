@@ -16,6 +16,7 @@ const LatsolPerkalian = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
     const [buttonSuara, setButtonSuara] = useState(false);
+    const userKelas = localStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
@@ -297,7 +298,7 @@ const LatsolPerkalian = () => {
 
                             <ul className='text-left text-sm'>
                                 {currentQuestionData.options.map((option) => (
-                                    <li key={option.id} className='mb-5'>
+                                    <li key={option.id} className='mb-5 bulet'>
                                         <label className={`${wrongAnswer === option.id ? 'text-red-500' : ''} ${selectedAnswer === option.id && isCorrect ? 'text-green-500' : ''}`}>
                                             <input
                                                 type="radio"
@@ -365,7 +366,11 @@ const LatsolPerkalian = () => {
                                     <p style={{ whiteSpace: "pre-line" }}>
                                         {stepsHint[currentHintIndex].text}
                                     </p>
-                                    <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+
+                                    {userKelas === "kelas-eksperiment" && (
+                                        <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+                                    )}
+                                    
                                     <div className='flex justify-between'>
                                         {currentHintIndex > 0 && (
                                             <button
@@ -404,30 +409,32 @@ const LatsolPerkalian = () => {
                     </div>
                 </div>
 
-                <aside className='mt-12'>
-                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                        <p>
-                            {message && (
-                                <div className='px-4 py-6 text-justify'>
-                                    {message}
-                                    
-                                </div>
-                            )}
-                        </p>
-                    </div>
+                {userKelas === "kelas-eksperiment" && (
+                    <aside className='mt-12'>
+                        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                            <p>
+                                {message && (
+                                    <div className='px-4 py-6 text-justify'>
+                                        {message}
+                                        
+                                    </div>
+                                )}
+                            </p>
+                        </div>
 
-                    <div className='text-center font-[georgia] mt-4'>
-                        {buttonSuara && (
-                            <>
-                                <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                                <button className='btn mt-4' onClick={playAudioMateri}>
-                                    {isPlaying ? 'Hentikan' : 'Suara'}
-                                </button>
-                            </>
-                        )}
-                    </div>
-                </aside>
+                        <div className='text-center font-[georgia] mt-4'>
+                            {buttonSuara && (
+                                <>
+                                    <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                                    <button className='btn mt-4' onClick={playAudioMateri}>
+                                        {isPlaying ? 'Hentikan' : 'Suara'}
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    </aside>
+                )}
             </div>
         </section>
     );

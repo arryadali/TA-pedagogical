@@ -7,6 +7,7 @@ const Materi_pembagian = () => {
     const [currentMateriIndexPembagian, setCurrentMateriIndexPembagian] = useState(0);
     const [showStepsPembagian, setshowStepsPembagian] = useState(false);
     const [audioSrcPembagian, setAudioSrcPembagian] = useState('');
+    const userKelas = localStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate()
 
@@ -219,7 +220,9 @@ const handleStart = async () => {
                                 <p style={{ whiteSpace: "pre-line" }}>{materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian]?.konten}</p>
                                 <img src={materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian]?.gambar} alt="Step" className='m-auto' />
 
-                                <audio controls autoPlay src={audioSrcPembagian} className='m-auto mt-2'/>
+                                {userKelas === "kelas-eksperiment" && (
+                                    <audio controls autoPlay src={audioSrcPembagian} className='m-auto mt-2'/>
+                                )}
 
                                 <div className="flex justify-between mt-4">
                                     {currentStepPembagian > 0 && (
@@ -254,11 +257,13 @@ const handleStart = async () => {
                     </div>
                 </div>
 
-                <aside className='mt-12'>
-                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    </div>
-                </aside>
+                {userKelas === "kelas-eksperiment" && (
+                    <aside className='mt-12'>
+                        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        </div>
+                    </aside>
+                )}
             </div>
         </section>
   )

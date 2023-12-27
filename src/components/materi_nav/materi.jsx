@@ -34,7 +34,7 @@ const Materi = () => {
   const handleBacaMateriClick = (kelas) => {
     if (userKelas === kelas) {
       if (kelas === "kelas-kontrol") {
-        navigate('/full_materi')
+        navigate('/page_materi')
       } else if (kelas === "kelas-eksperiment") {
         navigate("/page_materi")
       }
@@ -75,25 +75,27 @@ const Materi = () => {
 
           </div>
 
-            <aside className='mt-12'>
-              <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                  <div className='px-4 py-6 text-justify'>
-                    {isBacaMateri && showMessage ? (
-                      <p className='font-[georgia]'>
-                        Disini kita akan membaca materi tentang perkalian dan pembagian pecahan. Silahkan klik “ Baca Materi “
-                      </p>
-                    ) : null}
-                  </div>
-              </div>
+            {userKelas === "kelas-eksperiment" && (
+              <aside className='mt-12'>
+                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                  <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                    <div className='px-4 py-6 text-justify'>
+                      {isBacaMateri && showMessage ? (
+                        <p className='font-[georgia]'>
+                          Disini kita akan membaca materi tentang perkalian dan pembagian pecahan. Silahkan klik “ Baca Materi “
+                        </p>
+                      ) : null}
+                    </div>
+                </div>
 
-              <div className='text-center font-[georgia] mt-4'>
-                <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                <button className='btn mt-4' onClick={playAudioMateri}>
-                  {isPlaying ? 'Hentikan' : 'Suara'}
-                </button>
-              </div>
-            </aside>
+                <div className='text-center font-[georgia] mt-4'>
+                  <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                  <button className='btn mt-4' onClick={playAudioMateri}>
+                    {isPlaying ? 'Hentikan' : 'Suara'}
+                  </button>
+                </div>
+              </aside>
+            )}
 
         </div>
     </section>

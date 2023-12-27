@@ -74,24 +74,29 @@ const Soal_belajar_posttest = () => {
     <section id='soal_belajar_posttest'>
       <div className='container'>
         <div className='grid grid-cols-2 gap-10 w-[82%] m-auto mt-[39px]'>
-          <div className=''>
-            <Questions onChecked={onChecked} />
-            <div className='grid grid-cols-2'>
-              {trace > 0 ? (
-                <button
-                  onClick={onKembali}
-                  className='btn'>
-                  Kembali
-                </button>
-              ) : (
-                <div></div>
-              )}
+          
+          <div>
+            <div className='h-[80%]'>
+              <Questions onChecked={onChecked} />
+            </div>
+            <div>
+              <div className='grid grid-cols-2 mt-10'>
+                  {trace > 0 ? (
+                    <button
+                      onClick={onKembali}
+                      className='w-2/4 btn font-[geogibra]'>
+                      Kembali
+                    </button>
+                  ) : (
+                    <div></div>
+                  )}
 
-              <button
-                onClick={onSelanjutnya}
-                className=''>
-                Selanjutnya
-              </button>
+                  <button
+                    onClick={onSelanjutnya}
+                    className='w-2/4 bg-[#3794b0] rounded-lg font-[geogibra]'>
+                    Selanjutnya
+                  </button>
+                </div>
             </div>
           </div>
 

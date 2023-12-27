@@ -7,6 +7,7 @@ const Materi_perkalian = () => {
     const [currentMateriIndex, setCurrentMateriIndex] = useState(0);
     const [showStepsPerkalian, setshowStepsPerkalian] = useState(false);
     const [audioSrcPerkalian, setAudioSrcPerkalian] = useState('');
+    const userKelas = localStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate();
 
@@ -225,7 +226,9 @@ const Materi_perkalian = () => {
                                 <p style={{ whiteSpace: "pre-line" }}>{materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian]?.konten}</p>
                                 <img src={materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian]?.gambar} alt="Step" className='m-auto' />
 
-                                <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+                                {userKelas === "kelas-eksperiment" && (
+                                    <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+                                )}
 
                                 <div className="flex justify-between mt-4">
                                     {currentStepPerkalian > 0 && (
@@ -260,11 +263,13 @@ const Materi_perkalian = () => {
                     </div>
                 </div>
 
-                <aside className='mt-12'>
-                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    </div>
-                </aside>
+                {userKelas === "kelas-eksperiment" && (
+                    <aside className='mt-12'>
+                        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        </div>
+                    </aside>
+                )}
             </div>
         </section>
     );

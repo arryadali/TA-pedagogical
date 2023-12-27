@@ -16,6 +16,7 @@ const LatsolPembagian = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
     const [buttonSuara, setButtonSuara] = useState(false);
+    const userKelas = localStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
@@ -136,19 +137,19 @@ const LatsolPembagian = () => {
                     text : `Ubahlah kedua bilangan tersebut ke bilangan pecahan biasa
                     2 3/2 = … ? dan 6 2/1 = … ?
                     `,
-                    suara: "/../asset/audio/materi/perkalian/hint/hintstep1.mp4",
+                    suara: "../asset/audio/materi/pembagian/hint/hint3.1.mp4",
                 },
                 {
                     judul : "Langkah 2",
                     text: `Setelah diubah ke pecahan biasa. Tukarlah pembilang dan penyebutnya tersebut
                     7/2 : 8 = 7/2 x 1/8 = ... ?
                     `,
-                    suara: "/../asset/audio/materi/perkalian/hint/hintstep2.mp4",
+                    suara: "../asset/audio/materi/pembagian/hint/hint3.2.mp4",
                 },
                 {
                     judul : "Langkah 3",
                     text: "Apakah kamu sudah mengetahui jawabannya?",
-                    suara: "/../asset/audio/materi/perkalian/hint/hintstep3.mp4",
+                    suara: "../asset/audio/materi/pembagian/hint/hint3.3.mp4",
                 },
             ],
             linkHint : "https://youtu.be/CoEggpHZfH4"
@@ -287,9 +288,9 @@ const LatsolPembagian = () => {
                                 {currentQuestionData.question}
                             </p>
 
-                            <ul className='text-left text-sm'>
+                            <ul className='text-left text-sm bulet'>
                                 {currentQuestionData.options.map((option) => (
-                                    <li key={option.id} className='mb-5'>
+                                    <li key={option.id} className='mb-5 hover:text-red-500'>
                                         <label className={`${wrongAnswer === option.id ? 'text-red-500' : ''} ${selectedAnswer === option.id && isCorrect ? 'text-green-500' : ''}`}>
                                             <input
                                                 type="radio"
@@ -357,7 +358,11 @@ const LatsolPembagian = () => {
                                     <p style={{ whiteSpace: "pre-line" }}>
                                         {stepsHint[currentHintIndex].text}
                                     </p>
-                                    <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+
+                                    {userKelas === "kelas-eksperiment" && (
+                                        <audio controls autoPlay src={audioSrcPerkalian} className='m-auto mt-2'/>
+                                    )}
+
                                     <div className='flex justify-between'>
                                         {currentHintIndex > 0 && (
                                             <button
@@ -396,30 +401,32 @@ const LatsolPembagian = () => {
                     </div>
                 </div>
 
-                <aside className='mt-12'>
-                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                        <p>
-                            {message && (
-                                <div className='px-4 py-6 text-justify'>
-                                    {message}
-                                    
-                                </div>
-                            )}
-                        </p>
-                    </div>
+                {userKelas === "kelas-eksperiment" && (
+                    <aside className='mt-12'>
+                        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                            <p>
+                                {message && (
+                                    <div className='px-4 py-6 text-justify'>
+                                        {message}
+                                        
+                                    </div>
+                                )}
+                            </p>
+                        </div>
 
-                    <div className='text-center font-[georgia] mt-4'>
-                        {buttonSuara && (
-                            <>
-                                <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                                <button className='btn mt-4' onClick={playAudioMateri}>
-                                    {isPlaying ? 'Hentikan' : 'Suara'}
-                                </button>
-                            </>
-                        )}
-                    </div>
-                </aside>
+                        <div className='text-center font-[georgia] mt-4'>
+                            {buttonSuara && (
+                                <>
+                                    <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                                    <button className='btn mt-4' onClick={playAudioMateri}>
+                                        {isPlaying ? 'Hentikan' : 'Suara'}
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    </aside>
+                )}
             </div>
         </section>
     );
