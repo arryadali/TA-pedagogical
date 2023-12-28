@@ -14,7 +14,6 @@ import Profile from "./components/profile_nav/profile";
 import Materi from "./components/materi_nav/materi";
 import Materi_perkalian from "./components/materi_nav/baca_materi/materi_perkalian";
 import Materi_pembagian from "./components/materi_nav/baca_materi/materi_pembagian";
-import Full_materi from "./components/materi_nav/baca_materi/full_materi";
 
 // Latihan Soal
 import Latsol_perkalian from "./components/materi_nav/latihan_soal/latsol_perkalian";
@@ -50,7 +49,6 @@ function App() {
         <Route path="/page_materi" element={<PrivateRoute element={<Page_materi/>} />} />
         <Route path="/materi_perkalian" element={<PrivateRoute element={<Materi_perkalian/>} />} />
         <Route path="/materi_pembagian" element={<PrivateRoute element={<Materi_pembagian/>} />} />
-        <Route path="/full_materi" element={<PrivateRoute element={<Full_materi/>} />} />
 
         {/* Latihan Soal */}
         <Route path="/latihan_soal_perkalian" element={<PrivateRoute element={<Latsol_perkalian/>} />} />

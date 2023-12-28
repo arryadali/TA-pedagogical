@@ -13,7 +13,7 @@ const Quiz_setup_posttest = () => {
     const inputRef = useRef()
     const dispatch = useDispatch()
     const location = useLocation()
-    const [audio] = useState(new Audio("../asset/audio/materi/page_materi.mp4"));
+    const [audio] = useState(new Audio("../asset/audio/soal/intruksi_prepos.mp4"));
     const isBacaSoal = location.pathname === "/quiz_setup_posttest"
     
     const startQuiz = () => {

@@ -8,8 +8,6 @@ const Materi_perkalian = () => {
     const [showStepsPerkalian, setshowStepsPerkalian] = useState(false);
     const [audioSrcPerkalian, setAudioSrcPerkalian] = useState('');
     const [showMessage, setShowMessage] = useState(true);
-    const [imgSrc, setImgSrc] = useState("../asset/agen/merem_senyum.png");
-
     const userKelas = localStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate();
@@ -165,33 +163,17 @@ const Materi_perkalian = () => {
     ];
 
     const handleNext = () => {
-        if (currentStepPerkalian < materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 2) {
+        if (currentStepPerkalian < materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 1) {
             setCurrentStepPerkalian(currentStepPerkalian + 1);
             setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian + 1].suara);
-        } else if (currentStepPerkalian === materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 2) {
-            if (currentMateriIndex === 1) {
-                setShowMessage("Ayoo, kamu bisa! Masih ada 2 materi lagi yang harus kamu baca!");
-                setImgSrc("../asset/agen/merem_senyum.png");
-            } else if (currentMateriIndex === 2) {
-                setShowMessage("Wi kamu keren! Semangat terus belajarnya, jangan menyerah!");
-                setImgSrc("../asset/agen/naga.png");
-            } else {
-                setShowMessage("Kamu sudah hampir selesai baca materi perkaliannya! kamu hebat!");
-                setImgSrc("../asset/agen/naga.png");
-            }
-            setCurrentStepPerkalian(currentStepPerkalian + 1);
-            setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian + 1].suara);
+            setShowMessage("Semangat ya belajar nya!");
         } else {
             if (currentMateriIndex < materiPerkalian.length - 1) {
                 setCurrentMateriIndex(currentMateriIndex + 1);
                 setCurrentStepPerkalian(0);
                 setAudioSrcPerkalian(materiPerkalian[currentMateriIndex + 1].stepsMateriPerkalian[0].suara);
-                setShowMessage("");
-                setImgSrc("../asset/agen/guru.png")
             } else {
                 navigate('/latihan_soal_perkalian');
-                setShowMessage("");
-                setImgSrc("../asset/agen/guru.png")
             }
         }
     };
@@ -285,7 +267,7 @@ const Materi_perkalian = () => {
 
                 {userKelas === 'kelas-eksperiment' && (
                     <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                    <img src={imgSrc} alt='' width={230} className='mx-auto' />
+                    <img src='../asset/agen/guru.png' alt='' width={230} className='mx-auto' />
                     <p>
                         {showMessage && (
                         <div className='px-4 py-6 text-justify'>

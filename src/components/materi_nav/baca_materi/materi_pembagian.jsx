@@ -7,6 +7,7 @@ const Materi_pembagian = () => {
     const [currentMateriIndexPembagian, setCurrentMateriIndexPembagian] = useState(0);
     const [showStepsPembagian, setshowStepsPembagian] = useState(false);
     const [audioSrcPembagian, setAudioSrcPembagian] = useState('');
+    const [showMessage, setShowMessage] = useState(true);
     const userKelas = localStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate()
@@ -156,19 +157,32 @@ const Materi_pembagian = () => {
   ];
 
     const handleNext = () => {
-      if (currentStepPembagian < materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian.length - 1) {
-          setCurrentStepPembagian(currentStepPembagian + 1);
-          setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian + 1].suara);
-      } else {
-          if (currentMateriIndexPembagian < materiPembagian.length - 1) {
-              setCurrentMateriIndexPembagian(currentMateriIndexPembagian + 1);
-              setCurrentStepPembagian(0);
-              setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian + 1].stepsMateriPembagian[0].suara);
-          } else {
-              navigate('/latihan_soal_pembagian');
-          }
-      }
-  };
+        if (currentStepPembagian < materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian.length - 2) {
+            setCurrentStepPembagian(currentStepPembagian + 1);
+            setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian + 1].suara);
+        } else if (currentStepPembagian === materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian.length - 2) {
+            // Display a message on the second-to-last step
+            if (currentMateriIndexPembagian === 1) {
+                setShowMessage("Ayoo, bentar lagi kamu selesai!");
+            } else if (currentMateriIndexPembagian === 2) {
+                setShowMessage("Kamu sudah hampir selesai membaca materinya!");
+            } else {
+                setShowMessage("Semangat ya belajar nya!");
+            }
+            setCurrentStepPembagian(currentStepPembagian + 1);
+            setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian + 1].suara);
+        } else {
+            if (currentMateriIndexPembagian < materiPembagian.length - 1) {
+                setCurrentMateriIndexPembagian(currentMateriIndexPembagian + 1);
+                setCurrentStepPembagian(0);
+                setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian + 1].stepsMateriPembagian[0].suara);
+                setShowMessage(""); // Clear the message when moving to the next question
+            } else {
+                navigate('/latihan_soal_pembagian');
+                setShowMessage(""); // Clear the message when navigating away
+            }
+        }
+    };
 
   const handlePrevious = () => {
     if (currentStepPembagian > 0) {
@@ -257,12 +271,17 @@ const handleStart = async () => {
                     </div>
                 </div>
 
-                {userKelas === "kelas-eksperiment" && (
-                    <aside className='mt-12'>
-                        <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                {userKelas === 'kelas-eksperiment' && (
+                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                    <img src='../asset/agen/guru.png' alt='' width={230} className='mx-auto' />
+                    <p>
+                        {showMessage && (
+                        <div className='px-4 py-6 text-justify'>
+                            {showMessage}
                         </div>
-                    </aside>
+                        )}
+                    </p>
+                    </div>
                 )}
             </div>
         </section>
