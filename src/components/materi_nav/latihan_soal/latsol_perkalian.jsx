@@ -16,6 +16,8 @@ const LatsolPerkalian = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
     const [buttonSuara, setButtonSuara] = useState(false);
+    const [imagePath, setImagePath] = useState("../asset/agen/guru.png");
+
     const userKelas = localStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
@@ -201,6 +203,7 @@ const LatsolPerkalian = () => {
             setIsCorrect(true);
             setIsAnswered(true);
             setButtonSuara(true)
+            setImagePath("../asset/agen/guru.png");
 
             setTimeout(() => {
                 setMessage(null);
@@ -209,14 +212,16 @@ const LatsolPerkalian = () => {
         } else {
             setWrongAnswer(selectedAnswer);
             setHintCount(hintCount + 1);
-            setButtonSuara(true)
+            setButtonSuara(true);
+            setImagePath("../asset/agen/sedih.png");
+
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
                 setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dan vidio untuk bantuan. Semangat ya!");
 
                 setTimeout(() => {
                     setMessage(null);
-                },6000);
+                },9000);
             } else {
                 setMessage(null);
             }
@@ -298,7 +303,7 @@ const LatsolPerkalian = () => {
 
                             <ul className='text-left text-sm'>
                                 {currentQuestionData.options.map((option) => (
-                                    <li key={option.id} className='mb-5 bulet'>
+                                    <li key={option.id} className='mb-5 hover:text-[#1769BA]'>
                                         <label className={`${wrongAnswer === option.id ? 'text-red-500' : ''} ${selectedAnswer === option.id && isCorrect ? 'text-green-500' : ''}`}>
                                             <input
                                                 type="radio"
@@ -412,7 +417,7 @@ const LatsolPerkalian = () => {
                 {userKelas === "kelas-eksperiment" && (
                     <aside className='mt-12'>
                         <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                            <img src={imagePath} alt="" width={230} className='mx-auto' />
                             <p>
                                 {message && (
                                     <div className='px-4 py-6 text-justify'>

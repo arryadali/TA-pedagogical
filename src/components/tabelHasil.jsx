@@ -20,7 +20,7 @@ const TabelHasil = () => {
         <thead className='text-[16px] bg-[#1D809F] border-2'>
           <tr>
             <td className='border-solid border-2 px-12 border-black'>Name</td>
-            <td className='border-solid border-2 px-5 border-black'>Total Attempts</td>
+            <td className='border-solid border-2 px-5 border-black'>Total Menjawab</td>
             <td className='border-solid border-2 px-5 border-black'>Total Post-Test</td>
           </tr>
         </thead>

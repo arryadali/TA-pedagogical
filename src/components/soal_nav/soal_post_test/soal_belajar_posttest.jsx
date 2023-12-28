@@ -84,7 +84,7 @@ const Soal_belajar_posttest = () => {
                   {trace > 0 ? (
                     <button
                       onClick={onKembali}
-                      className='w-2/4 btn font-[geogibra]'>
+                      className='rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-black text-white'>
                       Kembali
                     </button>
                   ) : (
@@ -93,7 +93,7 @@ const Soal_belajar_posttest = () => {
 
                   <button
                     onClick={onSelanjutnya}
-                    className='w-2/4 bg-[#3794b0] rounded-lg font-[geogibra]'>
+                    className='rounded-[8px] py-[10px] px-[20px] mr-1 mb-1 bg-[#3794b0] text-white hover:bg-[#1769BA]'>
                     Selanjutnya
                   </button>
                 </div>

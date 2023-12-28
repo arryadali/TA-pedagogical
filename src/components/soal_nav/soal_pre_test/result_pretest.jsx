@@ -45,9 +45,9 @@ const Result_pretest = () => {
     const dispatch = useDispatch();
     const { questionsPretest: { queuePretest, answersPretest }, resultPretest: { resultPretest, userIdPretest } } = useSelector(state => state);
 
-    const totalPoints = queuePretest.length * 10;
+    const totalPoints = queuePretest.length * 5;
     const attemptsPretest = attempts_Number(resultPretest);
-    const earnPointsPretest = earnPoints_Number(resultPretest, answersPretest, 10);
+    const earnPointsPretest = earnPoints_Number(resultPretest, answersPretest, 5);
     const flag = flagResult(totalPoints, earnPointsPretest);
 
 
@@ -135,7 +135,7 @@ const Result_pretest = () => {
                 <div className='flex justify-center flex-col border w-2/5 m-auto p-8 mb-4'>
                     <div className='flex justify-between'>
                         <span className='font-[16px]'>Username</span>
-                        <span className='font-bold'>Daily Tuition</span>
+                        <span className='font-bold'>{localStorage.getItem("NAMA")}</span>
                     </div>
 
                     <div className='flex justify-between'>

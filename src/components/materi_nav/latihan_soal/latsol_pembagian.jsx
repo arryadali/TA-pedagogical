@@ -16,6 +16,7 @@ const LatsolPembagian = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
     const [buttonSuara, setButtonSuara] = useState(false);
+    const [imagePath, setImagePath] = useState("../asset/agen/guru.png");
     const userKelas = localStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
@@ -193,6 +194,7 @@ const LatsolPembagian = () => {
             setIsCorrect(true);
             setIsAnswered(true);
             setButtonSuara(true);
+            setImagePath("../asset/agen/guru.png");
 
             setTimeout(() => {
                 setMessage(null);
@@ -202,6 +204,8 @@ const LatsolPembagian = () => {
             setWrongAnswer(selectedAnswer);
             setHintCount(hintCount + 1);
             setButtonSuara(true);
+            setImagePath("../asset/agen/sedih.png");
+
             if (hintCount === maxWrongAttemptsBeforeHint - 1) {
                 setShowHintButton(true);
                 setMessage("Hmm… Sepertinya kita harus coba lagi. Kamu bisa gunakan tombol hint dan vidio untuk bantuan. Semangat ya!");
@@ -404,7 +408,7 @@ const LatsolPembagian = () => {
                 {userKelas === "kelas-eksperiment" && (
                     <aside className='mt-12'>
                         <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                            <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        <img src={imagePath} alt="" width={230} className='mx-auto' />
                             <p>
                                 {message && (
                                     <div className='px-4 py-6 text-justify'>
