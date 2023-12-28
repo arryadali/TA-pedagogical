@@ -161,7 +161,6 @@ const Materi_pembagian = () => {
             setCurrentStepPembagian(currentStepPembagian + 1);
             setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian[currentStepPembagian + 1].suara);
         } else if (currentStepPembagian === materiPembagian[currentMateriIndexPembagian].stepsMateriPembagian.length - 2) {
-            // Display a message on the second-to-last step
             if (currentMateriIndexPembagian === 1) {
                 setShowMessage("Ayoo, bentar lagi kamu selesai!");
             } else if (currentMateriIndexPembagian === 2) {
@@ -176,10 +175,10 @@ const Materi_pembagian = () => {
                 setCurrentMateriIndexPembagian(currentMateriIndexPembagian + 1);
                 setCurrentStepPembagian(0);
                 setAudioSrcPembagian(materiPembagian[currentMateriIndexPembagian + 1].stepsMateriPembagian[0].suara);
-                setShowMessage(""); // Clear the message when moving to the next question
+                setShowMessage("");
             } else {
                 navigate('/latihan_soal_pembagian');
-                setShowMessage(""); // Clear the message when navigating away
+                setShowMessage("");
             }
         }
     };

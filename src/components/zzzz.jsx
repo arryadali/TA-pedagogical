@@ -167,6 +167,16 @@ const Materi_perkalian = () => {
             setCurrentStepPerkalian(currentStepPerkalian + 1);
             setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian + 1].suara);
             setShowMessage("Semangat ya belajar nya!");
+        } else if (currentStepPerkalian === materiPerkalian[currentMateriIndex].stepsMateriPerkalian.length - 2) {
+            if (currentMateriIndex === 1) {
+                setShowMessage("Ayoo, kamu bisa! Masih ada 2 materi lagi yang harus kamu baca!");
+            } else if (currentMateriIndex === 2) {
+                setShowMessage("Wi kamu keren! Semangat terus belajarnya, jangan menyerah!");
+            } else {
+                setShowMessage("Kamu sudah hampir selesai baca materi perkaliannya! kamu hebat!");
+            }
+            setCurrentStepPerkalian(currentStepPerkalian + 1);
+            setAudioSrcPerkalian(materiPerkalian[currentMateriIndex].stepsMateriPerkalian[currentStepPerkalian + 1].suara);
         } else {
             if (currentMateriIndex < materiPerkalian.length - 1) {
                 setCurrentMateriIndex(currentMateriIndex + 1);
@@ -176,6 +186,8 @@ const Materi_perkalian = () => {
                 navigate('/latihan_soal_perkalian');
             }
         }
+        
+        
     };
 
     const handlePrevious = () => {
