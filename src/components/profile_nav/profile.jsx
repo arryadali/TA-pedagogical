@@ -22,7 +22,7 @@ const Profile = () => {
 
                 <div className='mt-[5%]'>
                     <div className='w-full h-auto rounded-md outline outline-offset-0 outline-[#D3C5D6]'>
-                        <div className='rounded-md bg-[#EBEBEB] p-3 outline outline-offset-0 outline-[#D3C5D6] '>
+                        <div className='rounded-md bg-[#EBEBEB] p-3 outline outline-offset-0 outline-[#D3C5D6]'>
                             <h1 className='text-lg text-center'>Progress Belajar</h1>
                         </div>
                         <div className='grid grid-cols-2'>

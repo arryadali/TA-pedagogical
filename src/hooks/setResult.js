@@ -78,10 +78,11 @@ export const updateResultPretest = (index) => async(dispatch) => {
 
 // insert user data
 export const usePublishResultPretest = (resultData) => {
+    console.log('aa', resultData);
     const { result, username } = resultData;
     (async () => {
         try {
-            if(result !== [] && !username) throw new Error("Couldn't get Result")
+            // if(result !== [] && !username) throw new Error("Couldn't get Result")
             await postServerDataPretest('http://localhost:5000/api/resultPretest', resultData, data => data)
         } catch (error) {
             console.log(error)

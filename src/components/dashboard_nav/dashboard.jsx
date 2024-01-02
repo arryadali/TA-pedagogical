@@ -36,14 +36,19 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className='flex w-[75%] m-auto mt-[80px] shadow-2xl rounded-md bg-white'>
+          <div className='flex w-[85%] m-auto mt-[80px] shadow-2xl rounded-md bg-white'>
             <div className='flex w-[40%] justify-end'>
               <img src="../asset/agen/merem.png" alt="" width={230}/>
             </div>
 
             <div className='bg-[#D9D9D9] w-[40%] m-auto h-[50%] rounded-[10px] mx-auto overflow-hidden'>
-              <div className='p-4 text-center overflow-hidden'>
-                Halo teman-teman! Saya Vania yang akan membantu dan menemani kalian selama kalian berada pada web ini!
+              <div className='p-4 text-justify overflow-hidden'>
+                Halo teman-teman! Saya Vania yang akan membantu dan menemani kalian selama kalian berada pada web ini! Berikut langkah-langkah pengerjaan :
+                <br/> 
+                1. Kerjakan soal Pretest terlebih dahulu pada menu Soal <br/>
+                2. Setelah itu kalian membaca materi pada menu materi <br/>
+                3. Setelah baca materi kalian kerjakan soal Posttest pada menu Soal <br/>
+                4. Kalian bisa melihat lagi nilai kalian pada menu
               </div>
             </div>
           </div>

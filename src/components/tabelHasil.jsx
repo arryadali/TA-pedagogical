@@ -7,7 +7,6 @@ const TabelHasil = () => {
 
   useEffect(() => {
     getServerData('http://localhost:5000/api/result', (res) => {
-      console.log(res)
       setData(res);
     });
   }, []);
@@ -15,13 +14,15 @@ const TabelHasil = () => {
   const filteredData = data.filter((v) => v.username === loggedInUsername);
 
   return (
-    <div style={{ overflowY: 'auto', maxHeight: '300px' }}> 
+    <div style={{ overflowY: 'auto', maxHeight: '350px' }}> 
       <table className='m-auto'>
         <thead className='text-[16px] bg-[#1D809F] border-2'>
           <tr>
-            <td className='border-solid border-2 px-12 border-black'>Name</td>
-            <td className='border-solid border-2 px-5 border-black'>Total Menjawab</td>
-            <td className='border-solid border-2 px-5 border-black'>Total Post-Test</td>
+            <td className='border-solid border-2 px-12 border-black text-center'>Name</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Total Menjawab</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Nilai Posttest</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Materi belum dikuasai</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Materi sudah dikuasai</td>
           </tr>
         </thead>
 
@@ -36,6 +37,8 @@ const TabelHasil = () => {
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.username || ''}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.attempts || 0}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.points || 0}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiSalah || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiBenar || ''}</td>
               </tr>
             ))
           )}

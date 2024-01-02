@@ -2,25 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { getServerData } from '../helper/helper';
 
 const TabelHasilPretest = () => {
-  const [data, setData] = useState([]);
+  const [dataPretest, setDataPretest] = useState([]);
   const loggedInUsername = localStorage.getItem('NAMA');
 
+  const fetchData = async () => {
+    try {
+      const res = await getServerData('http://localhost:5000/api/resultPretest');
+      setDataPretest(res);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    getServerData('http://localhost:5000/api/resultPretest', (res) => {
-      setData(res);
-    });
+    fetchData();
   }, []);
 
-  const filteredData = data.filter((v) => v.username === loggedInUsername);
+  const filteredData = dataPretest.filter((v) => v.usernamePretest === loggedInUsername);
 
   return (
     <div style={{ overflowY: 'auto', maxHeight: '350px' }}>
       <table className='m-auto'>
         <thead className='text-[16px] bg-[#1D809F] border-2'>
           <tr>
-            <td className='border-solid border-2 px-12 border-black'>Name</td>
-            <td className='border-solid border-2 px-5 border-black'>Total Attempts</td>
-            <td className='border-solid border-2 px-5 border-black'>Total Pre-Test</td>
+            <td className='border-solid border-2 px-12 border-black text-center'>Name</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Total Menjawab</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Nilai Pretest</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Materi belum dikuasai</td>
+            <td className='border-solid border-2 px-5 border-black text-center'>Materi sudah dikuasai</td>
           </tr>
         </thead>
 
@@ -32,9 +41,11 @@ const TabelHasilPretest = () => {
           ) : (
             filteredData.map((v, i) => (
               <tr className='table-body' key={i}>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.username || ''}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.attempts || 0}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.points || 0}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.usernamePretest || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.attemptsPretest || 0}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.pointsPretest || 0}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiSalahPretest || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiBenarPretest || ''}</td>
               </tr>
             ))
           )}

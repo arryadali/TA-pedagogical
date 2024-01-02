@@ -34,7 +34,7 @@ const QuestionsPretest = ({onChecked}) => {
   return (
     <section id='questionsPretest'>
         {/* Pertanyaannya */}
-        <h2 className='font-[Georgia] text-xl'>{questions?.question}</h2>
+        <h2 className='font-[Georgia] text-xl text-justify'>{questions?.question}</h2>
 
         {/* Pilihan gandanya */}
         <ul key={questions?.id}>

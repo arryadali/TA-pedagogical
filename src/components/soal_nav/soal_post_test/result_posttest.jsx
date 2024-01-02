@@ -13,7 +13,8 @@ import Navbar from '../../navbar';
 
 const Result_posttest = () => {
     {/** REFLEKSI */}
-    const [ ArraySalah, setArraySalah ] = useState([])
+    const [ refleksiSalah, setRefleksiSalah ] = useState('');
+    const [ refleksiBenar, setRefleksiBenar ] = useState('');
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
@@ -58,7 +59,9 @@ const Result_posttest = () => {
         username: userId,
         attempts,
         points: earnPoints,
-        achived: flag ? "Passed" : "Failed"
+        achived: flag ? "Passed" : "Failed",
+        refleksiSalah: refleksiSalah,
+        refleksiBenar: refleksiBenar,
     });
 
     const onRestart = () => {
@@ -114,15 +117,35 @@ const Result_posttest = () => {
             'Materi pembagian campuran dengan campuran',
         ]
 
-        let array = [];
+        let array_salah = [];
+        let array_benar = [];
         for(let i = 0; i < temp_array.length; i++){
             if(temp_array[i].value >= 2){
-                array.push(dictionary[i])
+                array_salah.push(dictionary[i])
+            } else if (temp_array[i].value < 2){
+                array_benar.push(dictionary[i])
             }
         }
+
+        let refleksi_benar = ''
+        let refleksi_salah = ''
         
-        console.log(array)
-        return setArraySalah(array)
+        if ( array_benar.length == 1 ) {
+            refleksi_benar = array_benar[0]
+        } else {
+            // Menggabungkan elemen array dengan kata 'dan' di antara indeks terakhir dan sebelum indeks terakhir
+            refleksi_benar = array_benar.slice(0, -1).join(', ') + ' dan ' + array_benar.slice(-1);
+        }
+
+        if ( array_salah.length == 1 ) {
+            refleksi_salah = array_salah[0]
+        } else {
+            // Menggabungkan elemen array dengan kata 'dan' di antara indeks terakhir dan sebelum indeks terakhir
+            refleksi_salah = array_salah.slice(0, -1).join(', ') + ' dan ' + array_salah.slice(-1);
+        }
+
+        setRefleksiBenar(refleksi_benar)
+        setRefleksiSalah(refleksi_salah)
     }
     
   return (
@@ -166,13 +189,8 @@ const Result_posttest = () => {
                 </div>
 
                 <h1 className='font-bold text-center mb-4'>REFLEKSI</h1>
-                <div className='flex justify-center flex-col border w-3/4 m-auto p-8 mb-4'>
-                    <h3>Kamu harus memahami materi :</h3>
-                    {ArraySalah.map((item, index) => (
-                        <div key={index} className='flex justify-between'>
-                            <span>{item}</span>
-                        </div>
-                    ))}
+                <div className='flex justify-center flex-col border w-3/4 m-auto p-8 mb-4 text-justify'>
+                    Anda telah memahami {refleksiBenar} dengan sangat baik. <br/>Namun, perlu belajar lagi mengenai {refleksiSalah}
                 </div>
 
                 <div className='text-center'>
