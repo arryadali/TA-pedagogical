@@ -44,8 +44,8 @@ const TabelHasilPretest = () => {
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.usernamePretest || ''}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.attemptsPretest || 0}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.pointsPretest || 0}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiSalahPretest || ''}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiBenarPretest || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center text-red-500'>{v?.refleksiSalahPretest || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center text-green-500'>{v?.refleksiBenarPretest || ''}</td>
               </tr>
             ))
           )}

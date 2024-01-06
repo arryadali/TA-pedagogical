@@ -70,16 +70,6 @@ const Result_posttest = () => {
             });
         }
     }
-    // store user result
-    // usePublishResult({
-    //     result,
-    //     username: userId,
-    //     attempts,
-    //     points: earnPoints,
-    //     achived: flag ? "Passed" : "Failed",
-    //     refleksiSalah: refleksiSalah,
-    //     refleksiBenar: refleksiBenar,
-    // });
 
     const onRestart = () => {
         dispatch(resetAllAction());
@@ -147,14 +137,14 @@ const Result_posttest = () => {
         let refleksi_benar = ''
         let refleksi_salah = ''
         
-        if ( array_benar.length == 1 ) {
+        if ( array_benar.length === 1 ) {
             refleksi_benar = array_benar[0]
         } else {
             // Menggabungkan elemen array dengan kata 'dan' di antara indeks terakhir dan sebelum indeks terakhir
             refleksi_benar = array_benar.slice(0, -1).join(', ') + ' dan ' + array_benar.slice(-1);
         }
 
-        if ( array_salah.length == 1 ) {
+        if ( array_salah.length === 1 ) {
             refleksi_salah = array_salah[0]
         } else {
             // Menggabungkan elemen array dengan kata 'dan' di antara indeks terakhir dan sebelum indeks terakhir

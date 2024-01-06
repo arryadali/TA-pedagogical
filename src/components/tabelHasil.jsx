@@ -37,8 +37,8 @@ const TabelHasil = () => {
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.username || ''}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.attempts || 0}</td>
                 <td className='border-solid border-2 px-5 border-black text-center'>{v?.points || 0}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiSalah || ''}</td>
-                <td className='border-solid border-2 px-5 border-black text-center'>{v?.refleksiBenar || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center text-red-500'>{v?.refleksiSalah || ''}</td>
+                <td className='border-solid border-2 px-5 border-black text-center text-green-500'>{v?.refleksiBenar || ''}</td>
               </tr>
             ))
           )}
