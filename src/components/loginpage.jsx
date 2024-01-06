@@ -26,9 +26,9 @@ const Loginpage = () => {
             if (res.data.code === 200) {
                 // move to home
                 navigate('/dashboard')
-                localStorage.setItem('TOKEN', res.data.token)
-                localStorage.setItem('NAMA', res.data.nama)
-                localStorage.setItem('JENISKELAS', res.data.jeniskelas)
+                sessionStorage.setItem('TOKEN', res.data.token)
+                sessionStorage.setItem('NAMA', res.data.nama)
+                sessionStorage.setItem('JENISKELAS', res.data.jeniskelas)
             }
         }).catch(err => {
             console.log(err)
@@ -37,8 +37,8 @@ const Loginpage = () => {
     }
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('TOKEN');
-        const storedName = localStorage.getItem('NAMA');
+        const storedToken = sessionStorage.getItem('TOKEN');
+        const storedName = sessionStorage.getItem('NAMA');
         if (storedToken && storedName){
           navigate('/dashboard')
         } 

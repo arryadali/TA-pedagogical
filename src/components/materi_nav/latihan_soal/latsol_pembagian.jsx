@@ -17,7 +17,7 @@ const LatsolPembagian = () => {
     const [currentHintIndex, setCurrentHintIndex] = useState(0);
     const [buttonSuara, setButtonSuara] = useState(false);
     const [imagePath, setImagePath] = useState("../asset/agen/guru.png");
-    const userKelas = localStorage.getItem('JENISKELAS');
+    const userKelas = sessionStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();

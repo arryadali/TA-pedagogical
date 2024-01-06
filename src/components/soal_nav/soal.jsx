@@ -10,7 +10,7 @@ const Soal = () => {
   const location = useLocation()
   const [audio] = useState(new Audio("../asset/audio/soal/soal.mp4"));
   const isBacaSoal = location.pathname === "/soal"
-  const userKelas = localStorage.getItem('JENISKELAS');
+  const userKelas = sessionStorage.getItem('JENISKELAS');
 
   const playAudioSoal = () => {
     if (isPlaying) {

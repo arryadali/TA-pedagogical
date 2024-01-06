@@ -8,7 +8,7 @@ const Materi_pembagian = () => {
     const [showStepsPembagian, setshowStepsPembagian] = useState(false);
     const [audioSrcPembagian, setAudioSrcPembagian] = useState('');
     const [showMessage, setShowMessage] = useState(true);
-    const userKelas = localStorage.getItem('JENISKELAS');
+    const userKelas = sessionStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate()
 

@@ -11,7 +11,7 @@ const Materi = () => {
   const isBacaMateri = location.pathname === '/materi';
   const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
 
-  const userKelas = localStorage.getItem('JENISKELAS');
+  const userKelas = sessionStorage.getItem('JENISKELAS');
 
   const playAudioMateri = () => {
     if (isPlaying) {

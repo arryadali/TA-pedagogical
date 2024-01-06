@@ -12,9 +12,9 @@ const Soal_belajar_pretest = () => {
   const [check, setChecked] = useState(undefined)
   const [message, setMessage] = useState('');
   const resultPretest = useSelector(state => state.resultPretest.resultPretest)
-  const {queuePretest, tracePretest} = useSelector(state => state.questionsPretest)
+  const { queuePretest, tracePretest } = useSelector(state => state.questionsPretest)
   const dispatch = useDispatch()
-  const userKelas = localStorage.getItem('JENISKELAS');
+  const userKelas = sessionStorage.getItem('JENISKELAS');
 
   const suaraAgenPedagogis = [
     "Ayo semangat! aku yakin kamu pasti bisa!",

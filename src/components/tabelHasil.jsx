@@ -3,7 +3,7 @@ import { getServerData } from '../helper/helper';
 
 const TabelHasil = () => {
   const [data, setData] = useState([]);
-  const loggedInUsername = localStorage.getItem('NAMA');
+  const loggedInUsername = sessionStorage.getItem('NAMA');
 
   useEffect(() => {
     getServerData('http://localhost:5000/api/result', (res) => {

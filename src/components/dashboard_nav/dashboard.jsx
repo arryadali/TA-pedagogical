@@ -19,7 +19,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('TOKEN')
+    const token = sessionStorage.getItem('TOKEN')
     if (!token) {
       navigate('/loginpage')
     } 

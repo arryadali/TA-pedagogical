@@ -33,7 +33,7 @@ const Quiz_setup_posttest = () => {
       };
 
     useEffect(() => {
-        const nama = localStorage.getItem('NAMA'); 
+        const nama = sessionStorage.getItem('NAMA'); 
         if (nama) {
           inputRef.current.value = nama;
         }

@@ -9,7 +9,7 @@ const Materi_perkalian = () => {
     const [audioSrcPerkalian, setAudioSrcPerkalian] = useState('');
     const [showMessage, setShowMessage] = useState(true);
 
-    const userKelas = localStorage.getItem('JENISKELAS');
+    const userKelas = sessionStorage.getItem('JENISKELAS');
 
     const navigate = useNavigate();
 

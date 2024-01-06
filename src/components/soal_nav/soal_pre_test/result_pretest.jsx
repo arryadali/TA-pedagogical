@@ -7,12 +7,13 @@ import { useLocation } from 'react-router-dom';
 // import action
 import { resetAllActionPretest } from '../../../redux/question_reducer_pretest';
 import { resetResultActionPretest } from '../../../redux/result_reducer_pretest';
-import { usePublishResultPretest } from '../../../hooks/setResult';
+import { PublishResultPretest } from '../../../hooks/setResult';
 import Navbar from '../../navbar';
 
 const Result_pretest = () => {
     const [ refleksiSalah, setRefleksiSalah ] = useState('');
     const [ refleksiBenar, setRefleksiBenar ] = useState('');
+    const [ publish, setPublish ] = useState(false);
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
@@ -21,7 +22,7 @@ const Result_pretest = () => {
     const isResultPretest = location.pathname === '/result_pretest';
     const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
 
-    const userKelas = localStorage.getItem('JENISKELAS');
+    const userKelas = sessionStorage.getItem('JENISKELAS');
 
     const playAudioResult = () => {
         if (isPlaying) {
@@ -35,12 +36,15 @@ const Result_pretest = () => {
     
     useEffect(() => {
         refleksi(resultPretest, answersPretest)
+        if (refleksiBenar !== '' && refleksiSalah !== ''){
+            publishResult2()
+        }
         const timer = setTimeout(() => {
             setShowMessage(false);
         }, 6000);
 
     return () => clearTimeout(timer);
-    }, []);
+    }, [refleksiBenar, refleksiSalah]);
 
     const dispatch = useDispatch();
     const { questionsPretest: { queuePretest, answersPretest }, resultPretest: { resultPretest, userIdPretest } } = useSelector(state => state);
@@ -50,17 +54,31 @@ const Result_pretest = () => {
     const earnPointsPretest = earnPoints_Number(resultPretest, answersPretest, 5);
     const flag = flagResult(totalPoints, earnPointsPretest);
 
+    const publishResult2 = () => {
+        if ( publish === false ){
+            PublishResultPretest({
+                resultPretest,
+                usernamePretest: userIdPretest,
+                attemptsPretest,
+                pointsPretest: earnPointsPretest,
+                achivedPretest: flag ? "Passed" : "Failed",
+                refleksiSalahPretest: refleksiSalah,
+                refleksiBenarPretest: refleksiBenar,
+            })
+            setPublish(true)
+        }
+    }
 
-    // store user result
-    usePublishResultPretest({
-        resultPretest,
-        usernamePretest: userIdPretest,
-        attemptsPretest,
-        pointsPretest: earnPointsPretest,
-        achivedPretest: flag ? "Passed" : "Failed",
-        refleksiSalahPretest: refleksiSalah,
-        refleksiBenarPretest: refleksiBenar,
-    });
+    // // store user result
+    // usePublishResultPretest({
+    //     resultPretest,
+    //     usernamePretest: userIdPretest,
+    //     attemptsPretest,
+    //     pointsPretest: earnPointsPretest,
+    //     achivedPretest: flag ? "Passed" : "Failed",
+    //     refleksiSalahPretest: refleksiSalah,
+    //     refleksiBenarPretest: refleksiBenar,
+    // });
 
     const onRestart = () => {
         dispatch(resetAllActionPretest());
@@ -156,7 +174,7 @@ const Result_pretest = () => {
                 <div className='flex justify-center flex-col border w-2/5 m-auto p-8 mb-4'>
                     <div className='flex justify-between'>
                         <span className='font-[16px]'>Username</span>
-                        <span className='font-bold'>{localStorage.getItem("NAMA")}</span>
+                        <span className='font-bold'>{sessionStorage.getItem("NAMA")}</span>
                     </div>
 
                     <div className='flex justify-between'>

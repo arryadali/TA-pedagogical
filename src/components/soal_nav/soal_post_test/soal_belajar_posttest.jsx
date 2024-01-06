@@ -11,7 +11,7 @@ const Soal_belajar_posttest = () => {
   const result = useSelector((state) => state.result.result);
   const { queue, trace } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
-  const userKelas = localStorage.getItem('JENISKELAS');
+  const userKelas = sessionStorage.getItem('JENISKELAS');
 
   const suaraAgenPedagogis = [
     "Ayo semangat! aku yakin kamu pasti bisa!",

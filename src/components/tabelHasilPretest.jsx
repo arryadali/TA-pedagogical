@@ -3,7 +3,7 @@ import { getServerData } from '../helper/helper';
 
 const TabelHasilPretest = () => {
   const [dataPretest, setDataPretest] = useState([]);
-  const loggedInUsername = localStorage.getItem('NAMA');
+  const loggedInUsername = sessionStorage.getItem('NAMA');
 
   const fetchData = async () => {
     try {

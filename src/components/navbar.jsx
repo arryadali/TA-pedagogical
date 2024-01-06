@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
-    const token = localStorage.getItem('TOKEN')
+    const token = sessionStorage.getItem('TOKEN')
     if (!token) {
         navigate('/signin')
     }
@@ -54,7 +54,7 @@ const Navbar = () => {
                   const userConfirmation = window.confirm("Apakah Anda yakin ingin keluar?");
 
                   if (userConfirmation) {
-                    localStorage.clear();
+                    sessionStorage.clear();
                     navigate('/loginpage');
                   }
                 }}

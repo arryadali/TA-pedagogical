@@ -18,7 +18,7 @@ const LatsolPerkalian = () => {
     const [buttonSuara, setButtonSuara] = useState(false);
     const [imagePath, setImagePath] = useState("../asset/agen/guru.png");
 
-    const userKelas = localStorage.getItem('JENISKELAS');
+    const userKelas = sessionStorage.getItem('JENISKELAS');
 
     const maxWrongAttemptsBeforeHint = 1;
     const navigate = useNavigate();
@@ -311,7 +311,7 @@ const LatsolPerkalian = () => {
                                                 value={option.id}
                                                 checked={selectedAnswer === option.id}
                                                 onChange={() => handleAnswerSelect(option.id)}
-                                                className='mr-2'
+                                                className='mr-2 bg-black'
                                                 disabled={isAnswered}
                                             />
                                             {option.text}

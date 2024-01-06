@@ -12,7 +12,7 @@ const Profile = () => {
         <div className='font-[georgia] max-w-7xl m-auto'>
             <div className='text-center'>
                 <h1 className='text-4xl mt-[6%] font-bold'>
-                    Hallo, {localStorage.getItem('NAMA')}!
+                    Hallo, {sessionStorage.getItem('NAMA')}!
                 </h1>
                 
                 <p className='text-base'>Disini halaman untuk melihat progres kamu!</p>
