@@ -7,6 +7,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate()
   const [audio] = useState(new Audio("../asset/audio/dashboard/dashboard.mp3"));
+  const userKelas = sessionStorage.getItem('JENISKELAS');
 
   const playAudioDashboard = () => {
     if (isPlaying) {
@@ -53,11 +54,13 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className='w-0 m-auto text-center mt-10' onClick={playAudioDashboard}>
+          {userKelas === "kelas-eksperiment" && (
+            <div className='w-0 m-auto text-center mt-10' onClick={playAudioDashboard}>
             <button className='btn'>
               {isPlaying ? 'Hentikan' : 'Suara'}
             </button>
           </div>
+          )}
         </div>
     </section>
   )
