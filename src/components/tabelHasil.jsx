@@ -6,7 +6,7 @@ const TabelHasil = () => {
   const loggedInUsername = sessionStorage.getItem('NAMA');
 
   useEffect(() => {
-    getServerData('http://localhost:5000/api/result', (res) => {
+    getServerData('http://mathped-be.vercel.app/result', (res) => {
       setData(res);
     });
   }, []);
