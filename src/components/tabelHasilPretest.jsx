@@ -7,7 +7,7 @@ const TabelHasilPretest = () => {
 
   const fetchData = async () => {
     try {
-      const res = await getServerData('http://mathped-be.vercel.app/resultPretest');
+      const res = await getServerData('https://mathped-be.vercel.app/resultPretest');
       setDataPretest(res);
     } catch (error) {
       console.error("Error fetching data:", error);
