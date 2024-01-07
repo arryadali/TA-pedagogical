@@ -80,10 +80,7 @@ const Loginpage = () => {
                           <option value="" disabled selected>
                             Pilih Kelas
                           </option>
-                          <option value="5A">5A</option>
-                          <option value="5B">5B</option>
                           <option value="5C">5C</option>
-                          <option value="5D">5D</option>
                         </select>
                     </div>
 
@@ -101,8 +98,8 @@ const Loginpage = () => {
                           <option value="" disabled selected>
                             Pilih Jenis Kelas
                           </option>
-                          <option value="kelas-kontrol">Kelas 1</option>
-                          <option value="kelas-eksperiment">Kelas 2</option>
+                          <option value="kelas-kontrol">Kelas Kanan</option>
+                          <option value="kelas-eksperiment">Kelas Kiri</option>
                         </select>
                     </div>
 
