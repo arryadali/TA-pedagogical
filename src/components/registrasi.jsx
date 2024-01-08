@@ -17,7 +17,7 @@ const Loginpage = () => {
       alert("Harap isi semua kolom formulir.");
       return;
     }
-    axios.post(' https://mathped-be.vercel.app/signup', {
+    axios.post(' http://localhost:5000/api/signup', {
       nama : nama,
       kelas : kelas,
       jeniskelas : jeniskelas,

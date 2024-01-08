@@ -15,7 +15,7 @@ export const useFetchQestion = () => {
 
         (async() => {
             try {
-                const [{questions, answers}] = await getServerData(" https://mathped-be.vercel.app/questions", (data) => data)
+                const [{questions, answers}] = await getServerData(" http://localhost:5000/api/questions", (data) => data)
 
                 if(questions.length > 0) {
                     setGetData(prev => ({...prev, isLoading : false}));
@@ -63,7 +63,7 @@ export const useFetchQestionPretest = () => {
 
         (async() => {
             try {
-                const [{questionsPretest, answersPretest}] = await getServerDataPretest(" https://mathped-be.vercel.app/questionsPretest", (data) => data)
+                const [{questionsPretest, answersPretest}] = await getServerDataPretest(" http://localhost:5000/api/questionsPretest", (data) => data)
 
                 if(questionsPretest.length > 0) {
                     setGetDataPretest(prev => ({...prev, isLoading : false}));
