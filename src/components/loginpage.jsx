@@ -10,7 +10,7 @@ const Loginpage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://atenggggg-drrqnaubt-aggagah.vercel.app//signin', {
+        axios.post('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/signin', {
         username : username,
         password : password
         })

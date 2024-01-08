@@ -15,7 +15,7 @@ export const useFetchQestion = () => {
 
         (async() => {
             try {
-                const [{questions, answers}] = await getServerData("https://atenggggg-drrqnaubt-aggagah.vercel.app//questions", (data) => data)
+                const [{questions, answers}] = await getServerData("https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/questions", (data) => data)
 
                 if(questions.length > 0) {
                     setGetData(prev => ({...prev, isLoading : false}));
@@ -63,7 +63,7 @@ export const useFetchQestionPretest = () => {
 
         (async() => {
             try {
-                const [{questionsPretest, answersPretest}] = await getServerDataPretest("https://atenggggg-drrqnaubt-aggagah.vercel.app//questionsPretest", (data) => data)
+                const [{questionsPretest, answersPretest}] = await getServerDataPretest("https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/questionsPretest", (data) => data)
 
                 if(questionsPretest.length > 0) {
                     setGetDataPretest(prev => ({...prev, isLoading : false}));

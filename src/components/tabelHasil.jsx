@@ -6,7 +6,7 @@ const TabelHasil = () => {
   const loggedInUsername = sessionStorage.getItem('NAMA');
 
   useEffect(() => {
-    getServerData('https://atenggggg-drrqnaubt-aggagah.vercel.app//result', (res) => {
+    getServerData('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/result', (res) => {
       setData(res);
     });
   }, []);

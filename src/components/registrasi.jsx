@@ -17,7 +17,7 @@ const Loginpage = () => {
       alert("Harap isi semua kolom formulir.");
       return;
     }
-    axios.post(' https://mathped-be.vercel.app/signup', {
+    axios.post('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/signup', {
       nama : nama,
       kelas : kelas,
       jeniskelas : jeniskelas,

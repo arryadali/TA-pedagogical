@@ -31,7 +31,7 @@ export const usePublishResult = (resultData) => {
             (async () => {
                 try {
                     if (result !== 0 && username) {
-                        await postServerData('https://atenggggg-drrqnaubt-aggagah.vercel.app//result', resultData, (data) => data);
+                        await postServerData('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/result', resultData, (data) => data);
                         console.log('Successfully posted data');
                         setIsDataSent(true);
                     } else {
@@ -70,7 +70,7 @@ export const usePublishResultPretest = (resultData) => {
     (async () => {
         try {
             // if(result !== [] && !username) throw new Error("Couldn't get Result")
-            await postServerDataPretest('https://atenggggg-drrqnaubt-aggagah.vercel.app//resultPretest', resultData, data => data)
+            await postServerDataPretest('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/resultPretest', resultData, data => data)
         } catch (error) {
             console.log(error)
         }
@@ -81,7 +81,7 @@ export const usePublishResultPretest = (resultData) => {
 export const PublishResultPretest = async (resultData) => {
     const { result, username } = resultData;
     try {
-        await postServerDataPretest('https://atenggggg-drrqnaubt-aggagah.vercel.app//resultPretest', resultData, data => data)
+        await postServerDataPretest('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/resultPretest', resultData, data => data)
         console.log('success')
     } catch (e){
         console.log(e)
@@ -91,7 +91,7 @@ export const PublishResultPretest = async (resultData) => {
 export const PublishResultPosttest = async (resultData) => {
     const { result, username } = resultData;
     try {
-        await postServerDataPretest('https://atenggggg-drrqnaubt-aggagah.vercel.app//result', resultData, data => data)
+        await postServerDataPretest('https://pedagogical-2q4wfoeka-arryadali.vercel.app/api/result', resultData, data => data)
         console.log('success')
     } catch (e){
         console.log(e)
