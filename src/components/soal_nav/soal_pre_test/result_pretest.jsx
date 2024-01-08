@@ -15,24 +15,13 @@ const Result_pretest = () => {
     const [ refleksiBenar, setRefleksiBenar ] = useState('');
     const [ publish, setPublish ] = useState(false);
 
-    const [isPlaying, setIsPlaying] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
 
     const location = useLocation()
     const isResultPretest = location.pathname === '/result_pretest';
-    const [audio] = useState(new Audio("../asset/audio/materi/materi.mp4"));
 
     const userKelas = sessionStorage.getItem('JENISKELAS');
 
-    const playAudioResult = () => {
-        if (isPlaying) {
-          audio.pause();
-          audio.currentTime = 0;
-        } else {
-          audio.play();
-        }
-        setIsPlaying(!isPlaying);
-    };
     
     useEffect(() => {
         refleksi(resultPretest, answersPretest)
@@ -69,16 +58,6 @@ const Result_pretest = () => {
         }
     }
 
-    // // store user result
-    // usePublishResultPretest({
-    //     resultPretest,
-    //     usernamePretest: userIdPretest,
-    //     attemptsPretest,
-    //     pointsPretest: earnPointsPretest,
-    //     achivedPretest: flag ? "Passed" : "Failed",
-    //     refleksiSalahPretest: refleksiSalah,
-    //     refleksiBenarPretest: refleksiBenar,
-    // });
 
     const onRestart = () => {
         dispatch(resetAllActionPretest());
@@ -234,13 +213,6 @@ const Result_pretest = () => {
                                 )
                             )}
                         </div>
-                    </div>
-
-                    <div className='text-center font-[georgia] mt-4'>
-                        <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                        <button className='btn mt-4' onClick={playAudioResult}>
-                        {isPlaying ? 'Hentikan' : 'Suara'}
-                        </button>
                     </div>
                 </aside>
             )}

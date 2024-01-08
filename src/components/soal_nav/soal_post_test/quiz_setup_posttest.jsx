@@ -15,6 +15,7 @@ const Quiz_setup_posttest = () => {
     const location = useLocation()
     const [audio] = useState(new Audio("../asset/audio/soal/intruksi_prepos.mp4"));
     const isBacaSoal = location.pathname === "/quiz_setup_posttest"
+    const userKelas = sessionStorage.getItem('JENISKELAS');
     
     const startQuiz = () => {
         if(inputRef.current?.value) {
@@ -69,7 +70,8 @@ const Quiz_setup_posttest = () => {
                 </div>
             </div>
 
-            <aside className='mt-12'>
+            {userKelas === "kelas-eksperiment" && (
+                <aside className='mt-12'>
                 <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
                     <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
                     <div className='px-4 py-6 text-justify'>
@@ -88,6 +90,7 @@ const Quiz_setup_posttest = () => {
                     </button>
                 </div>
             </aside>
+            )}
         </div>
     </section>
   )

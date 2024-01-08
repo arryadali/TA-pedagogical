@@ -15,6 +15,7 @@ const Quiz_setup_pretest = () => {
     const location = useLocation()
     const [audio] = useState(new Audio("../asset/audio/soal/intruksi_prepos.mp4"));
     const isBacaSoal = location.pathname === "/quiz_setup_pretest"
+    const userKelas = sessionStorage.getItem('JENISKELAS');
     
     const startQuiz = () => {
         if(inputRef.current?.value) {
@@ -69,25 +70,27 @@ const Quiz_setup_pretest = () => {
                 </div>
             </div>
 
-            <aside className='mt-12'>
-                <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
-                    <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
-                    <div className='px-4 py-6 text-justify'>
-                    {isBacaSoal && showMessage ? (
-                        <p className='font-[georgia]'>
-                        Disini kita akan mengerjakan quiz. Semangat mengerjakan ya!!!
-                        </p>
-                    ) : null}
+            {userKelas === "kelas-eksperiment" && (
+                <aside className='mt-12'>
+                    <div className='border-2 rounded-xl h-[400px] w-[50%] mx-auto overflow-hidden shadow-xl'>
+                        <img src="../asset/agen/guru.png" alt="" width={230} className='mx-auto' />
+                        <div className='px-4 py-6 text-justify'>
+                        {isBacaSoal && showMessage ? (
+                            <p className='font-[georgia]'>
+                            Disini kita akan mengerjakan quiz. Semangat mengerjakan ya!!!
+                            </p>
+                        ) : null}
+                        </div>
                     </div>
-                </div>
 
-                <div className='text-center font-[georgia] mt-4'>
-                    <p>Klik tombol dibawah ini untuk memakai suara!</p>
-                    <button className='btn mt-4' onClick={playAudioSoal}>
-                    {isPlaying ? 'Hentikan' : 'Suara'}
-                    </button>
-                </div>
-            </aside>
+                    <div className='text-center font-[georgia] mt-4'>
+                        <p>Klik tombol dibawah ini untuk memakai suara!</p>
+                        <button className='btn mt-4' onClick={playAudioSoal}>
+                        {isPlaying ? 'Hentikan' : 'Suara'}
+                        </button>
+                    </div>
+                </aside>
+            )}
         </div>
     </section>
   )
